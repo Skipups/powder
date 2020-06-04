@@ -1,0 +1,51 @@
+{
+  "name": "powder",
+  "version": "1.0.0",
+  "description": "Take 3",
+  "main": "seed.js",
+  "scripts": {
+    "start:dev": "./node_modules/.binwebpack & nodemon ./server/index.js",
+    "seed": "node seed.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Skipups/powder.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Skipups/powder/issues"
+  },
+  "homepage": "https://github.com/Skipups/powder#readme",
+  "dependencies": {
+    "@babel/core": "^7.10.2",
+    "@babel/plugin-proposal-class-properties": "^7.10.1",
+    "@babel/preset-env": "^7.10.2",
+    "@babel/preset-react": "^7.10.1",
+    "axios": "^0.19.2",
+    "chalk": "^4.0.0",
+    "express": "^4.17.1",
+    "lint": "^0.7.0",
+    "pg": "^8.2.1",
+    "prettier": "^2.0.5",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "sequelize": "^5.21.11",
+    "snow-forecast-sfr": "^2.0.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.1.0",
+    "babel-preset-stage-2": "^6.24.1",
+    "dotenv": "^8.2.0",
+    "eslint": "^7.1.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-babel": "^5.3.0",
+    "eslint-plugin-prettier": "^3.1.3",
+    "eslint-plugin-react": "^7.20.0",
+    "file-loader": "^6.0.0"
+  }
+}
