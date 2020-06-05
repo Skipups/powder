@@ -1,6 +1,7 @@
 import React from "react";
 import SnowRequest from "snow-forecast-sfr";
 import { thistle } from "color-name";
+import ResortCard from "./ResortCard";
 
 //list of all epic resorts
 // list mount
@@ -50,13 +51,13 @@ class Weather extends React.Component {
     this.setState({ weather });
   }
   render() {
-    ikonResorts.map((_r) => <ResortCard />);
+    // ikonResorts.map((_r) => <ResortCard />);
     return (
       <div>
         <h1>Weather!</h1>
-        <pre>
+        {/* <pre>
           <code>{JSON.stringify(this.state, null, 2)}</code>
-        </pre>
+        </pre> */}
       </div>
     );
   }

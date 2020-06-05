@@ -6,3 +6,5 @@ class ResortCard extends React.Component {
     //make api request
   }
 }
+
+export default ResortCard;

@@ -1,13 +1,11 @@
 "use strict";
-const { path } = require("path");
-const webpack = require("webpack");
+const path = require("path");
 
 module.exports = {
   mode: "development",
   entry: path.join(__dirname, "./client/app.js"),
   output: {
     path: path.join(__dirname, "./static"),
-    sourceMapFilename: "main.js.map",
   },
   resolve: {
     extensions: [".js", ".jsx"],
@@ -16,8 +14,9 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.js/,
         exclude: /node_modules/,
-        use: "babel-loader",
+        loader: "babel-loader",
       },
     ],
   },

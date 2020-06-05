@@ -8,15 +8,10 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
-app.use((req, res, next) => {
-  console.log(`received ${req.method} @ ${req.url}`);
-  next();
-});
-
 app.use(express.static(path.join(__dirname, "../static")));
 
 app.get("/api/snowRequest", (req, res) => {
-  snow.parseResort("Tignes", "mid", function (json) {
+  snow.parseResort("Snowbird", "mid", function (json) {
     console.log(json);
     return res.status(200).send(JSON.stringify(json));
   });
