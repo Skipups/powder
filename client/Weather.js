@@ -23,8 +23,6 @@ class Weather extends React.Component {
     };
   }
   componentDidMount() {
-    console.log(SnowRequest);
-    const snow = SnowRequest.default;
     let weather = [];
     const { fetch } = window;
     fetch("/api/snowRequest")
@@ -51,7 +49,7 @@ class Weather extends React.Component {
     this.setState({ weather });
   }
   render() {
-    // ikonResorts.map((_r) => <ResortCard />);
+    //ikonResorts.map((_r) => <ResortCard />);
     return (
       <div>
         <h1>Weather!</h1>
