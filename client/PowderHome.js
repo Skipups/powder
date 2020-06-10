@@ -4,6 +4,7 @@ import PassPage from "./PassPage";
 import { navigate } from "@reach/router";
 
 import { Link } from "@reach/router";
+import { format } from "path";
 
 class PowderHome extends React.Component {
   constructor(props) {
@@ -34,12 +35,13 @@ class PowderHome extends React.Component {
     return (
       <div className="pass-image-container">
         {this.state.passes.map((_pass) => {
+          let nameJoined = _pass.name.replace(/\s+/g, "");
+
           return (
             <div className="pass-image-container-pass" key={_pass.id}>
               {" "}
-              <Link to={`/pass/${_pass.name}`}>
+              <Link to={`/pass/${nameJoined}`}>
                 <img
-                  className={_pass.name === this.state.selected ? "active" : ""}
                   src={_pass.image}
                   alt={_pass.name}
                   data-passname={_pass.name}
