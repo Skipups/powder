@@ -26,5 +26,6 @@ const startServer = () => {
     console.log(chalk.greenBright(`App started on ${PORT}`));
   });
 };
+//
 
 module.exports = startServer;
