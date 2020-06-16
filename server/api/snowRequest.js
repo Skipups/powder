@@ -3,9 +3,9 @@ const chalk = require("chalk");
 const snow = require("snow-forecast-sfr").default;
 
 const apiSnowRequest = Router();
-
-apiSnowRequest.get("/api/snowRequest", (req, res) => {
-  console.log("hi");
+console.log("outside of get request");
+apiSnowRequest.get(`/`, (req, res) => {
+  console.log("inside apiSnowRequest req", req);
   let resort = req.params;
   console.log(chalk.bgCyanBright(`req and resort`, req, resort));
 
@@ -16,3 +16,6 @@ apiSnowRequest.get("/api/snowRequest", (req, res) => {
 });
 
 module.exports = apiSnowRequest;
+
+//why isn't line 8 logging
+// why did i need to use fetch and not axios?

@@ -347,20 +347,33 @@ var ResortCard = /*#__PURE__*/function (_React$Component) {
       var resortName = this.props.resortName;
       var weather = []; //make api request
 
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/snowRequest", {
+      console.log("inside CDM ResortCard");
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("api/snowRequest", {
         params: {
           resortName: resortName
         }
       }).then(function (res) {
         console.log("snow request res", res);
-        weather = res.data;
+        weather = res;
       })["catch"](function (e) {
         console.error(e);
       });
       this.setState({
         weather: weather,
         loading: false
-      });
+      }); // let weather = [];
+      // const { fetch } = window;
+      // fetch("/api/snowRequest", { body: resortName })
+      //   .then((res) => {
+      //     return res.json();
+      //   })
+      //   .then((d) => {
+      //     console.log("response = ", d);
+      //   })
+      //   .catch((e) => {
+      //     console.log("e ", e);
+      // //   });
+      // this.setState({ weather: weather, loading: false });
     }
   }, {
     key: "render",

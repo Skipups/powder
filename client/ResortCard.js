@@ -14,16 +14,31 @@ class ResortCard extends React.Component {
     const { resortName } = this.props;
     let weather = [];
     //make api request
+    console.log("inside CDM ResortCard");
     axios
-      .get("/api/snowRequest", { params: { resortName } })
+      .get("api/snowRequest", { params: { resortName } })
       .then((res) => {
         console.log("snow request res", res);
-        weather = res.data;
+        weather = res;
       })
       .catch((e) => {
         console.error(e);
       });
     this.setState({ weather: weather, loading: false });
+
+    // let weather = [];
+    // const { fetch } = window;
+    // fetch("/api/snowRequest", { body: resortName })
+    //   .then((res) => {
+    //     return res.json();
+    //   })
+    //   .then((d) => {
+    //     console.log("response = ", d);
+    //   })
+    //   .catch((e) => {
+    //     console.log("e ", e);
+    // //   });
+    // this.setState({ weather: weather, loading: false });
   }
   render() {
     if (this.state.loading) {

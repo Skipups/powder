@@ -6,14 +6,10 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const apiPasses = require("./api/passes");
 const apiSnowRequest = require("./api/snowRequest");
-
 const morgan = require("morgan");
 
-if (process.env.NODE_ENV !== "production") {
-  app.use(morgan("dev"));
-}
-
 app.use(express.json());
+app.use(morgan("dev"));
 
 app.use(express.static(path.join(__dirname, "../static")));
 
