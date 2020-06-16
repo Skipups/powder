@@ -26,7 +26,6 @@ class ResortCard extends React.Component {
       });
     this.setState({ weather: weather, loading: false });
 
-    // let weather = [];
     // const { fetch } = window;
     // fetch("/api/snowRequest", { body: resortName })
     //   .then((res) => {
