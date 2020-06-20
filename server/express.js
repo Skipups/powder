@@ -7,20 +7,28 @@ const PORT = process.env.PORT || 3000;
 const apiPasses = require("./api/passes");
 const apiSnowRequest = require("./api/snowRequest");
 const morgan = require("morgan");
+const cors = require("cors");
+
+app.use(cors());
 
 app.use(express.json());
 app.use(morgan("dev"));
+app.use(express.urlencoded({ extended: true }));
 
-app.use(express.static(path.join(__dirname, "../static")));
+app.use("/", express.static(path.join(__dirname, "../static")));
 
 app.use("/api", apiPasses);
 app.use("/api", apiSnowRequest);
 
-//app.use("/api", apiRouter);
+// const snow = require("snow-forecast-sfr").default;
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../static/index.html"));
-});
+// // //
+
+// //app.use("/api", apiRouter);
+
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "../static/index.html"));
+// });
 const startServer = () => {
   app.listen(PORT, () => {
     console.log(chalk.greenBright(`App started on ${PORT}`));

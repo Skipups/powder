@@ -124,7 +124,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 var resortsSortedByPass = {
   mountaincollective: ["Aspen", "Snowbird", "Alta", "Banff Sunshine", "Big Sky Resort", "Jackson Hole Mountain Resort"],
-  ikon: ["Snowbird", "Alta", "Big Bear Mountain Resort", "Mt. Bachelor"],
+  ikon: ["Snowbird", "Alta", "Big Bear Mountain", "Mt. Bachelor"],
   epic: ["Telluride", "Sun Valley", "Snowbasin", "Vail", "Heavenly"]
 };
 
@@ -237,7 +237,7 @@ var PowderHome = /*#__PURE__*/function (_React$Component) {
 
       var passes = [];
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("api/passes").then(function (res) {
-        console.log("res", res);
+        console.log("api/passes", res);
         passes = res.data;
 
         _this2.setState({
@@ -256,6 +256,8 @@ var PowderHome = /*#__PURE__*/function (_React$Component) {
       }
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "wrapper"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "pass-image-container"
       }, this.state.passes.map(function (_pass) {
         var nameJoined = _pass.name.replace(/\s+/g, "");
@@ -271,7 +273,7 @@ var PowderHome = /*#__PURE__*/function (_React$Component) {
           "data-passname": _pass.name,
           "data-id": _pass.id
         })));
-      }));
+      })));
     }
   }]);
 
@@ -335,7 +337,7 @@ var ResortCard = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      weather: [],
+      resortInfo: {},
       loading: true
     };
     return _this;
@@ -344,45 +346,37 @@ var ResortCard = /*#__PURE__*/function (_React$Component) {
   _createClass(ResortCard, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var resortName = this.props.resortName;
-      var weather = []; //make api request
+      var _this2 = this;
 
-      console.log("inside CDM ResortCard");
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("api/snowRequest", {
-        params: {
-          resortName: resortName
-        }
+      var resortName = this.props.resortName;
+      var resort;
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/api/snowRequest", {
+        resortName: resortName
       }).then(function (res) {
-        console.log("snow request res", res);
-        weather = res;
+        resort = res.data;
+
+        _this2.setState({
+          resortInfo: resort,
+          loading: false
+        });
+
+        console.log(_this2.state.resortInfo, _this2.state.loading);
       })["catch"](function (e) {
         console.error(e);
       });
-      this.setState({
-        weather: weather,
-        loading: false
-      }); // let weather = [];
-      // const { fetch } = window;
-      // fetch("/api/snowRequest", { body: resortName })
-      //   .then((res) => {
-      //     return res.json();
-      //   })
-      //   .then((d) => {
-      //     console.log("response = ", d);
-      //   })
-      //   .catch((e) => {
-      //     console.log("e ", e);
-      // //   });
-      // this.setState({ weather: weather, loading: false });
     }
   }, {
     key: "render",
     value: function render() {
-      if (this.state.loading) {
+      var _this$state = this.state,
+          loading = _this$state.loading,
+          resortInfo = _this$state.resortInfo;
+
+      if (loading) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "searching for a storm...");
       }
 
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("pre", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("code", null, JSON.stringify(this.state.weather, null, 2))));
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, resortInfo.name);
     }
   }]);
 

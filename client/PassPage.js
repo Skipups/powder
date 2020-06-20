@@ -10,7 +10,7 @@ let resortsSortedByPass = {
     "Big Sky Resort",
     "Jackson Hole Mountain Resort",
   ],
-  ikon: ["Snowbird", "Alta", "Big Bear Mountain Resort", "Mt. Bachelor"],
+  ikon: ["Snowbird", "Alta", "Big Bear Mountain", "Mt. Bachelor"],
   epic: ["Telluride", "Sun Valley", "Snowbasin", "Vail", "Heavenly"],
 };
 

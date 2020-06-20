@@ -6,51 +6,33 @@ class ResortCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      weather: [],
+      resortInfo: {},
       loading: true,
     };
   }
+
   componentDidMount() {
     const { resortName } = this.props;
-    let weather = [];
-    //make api request
-    console.log("inside CDM ResortCard");
+    let resort;
+
     axios
-      .get("api/snowRequest", { params: { resortName } })
+      .post(`/api/snowRequest`, { resortName: resortName })
       .then((res) => {
-        console.log("snow request res", res);
-        weather = res;
+        resort = res.data;
+        this.setState({ resortInfo: resort, loading: false });
+        console.log(this.state.resortInfo, this.state.loading);
       })
       .catch((e) => {
         console.error(e);
       });
-    this.setState({ weather: weather, loading: false });
-
-    // const { fetch } = window;
-    // fetch("/api/snowRequest", { body: resortName })
-    //   .then((res) => {
-    //     return res.json();
-    //   })
-    //   .then((d) => {
-    //     console.log("response = ", d);
-    //   })
-    //   .catch((e) => {
-    //     console.log("e ", e);
-    // //   });
-    // this.setState({ weather: weather, loading: false });
   }
   render() {
-    if (this.state.loading) {
+    const { loading, resortInfo } = this.state;
+    if (loading) {
       return <div>searching for a storm...</div>;
     }
 
-    return (
-      <div>
-        <pre>
-          <code>{JSON.stringify(this.state.weather, null, 2)}</code>
-        </pre>
-      </div>
-    );
+    return <div>{resortInfo.name}</div>;
   }
 }
 

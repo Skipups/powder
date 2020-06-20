@@ -16,10 +16,11 @@ class PowderHome extends React.Component {
   }
   componentDidMount() {
     let passes = [];
+
     axios
       .get("api/passes")
       .then((res) => {
-        console.log("res", res);
+        console.log("api/passes", res);
         passes = res.data;
         this.setState({ passes: passes, loading: false });
       })
@@ -33,24 +34,26 @@ class PowderHome extends React.Component {
       return <h1>loading passes...</h1>;
     }
     return (
-      <div className="pass-image-container">
-        {this.state.passes.map((_pass) => {
-          let nameJoined = _pass.name.replace(/\s+/g, "");
+      <div className="wrapper">
+        <div className="pass-image-container">
+          {this.state.passes.map((_pass) => {
+            let nameJoined = _pass.name.replace(/\s+/g, "");
 
-          return (
-            <div className="pass-image-container-pass" key={_pass.id}>
-              {" "}
-              <Link to={`/pass/${nameJoined}`}>
-                <img
-                  src={_pass.image}
-                  alt={_pass.name}
-                  data-passname={_pass.name}
-                  data-id={_pass.id}
-                />
-              </Link>
-            </div>
-          );
-        })}
+            return (
+              <div className="pass-image-container-pass" key={_pass.id}>
+                {" "}
+                <Link to={`/pass/${nameJoined}`}>
+                  <img
+                    src={_pass.image}
+                    alt={_pass.name}
+                    data-passname={_pass.name}
+                    data-id={_pass.id}
+                  />
+                </Link>
+              </div>
+            );
+          })}
+        </div>
       </div>
     );
   }

@@ -1,1 +1,5 @@
 Take 3
+1. is my webpack working correctly? I don't think it's rebuilding each time npm run start:dev
+2. why is postman getting correct weather data but not my ap
+3. why am I only seeing console.log in terminal when using postman?
+4. when i move the api request from express.js to snowRequest postman doesn't working
