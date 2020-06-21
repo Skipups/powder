@@ -26,9 +26,9 @@ app.use("/api", apiSnowRequest);
 
 // //app.use("/api", apiRouter);
 
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "../static/index.html"));
-// });
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../static/index.html"));
+});
 const startServer = () => {
   app.listen(PORT, () => {
     console.log(chalk.greenBright(`App started on ${PORT}`));

@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
-import SnowRequest from "snow-forecast-sfr";
+import WeatherfeedTable from "./WeatherfeedTable";
+import snowRequest from "snow-forecast-sfr";
 
 class ResortCard extends React.Component {
   constructor(props) {
@@ -32,7 +33,7 @@ class ResortCard extends React.Component {
       return <div>searching for a storm...</div>;
     }
 
-    return <div>{resortInfo.name}</div>;
+    return <div>hi</div>;
   }
 }
 

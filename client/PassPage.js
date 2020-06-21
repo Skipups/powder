@@ -24,7 +24,7 @@ class PassPage extends React.Component {
   }
   render() {
     let selectedPassName = this.props.name.toLowerCase();
-    console.log(selectedPassName);
+
     return resortsSortedByPass[selectedPassName].map((resort) => {
       return <ResortCard resortName={resort} />;
     });

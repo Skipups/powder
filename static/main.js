@@ -150,7 +150,6 @@ var PassPage = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       var selectedPassName = this.props.name.toLowerCase();
-      console.log(selectedPassName);
       return resortsSortedByPass[selectedPassName].map(function (resort) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ResortCard__WEBPACK_IMPORTED_MODULE_1__["default"], {
           resortName: resort
@@ -297,8 +296,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var snow_forecast_sfr__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! snow-forecast-sfr */ "./node_modules/snow-forecast-sfr/lib/index.js");
-/* harmony import */ var snow_forecast_sfr__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(snow_forecast_sfr__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _WeatherfeedTable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./WeatherfeedTable */ "./client/WeatherfeedTable.js");
+/* harmony import */ var snow_forecast_sfr__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! snow-forecast-sfr */ "./node_modules/snow-forecast-sfr/lib/index.js");
+/* harmony import */ var snow_forecast_sfr__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(snow_forecast_sfr__WEBPACK_IMPORTED_MODULE_3__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -320,6 +320,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
 
 
 
@@ -376,7 +377,7 @@ var ResortCard = /*#__PURE__*/function (_React$Component) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "searching for a storm...");
       }
 
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, resortInfo.name);
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "hi");
     }
   }]);
 
@@ -384,6 +385,32 @@ var ResortCard = /*#__PURE__*/function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (ResortCard);
+
+/***/ }),
+
+/***/ "./client/WeatherfeedTable.js":
+/*!************************************!*\
+  !*** ./client/WeatherfeedTable.js ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+var _this = undefined;
+
+
+
+var WeatherfeedTable = function WeatherfeedTable(props) {
+  var resortInfo = _this.props.resortInfo;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+    className: "weatherfeed-table"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thread", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "hi"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (WeatherfeedTable);
 
 /***/ }),
 

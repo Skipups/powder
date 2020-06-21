@@ -29,3 +29,41 @@ div img {
   border-color: #ad343e;
   opacity: 0.6;
 }
+
+/* resortCard*/
+
+/* *,
+:after,
+:before {
+  box-sizing: inherit;
+} */
+.resortCard-container {
+  /*  position: relative;*/
+  width: 469px;
+  margin: 5px;
+  background-color: #fff;
+  border: 2px solid #e3e3e3;
+  border-radius: 12px;
+}
+
+.weatherfeed-container {
+  font-family: Georgia, sans-serif;
+  font-size: 12px;
+  line-height: 1.4em;
+  color: #333;
+}
+
+.weatherfeed-table {
+  margin: 5px 5px 10px 5px;
+  width: 459px;
+  border: none;
+}
+
+/* table#wf-table a {
+  color: #3c8dbc;
+}
+
+#wf-weatherfeed a:hover {
+  color: #333;
+}
+
