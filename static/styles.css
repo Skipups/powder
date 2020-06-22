@@ -1,3 +1,7 @@
+
+html {
+  box-sizing: border-box;
+}
 /* PowerderHome comp*/
 .wrarpper {
   width: 97%;
@@ -32,18 +36,32 @@ div img {
 
 /* resortCard*/
 
-/* *,
-:after,
-:before {
+*, 
+*:before, 
+*:after {
   box-sizing: inherit;
-} */
+}
+
+.resortCard-wrapper{
+  width: 97%;
+	max-width: 1200px;
+	margin: 1px auto;
+	float: none;
+	background-color:pink;
+}
 .resortCard-container {
   /*  position: relative;*/
-  width: 469px;
-  margin: 5px;
-  background-color: #fff;
-  border: 2px solid #e3e3e3;
-  border-radius: 12px;
+	display: flex;
+	flex-flow: row wrap;
+	flex: 0 1 auto;
+
+  
+}
+
+.brand-container{
+
+  flex: 0 0 20%;
+  background-color:yellow
 }
 
 .weatherfeed-container {
@@ -51,6 +69,8 @@ div img {
   font-size: 12px;
   line-height: 1.4em;
   color: #333;
+  background-color:lightblue;
+  flex: 0 0 80%;
 }
 
 .weatherfeed-table {

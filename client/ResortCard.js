@@ -29,12 +29,31 @@ class ResortCard extends React.Component {
   }
   render() {
     const { loading, resortInfo } = this.state;
+    const { forecast } = resortInfo;
     if (loading) {
       return <div>searching for a storm...</div>;
     }
 
-    return <div>hi</div>;
+    return (
+      <div className="resortCard-wrapper">
+        <div className="resortCard-container">
+          <div className="brand-container">{resortInfo.name}</div>
+          <div className="weatherfeed-container">
+            <WeatherfeedTable forecast={forecast} />
+          </div>
+        </div>
+      </div>
+    );
   }
 }
 
 export default ResortCard;
+
+// <WeatherfeedTable resortInfo={this.state.resortInfo} />
+{
+  /* <pre>
+<code>
+  {JSON.stringify(this.state.resortInfo.forecast, null, 4)}
+</code>
+</pre> */
+}

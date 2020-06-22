@@ -39,6 +39,7 @@
     "prettier": "^2.0.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-table": "^7.2.1",
     "sequelize": "^5.21.11",
     "snow-forecast-sfr": "^2.0.0",
     "unirest": "^0.6.0",
