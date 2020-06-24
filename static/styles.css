@@ -44,7 +44,7 @@ div img {
 
 .resortCard-wrapper{
   width: 97%;
-	max-width: 1200px;
+	max-width: 1500px;
 	margin: 1px auto;
 	float: none;
 	background-color:pink;
@@ -53,14 +53,13 @@ div img {
   /*  position: relative;*/
 	display: flex;
 	flex-flow: row wrap;
-	flex: 0 1 auto;
-
+	flex: 0 1 95%;
   
 }
 
 .brand-container{
 
-  flex: 0 0 20%;
+  flex: 0 0 10%;
   background-color:yellow
 }
 
@@ -70,15 +69,62 @@ div img {
   line-height: 1.4em;
   color: #333;
   background-color:lightblue;
-  flex: 0 0 80%;
+  flex:  0 0 85%;
+}
+.weatherfeedHeader-container{
+  flex:  0 0 5%;
+  font-size: 12px;
+  line-height: 1.4em;
 }
 
 .weatherfeed-table {
-  margin: 5px 5px 10px 5px;
-  width: 459px;
-  border: none;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1;
+  background: 0;
+  border: 0;
+  border-collapse: collapse;
+  table-layout: auto;
+  width: 100%;
 }
 
+.weatherfeed-tr{
+  
+    border-color: inherit;
+    
+}
+.weatherfeed-table-days-container{
+  background-color: lightcoral;
+
+ 
+  width: 100%;
+}
+.weatherfeed-table-days-td{
+  width: 100%;
+ column-span: 3;
+  padding:1px;
+  flex-direction: row;
+  display: flex;
+  justify-content: space-evenly;
+  
+}
+.weatherfeed-table-days-div-name{
+  border:red, solid, 1px;
+  padding: 3px;
+  column-span: 3;
+ 
+ 
+}
+
+.weatherfeed-table-days-th-time{
+  column-span: 1;
+}
 /* table#wf-table a {
   color: #3c8dbc;
 }

@@ -34,7 +34,6 @@ const WeatherfeedTable = (props) => {
     }
   }
   let listOfTime = forecast.map((_forecast) => _forecast.time.split(" ")[1]);
-  console.log(listOfTime);
 
   //helper to get date of request and next 6 days
   let todaysDate = forecast[0].date.split(" ")[2];
@@ -49,28 +48,60 @@ const WeatherfeedTable = (props) => {
     <div>
       <table className="weatherfeed-table">
         <thead>
-          <tr>
-            <td>
-              <div className="weatherfeed-table-days-container">
+          <tr className="weatherfeed-tr">
+            <div className="weatherfeed-table-days-container">
+              <td class="weatherfeed-table-days-td">
                 {sortedWeekDays.map((day) => (
-                  <div class="weatherfeed-table-days__name">{day}</div>
+                  <div class="weatherfeed-table-days-div-name">{day}</div>
                 ))}
-
+              </td>
+              <td class="weatherfeed-table-days-td">
                 {datesToDisplay.map((date) => (
-                  <div className="weatherfeed-table-days__date">{date} </div>
+                  <div className="weatherfeed-table-days-div-date">{date} </div>
                 ))}
-              </div>
+              </td>
+              <td class="weatherfeed-table-days-td">
+                {listOfTime.map((_time, index) => (
+                  <div key={`${_time}+${index}`}>{_time}</div>
+                ))}
+              </td>
+              <td class="weatherfeed-table-days-td">
+                {forecast.map((_forecast, index) => (
+                  <div key={`${_forecast.wind}+${index}`}>{_forecast.wind}</div>
+                ))}
+              </td>
+              <td class="weatherfeed-table-days-td">
+                {forecast.map((_forecast, index) => (
+                  <div key={`${_forecast.summary}+${index}`}>
+                    {_forecast.summary}
+                  </div>
+                ))}
+              </td>
+            </div>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td class="weatherfeed-table-days-td">
+              {forecast.map((_forecast, index) => (
+                <div key={`${_forecast.snow}+${index}`}>{_forecast.snow}</div>
+              ))}
+            </td>
+            <td class="weatherfeed-table-days-td">
+              {forecast.map((_forecast, index) => (
+                <div key={`${_forecast.rain}+${index}`}>{_forecast.rain}</div>
+              ))}
+            </td>
+            <td class="weatherfeed-table-days-td">
+              {forecast.map((_forecast, index) => (
+                <div key={`${_forecast.maxTemp}+${index}`}>
+                  {_forecast.maxTemp}
+                </div>
+              ))}
             </td>
           </tr>
-        </thead>
-        <thead>
-          <tr>
-            {listOfTime.map((_time, index) => (
-              <th key={`${_time}+${index}`}>{_time}</th>
-            ))}
-          </tr>
-        </thead>
-        <tbody></tbody>
+        </tbody>
       </table>
     </div>
   );

@@ -297,8 +297,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _WeatherfeedTable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./WeatherfeedTable */ "./client/WeatherfeedTable.js");
-/* harmony import */ var snow_forecast_sfr__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! snow-forecast-sfr */ "./node_modules/snow-forecast-sfr/lib/index.js");
-/* harmony import */ var snow_forecast_sfr__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(snow_forecast_sfr__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _WeatherfeedHeadersTable__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./WeatherfeedHeadersTable */ "./client/WeatherfeedHeadersTable.js");
+/* harmony import */ var snow_forecast_sfr__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! snow-forecast-sfr */ "./node_modules/snow-forecast-sfr/lib/index.js");
+/* harmony import */ var snow_forecast_sfr__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(snow_forecast_sfr__WEBPACK_IMPORTED_MODULE_4__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -320,6 +321,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
 
 
 
@@ -385,6 +387,8 @@ var ResortCard = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "brand-container"
       }, resortInfo.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "weatherfeedHeader-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_WeatherfeedHeadersTable__WEBPACK_IMPORTED_MODULE_3__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "weatherfeed-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_WeatherfeedTable__WEBPACK_IMPORTED_MODULE_2__["default"], {
         forecast: forecast
@@ -404,6 +408,73 @@ var ResortCard = /*#__PURE__*/function (_React$Component) {
   </code>
   </pre> */
 }
+
+/***/ }),
+
+/***/ "./client/WeatherfeedHeadersTable.js":
+/*!*******************************************!*\
+  !*** ./client/WeatherfeedHeadersTable.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_table__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-table */ "./node_modules/react-table/index.js");
+/* harmony import */ var react_table__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_table__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+var WeatherfeedHeadersTable = function WeatherfeedHeadersTable(props) {
+  var forecast = props.forecast;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+    className: "weatherfeed-table"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+    className: "weatherfeed-tr"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "weatherfeed-table-days-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+    "class": "weatherfeed-table-days-td"
+  }, "\xA0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+    "class": "weatherfeed-table-days-td"
+  }, "\xA0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+    "class": "weatherfeed-table-days-td"
+  }, "\xA0")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+    "class": "weatherfeed-table-days-td"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    "class": "weatherfeed-table-wind"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    "class": "windu"
+  }, "mph"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+    "class": "weatherfeed-table-days-td"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    "class": "weatherfeed-table-summary"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    "class": "summary"
+  }, "summary"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+    "class": "weatherfeed-table-days-td"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    "class": "weatherfeed-table-summary"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    "class": "snow"
+  }, "\u2603\uFE0F in"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+    "class": "weatherfeed-table-days-td"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    "class": "weatherfeed-table-summary"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    "class": "rain"
+  }, "\u2614\uFE0F in"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+    "class": "weatherfeed-table-days-td"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    "class": "weatherfeed-table-summary"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    "class": "temp"
+  }, "\uD83C\uDF21 max\u05AF\u05AF F")))))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (WeatherfeedHeadersTable);
 
 /***/ }),
 
@@ -440,8 +511,7 @@ var WeatherfeedTable = function WeatherfeedTable(props) {
 
   var listOfTime = forecast.map(function (_forecast) {
     return _forecast.time.split(" ")[1];
-  });
-  console.log(listOfTime); //helper to get date of request and next 6 days
+  }); //helper to get date of request and next 6 days
 
   var todaysDate = forecast[0].date.split(" ")[2];
   var datesToDisplay = [todaysDate];
@@ -453,21 +523,59 @@ var WeatherfeedTable = function WeatherfeedTable(props) {
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
     className: "weatherfeed-table"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+    className: "weatherfeed-tr"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "weatherfeed-table-days-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+    "class": "weatherfeed-table-days-td"
   }, sortedWeekDays.map(function (day) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      "class": "weatherfeed-table-days__name"
+      "class": "weatherfeed-table-days-div-name"
     }, day);
-  }), datesToDisplay.map(function (date) {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+    "class": "weatherfeed-table-days-td"
+  }, datesToDisplay.map(function (date) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "weatherfeed-table-days__date"
+      className: "weatherfeed-table-days-div-date"
     }, date, " ");
-  }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, listOfTime.map(function (_time, index) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+    "class": "weatherfeed-table-days-td"
+  }, listOfTime.map(function (_time, index) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       key: "".concat(_time, "+").concat(index)
     }, _time);
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null)));
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+    "class": "weatherfeed-table-days-td"
+  }, forecast.map(function (_forecast, index) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      key: "".concat(_forecast.wind, "+").concat(index)
+    }, _forecast.wind);
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+    "class": "weatherfeed-table-days-td"
+  }, forecast.map(function (_forecast, index) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      key: "".concat(_forecast.summary, "+").concat(index)
+    }, _forecast.summary);
+  }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+    "class": "weatherfeed-table-days-td"
+  }, forecast.map(function (_forecast, index) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      key: "".concat(_forecast.snow, "+").concat(index)
+    }, _forecast.snow);
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+    "class": "weatherfeed-table-days-td"
+  }, forecast.map(function (_forecast, index) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      key: "".concat(_forecast.rain, "+").concat(index)
+    }, _forecast.rain);
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+    "class": "weatherfeed-table-days-td"
+  }, forecast.map(function (_forecast, index) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      key: "".concat(_forecast.maxTemp, "+").concat(index)
+    }, _forecast.maxTemp);
+  }))))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (WeatherfeedTable);

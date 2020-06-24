@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import WeatherfeedTable from "./WeatherfeedTable";
+import WeatherfeedHeadersTable from "./WeatherfeedHeadersTable";
 import snowRequest from "snow-forecast-sfr";
 
 class ResortCard extends React.Component {
@@ -38,6 +39,9 @@ class ResortCard extends React.Component {
       <div className="resortCard-wrapper">
         <div className="resortCard-container">
           <div className="brand-container">{resortInfo.name}</div>
+          <div className="weatherfeedHeader-container">
+            <WeatherfeedHeadersTable />
+          </div>
           <div className="weatherfeed-container">
             <WeatherfeedTable forecast={forecast} />
           </div>
