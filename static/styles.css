@@ -14,11 +14,6 @@ div img {
   margin: 10px;
 }
 .pass-image-container {
-  /* display: flex;
-  flex-direction: column;
-  justify-content: space-around;
- 
-  align-content: stretch; */
   display: flex;
   flex-flow: column wrap;
   flex: 0 1 auto;
@@ -29,7 +24,7 @@ div img {
   cursor: pointer;
 }
 
-.active:hover {
+.pass-image-container-pass:hover {
   border-color: #ad343e;
   opacity: 0.6;
 }
@@ -45,7 +40,7 @@ div img {
 .resortCard-wrapper{
   width: 97%;
 	max-width: 1500px;
-	margin: 1px auto;
+	margin: 5px auto;
 	float: none;
 	background-color:pink;
 }
@@ -124,6 +119,19 @@ div img {
 
 .weatherfeed-table-days-th-time{
   column-span: 1;
+}
+.weatherfeed-table-flightLink-td{
+  width: 100%;
+  column-span: 3;
+   padding:1px;
+   flex-direction: row;
+   display: flex;
+   justify-content: space-evenly;
+}
+
+.flightIcon:hover {
+  border: 1px solid greenyellow;
+  opacity: 0.6;
 }
 /* table#wf-table a {
   color: #3c8dbc;

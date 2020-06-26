@@ -86,6 +86,107 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./client/FlightPage.js":
+/*!******************************!*\
+  !*** ./client/FlightPage.js ***!
+  \******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+var FlightPage = /*#__PURE__*/function (_React$Component) {
+  _inherits(FlightPage, _React$Component);
+
+  var _super = _createSuper(FlightPage);
+
+  function FlightPage(props) {
+    var _this;
+
+    _classCallCheck(this, FlightPage);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      selected: "",
+      loading: true,
+      closestAirCode: "SLC",
+      departingDate: "2020-06-26",
+      departingAirCode: "JFK",
+      flightInfo: {}
+    };
+    return _this;
+  }
+
+  _createClass(FlightPage, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      var _this$state = this.state,
+          closestAirCode = _this$state.closestAirCode,
+          departingDate = _this$state.departingDate,
+          departingAirCode = _this$state.departingAirCode;
+      var flightInfo = {};
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/api/flightRequest", {
+        closestAirCode: closestAirCode,
+        departingDate: departingDate,
+        departingAirCode: departingAirCode
+      }).then(function (res) {
+        flightInfo = res.data;
+
+        _this2.setState({
+          rflightInfo: flightInfo,
+          loading: false
+        });
+
+        console.log(_this2.state.flightInfo, _this2.state.loading);
+      })["catch"](function (e) {
+        console.error(e);
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("pre", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("code", null, JSON.stringify(this.state.flightInfo.quotes, null, 4))), "flightPage");
+    }
+  }]);
+
+  return FlightPage;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (FlightPage);
+
+/***/ }),
+
 /***/ "./client/PassPage.js":
 /*!****************************!*\
   !*** ./client/PassPage.js ***!
@@ -374,7 +475,8 @@ var ResortCard = /*#__PURE__*/function (_React$Component) {
       var _this$state = this.state,
           loading = _this$state.loading,
           resortInfo = _this$state.resortInfo;
-      var forecast = resortInfo.forecast;
+      var forecast = resortInfo.forecast,
+          name = resortInfo.name;
 
       if (loading) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "searching for a storm...");
@@ -386,12 +488,13 @@ var ResortCard = /*#__PURE__*/function (_React$Component) {
         className: "resortCard-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "brand-container"
-      }, resortInfo.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "weatherfeedHeader-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_WeatherfeedHeadersTable__WEBPACK_IMPORTED_MODULE_3__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "weatherfeed-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_WeatherfeedTable__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        forecast: forecast
+        forecast: forecast,
+        resortName: name
       }))));
     }
   }]);
@@ -491,94 +594,173 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_table__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-table */ "./node_modules/react-table/index.js");
 /* harmony import */ var react_table__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_table__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _reach_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @reach/router */ "./node_modules/@reach/router/es/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_3__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 
 
-var WeatherfeedTable = function WeatherfeedTable(props) {
-  var forecast = props.forecast;
-  console.log(props); //helper function to set correct start of day of week
 
-  var weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-  var firstDayofForecast = forecast[0].time.split(" ")[0];
-  var startIndex = weekDays.indexOf(firstDayofForecast);
-  var sortedWeekDays = [];
+ //need to move to utils folder?
 
-  for (var i = startIndex; i < weekDays.length; i++) {
-    if (sortedWeekDays.length < 6) {
-      sortedWeekDays.push(weekDays[i]);
+var WeatherfeedTable = /*#__PURE__*/function (_React$Component) {
+  _inherits(WeatherfeedTable, _React$Component);
+
+  var _super = _createSuper(WeatherfeedTable);
+
+  function WeatherfeedTable(props) {
+    var _this;
+
+    _classCallCheck(this, WeatherfeedTable);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      selectedDate: "",
+      resortName: props.resortName
+    };
+    return _this;
+  }
+
+  _createClass(WeatherfeedTable, [{
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          forecast = _this$props.forecast,
+          resortName = _this$props.resortName;
+      var _this$state = this.state,
+          selectedDate = _this$state.selectedDate,
+          selectedResort = _this$state.selectedResort; //helper function to set correct start of day of week
+
+      var weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+      var firstDayofForecast = forecast[0].time.split(" ")[0];
+      var startIndex = weekDays.indexOf(firstDayofForecast);
+      var sortedWeekDays = [];
+
+      for (var i = startIndex; i < weekDays.length; i++) {
+        if (sortedWeekDays.length < 6) {
+          sortedWeekDays.push(weekDays[i]);
+        }
+      }
+
+      var listOfTime = forecast.map(function (_forecast) {
+        return _forecast.time.split(" ")[1];
+      }); //helper to get date of request and next 6 days
+
+      var todaysDate = forecast[0].date.split(" ")[2];
+      var datesToDisplay = [todaysDate];
+
+      while (datesToDisplay.length < 6) {
+        todaysDate = 1 + Number(todaysDate);
+        datesToDisplay.push(todaysDate);
+      }
+
+      var flightIconArray = [];
+
+      for (var _i = 0; _i < weekDays.length; _i++) {
+        if (flightIconArray.length < 6) {
+          flightIconArray.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+            "class": "flightIcon"
+          }, "\u2708\uFE0F"));
+        }
+      }
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+        className: "weatherfeed-table"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+        className: "weatherfeed-tr"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "weatherfeed-table-days-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        className: "weatherfeed-table-days-td"
+      }, sortedWeekDays.map(function (day) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          "class": "weatherfeed-table-days-div-name"
+        }, day);
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        className: "weatherfeed-table-days-td"
+      }, datesToDisplay.map(function (date) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "weatherfeed-table-days-div-date"
+        }, date, " ");
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        className: "weatherfeed-table-days-td"
+      }, listOfTime.map(function (_time, index) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          key: "".concat(_time, "+").concat(index)
+        }, _time);
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        className: "weatherfeed-table-days-td"
+      }, forecast.map(function (_forecast, index) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          key: "".concat(_forecast.wind, "+").concat(index)
+        }, _forecast.wind);
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        className: "weatherfeed-table-days-td"
+      }, forecast.map(function (_forecast, index) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          key: "".concat(_forecast.summary, "+").concat(index)
+        }, _forecast.summary);
+      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        className: "weatherfeed-table-days-td"
+      }, forecast.map(function (_forecast, index) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          key: "".concat(_forecast.snow, "+").concat(index)
+        }, _forecast.snow);
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        className: "weatherfeed-table-days-td"
+      }, forecast.map(function (_forecast, index) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          key: "".concat(_forecast.rain, "+").concat(index)
+        }, _forecast.rain);
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        className: "weatherfeed-table-days-td"
+      }, forecast.map(function (_forecast, index) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          key: "".concat(_forecast.maxTemp, "+").concat(index)
+        }, _forecast.maxTemp);
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tfoot", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+        className: "weatherfeed-tr"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "weatherfeed-table-days-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        className: "weatherfeed-table-flightLink-td"
+      }, flightIconArray.map(function (icon) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reach_router__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+          to: "/flightDesination" // state: {
+          //   resortName: resortName,
+          // },
+
+        }, icon);
+      })))))));
     }
-  }
+  }]);
 
-  var listOfTime = forecast.map(function (_forecast) {
-    return _forecast.time.split(" ")[1];
-  }); //helper to get date of request and next 6 days
+  return WeatherfeedTable;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-  var todaysDate = forecast[0].date.split(" ")[2];
-  var datesToDisplay = [todaysDate];
-
-  while (datesToDisplay.length < 6) {
-    todaysDate = 1 + Number(todaysDate);
-    datesToDisplay.push(todaysDate);
-  }
-
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
-    className: "weatherfeed-table"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-    className: "weatherfeed-tr"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "weatherfeed-table-days-container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-    "class": "weatherfeed-table-days-td"
-  }, sortedWeekDays.map(function (day) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      "class": "weatherfeed-table-days-div-name"
-    }, day);
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-    "class": "weatherfeed-table-days-td"
-  }, datesToDisplay.map(function (date) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "weatherfeed-table-days-div-date"
-    }, date, " ");
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-    "class": "weatherfeed-table-days-td"
-  }, listOfTime.map(function (_time, index) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      key: "".concat(_time, "+").concat(index)
-    }, _time);
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-    "class": "weatherfeed-table-days-td"
-  }, forecast.map(function (_forecast, index) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      key: "".concat(_forecast.wind, "+").concat(index)
-    }, _forecast.wind);
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-    "class": "weatherfeed-table-days-td"
-  }, forecast.map(function (_forecast, index) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      key: "".concat(_forecast.summary, "+").concat(index)
-    }, _forecast.summary);
-  }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-    "class": "weatherfeed-table-days-td"
-  }, forecast.map(function (_forecast, index) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      key: "".concat(_forecast.snow, "+").concat(index)
-    }, _forecast.snow);
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-    "class": "weatherfeed-table-days-td"
-  }, forecast.map(function (_forecast, index) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      key: "".concat(_forecast.rain, "+").concat(index)
-    }, _forecast.rain);
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-    "class": "weatherfeed-table-days-td"
-  }, forecast.map(function (_forecast, index) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      key: "".concat(_forecast.maxTemp, "+").concat(index)
-    }, _forecast.maxTemp);
-  }))))));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (WeatherfeedTable);
+/* harmony default export */ __webpack_exports__["default"] = (WeatherfeedTable); //  <Link to=`/flightDesination/${resortName}`> why doesn't this work
+// why isn't passing state in link workking?
 
 /***/ }),
 
@@ -598,6 +780,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _reach_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @reach/router */ "./node_modules/@reach/router/es/index.js");
 /* harmony import */ var _PassPage_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./PassPage.js */ "./client/PassPage.js");
 /* harmony import */ var _PowderHome_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./PowderHome.js */ "./client/PowderHome.js");
+/* harmony import */ var _FlightPage_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./FlightPage.js */ "./client/FlightPage.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -627,6 +810,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var App = /*#__PURE__*/function (_React$Component) {
   _inherits(App, _React$Component);
 
@@ -647,6 +831,8 @@ var App = /*#__PURE__*/function (_React$Component) {
         path: "/"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PassPage_js__WEBPACK_IMPORTED_MODULE_3__["default"], {
         path: "/pass/:name"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FlightPage_js__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        path: "/flightDesination"
       })));
     }
   }]);

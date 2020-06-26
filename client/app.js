@@ -4,6 +4,7 @@ import ReactDOM from "react-dom";
 import { Router, Link, useNavigate } from "@reach/router";
 import PassPage from "./PassPage.js";
 import PowderHome from "./PowderHome.js";
+import FlightPage from "./FlightPage.js";
 
 class App extends React.Component {
   render() {
@@ -15,6 +16,7 @@ class App extends React.Component {
         <Router>
           <PowderHome path="/" />
           <PassPage path="/pass/:name" />
+          <FlightPage path="/flightDesination" />
         </Router>
       </div>
     );

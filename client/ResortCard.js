@@ -30,7 +30,7 @@ class ResortCard extends React.Component {
   }
   render() {
     const { loading, resortInfo } = this.state;
-    const { forecast } = resortInfo;
+    const { forecast, name } = resortInfo;
     if (loading) {
       return <div>searching for a storm...</div>;
     }
@@ -38,12 +38,12 @@ class ResortCard extends React.Component {
     return (
       <div className="resortCard-wrapper">
         <div className="resortCard-container">
-          <div className="brand-container">{resortInfo.name}</div>
+          <div className="brand-container">{name}</div>
           <div className="weatherfeedHeader-container">
             <WeatherfeedHeadersTable />
           </div>
           <div className="weatherfeed-container">
-            <WeatherfeedTable forecast={forecast} />
+            <WeatherfeedTable forecast={forecast} resortName={name} />
           </div>
         </div>
       </div>

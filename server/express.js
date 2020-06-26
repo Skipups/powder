@@ -6,6 +6,8 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const apiPasses = require("./api/passes");
 const apiSnowRequest = require("./api/snowRequest");
+const apiFlightRequest = require("./api/flightRequest");
+
 const morgan = require("morgan");
 const cors = require("cors");
 
@@ -19,12 +21,7 @@ app.use("/", express.static(path.join(__dirname, "../static")));
 
 app.use("/api", apiPasses);
 app.use("/api", apiSnowRequest);
-
-// const snow = require("snow-forecast-sfr").default;
-
-// // //
-
-// //app.use("/api", apiRouter);
+app.use("/api", apiFlightRequest);
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../static/index.html"));
@@ -34,6 +31,5 @@ const startServer = () => {
     console.log(chalk.greenBright(`App started on ${PORT}`));
   });
 };
-//
 
 module.exports = startServer;
