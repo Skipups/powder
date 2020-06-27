@@ -16,7 +16,7 @@ class App extends React.Component {
         <Router>
           <PowderHome path="/" />
           <PassPage path="/pass/:name" />
-          <FlightPage path="/flightDesination" />
+          <FlightPage path="/flightDestination" />
         </Router>
       </div>
     );

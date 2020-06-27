@@ -22,7 +22,6 @@ class ResortCard extends React.Component {
       .then((res) => {
         resort = res.data;
         this.setState({ resortInfo: resort, loading: false });
-        console.log(this.state.resortInfo, this.state.loading);
       })
       .catch((e) => {
         console.error(e);

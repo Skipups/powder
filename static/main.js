@@ -86,6 +86,121 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./client/FlightCard.js":
+/*!******************************!*\
+  !*** ./client/FlightCard.js ***!
+  \******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+var FlightCard = /*#__PURE__*/function (_React$Component) {
+  _inherits(FlightCard, _React$Component);
+
+  var _super = _createSuper(FlightCard);
+
+  function FlightCard(props) {
+    var _this;
+
+    _classCallCheck(this, FlightCard);
+
+    _this = _super.call(this, props);
+
+    _defineProperty(_assertThisInitialized(_this), "timeConverter", function (UNIX_timestamp) {
+      var a = new Date(UNIX_timestamp * 1000);
+      var hour = a.getHours();
+      var min = a.getMinutes();
+      var time = hour + ":" + min;
+      console.log("time", time);
+      return time;
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "airlineConverter", function (IATA_code) {
+      var airlineCodePairs = {
+        B6: "JetBlue",
+        DL: "Delta"
+      };
+      return airlineCodePairs[IATA_code];
+    });
+
+    _this.state = {
+      arrrivalTime: null,
+      departureTime: null,
+      airline: _this.props.airlines,
+      seats: null,
+      price: _this.props.price
+    };
+    return _this;
+  }
+
+  _createClass(FlightCard, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this$props = this.props,
+          arrivalTime = _this$props.arrivalTime,
+          departureTime = _this$props.departureTime,
+          airlines = _this$props.airlines,
+          seats = _this$props.seats,
+          price = _this$props.price;
+      var convertedAirline = this.airlineConverter(airlines);
+      this.setState({
+        airline: convertedAirline,
+        price: price
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "resortCard-wrapper"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "resortCard-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.airline), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "$", this.state.price)));
+    }
+  }]);
+
+  return FlightCard;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (FlightCard);
+{
+  /* <div>departureTime: {convertedDepartureTime}</div>
+  <div>available seats: {seats}</div> 
+   / <div> {this.state.airline} </div>
+  */
+}
+
+/***/ }),
+
 /***/ "./client/FlightPage.js":
 /*!******************************!*\
   !*** ./client/FlightPage.js ***!
@@ -99,6 +214,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _FlightCard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FlightCard */ "./client/FlightCard.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -124,6 +240,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var FlightPage = /*#__PURE__*/function (_React$Component) {
   _inherits(FlightPage, _React$Component);
 
@@ -139,7 +256,7 @@ var FlightPage = /*#__PURE__*/function (_React$Component) {
       selected: "",
       loading: true,
       closestAirCode: "SLC",
-      departingDate: "2020-06-26",
+      departingDate: "2020-06-27",
       departingAirCode: "JFK",
       flightInfo: {}
     };
@@ -156,27 +273,39 @@ var FlightPage = /*#__PURE__*/function (_React$Component) {
           departingDate = _this$state.departingDate,
           departingAirCode = _this$state.departingAirCode;
       var flightInfo = {};
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/api/flightRequest", {
-        closestAirCode: closestAirCode,
-        departingDate: departingDate,
-        departingAirCode: departingAirCode
-      }).then(function (res) {
-        flightInfo = res.data;
+      axios__WEBPACK_IMPORTED_MODULE_1___default()({
+        method: "GET",
+        url: "https://api.skypicker.com/flights?flyFrom=JFK&to=SLC&dateFrom=29/06/2020&partner=picky&v=3&curr=USD&max_stopovers=0"
+      }).then(function (response) {
+        flightInfo = response.data;
 
         _this2.setState({
-          rflightInfo: flightInfo,
+          flightInfo: flightInfo,
           loading: false
         });
 
-        console.log(_this2.state.flightInfo, _this2.state.loading);
-      })["catch"](function (e) {
-        console.error(e);
+        console.log(_this2.state.flightInfo.data, _this2.state.loading);
+      })["catch"](function (error) {
+        console.log(error);
       });
     }
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("pre", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("code", null, JSON.stringify(this.state.flightInfo.quotes, null, 4))), "flightPage");
+      var _this$state2 = this.state,
+          loading = _this$state2.loading,
+          flightInfo = _this$state2.flightInfo;
+      var flightsArray = flightInfo.data;
+
+      if (loading) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "searching for a flight ...");
+      }
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, flightsArray.map(function (flight) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FlightCard__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          flight: flight
+        });
+      }));
     }
   }]);
 
@@ -463,8 +592,6 @@ var ResortCard = /*#__PURE__*/function (_React$Component) {
           resortInfo: resort,
           loading: false
         });
-
-        console.log(_this2.state.resortInfo, _this2.state.loading);
       })["catch"](function (e) {
         console.error(e);
       });
@@ -747,7 +874,7 @@ var WeatherfeedTable = /*#__PURE__*/function (_React$Component) {
         className: "weatherfeed-table-flightLink-td"
       }, flightIconArray.map(function (icon) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reach_router__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-          to: "/flightDesination" // state: {
+          to: "/flightDestination" // state: {
           //   resortName: resortName,
           // },
 
@@ -761,6 +888,7 @@ var WeatherfeedTable = /*#__PURE__*/function (_React$Component) {
 
 /* harmony default export */ __webpack_exports__["default"] = (WeatherfeedTable); //  <Link to=`/flightDesination/${resortName}`> why doesn't this work
 // why isn't passing state in link workking?
+//@russell
 
 /***/ }),
 
@@ -832,7 +960,7 @@ var App = /*#__PURE__*/function (_React$Component) {
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PassPage_js__WEBPACK_IMPORTED_MODULE_3__["default"], {
         path: "/pass/:name"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FlightPage_js__WEBPACK_IMPORTED_MODULE_5__["default"], {
-        path: "/flightDesination"
+        path: "/flightDestination"
       })));
     }
   }]);

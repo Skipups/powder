@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import FlightCard from "./FlightCard";
 
 class FlightPage extends React.Component {
   constructor(props) {
@@ -8,7 +9,7 @@ class FlightPage extends React.Component {
       selected: "",
       loading: true,
       closestAirCode: "SLC",
-      departingDate: "2020-06-26",
+      departingDate: "2020-06-27",
       departingAirCode: "JFK",
       flightInfo: {},
     };
@@ -17,28 +18,34 @@ class FlightPage extends React.Component {
   componentDidMount() {
     const { closestAirCode, departingDate, departingAirCode } = this.state;
     let flightInfo = {};
-    axios
-      .post(`/api/flightRequest`, {
-        closestAirCode: closestAirCode,
-        departingDate: departingDate,
-        departingAirCode: departingAirCode,
+
+    axios({
+      method: "GET",
+      url:
+        "https://api.skypicker.com/flights?flyFrom=JFK&to=SLC&dateFrom=29/06/2020&partner=picky&v=3&curr=USD&max_stopovers=0",
+    })
+      .then((response) => {
+        flightInfo = response.data;
+        this.setState({ flightInfo: flightInfo, loading: false });
+        console.log(this.state.flightInfo.data, this.state.loading);
       })
-      .then((res) => {
-        flightInfo = res.data;
-        this.setState({ rflightInfo: flightInfo, loading: false });
-        console.log(this.state.flightInfo, this.state.loading);
-      })
-      .catch((e) => {
-        console.error(e);
+      .catch((error) => {
+        console.log(error);
       });
   }
   render() {
+    const { loading, flightInfo } = this.state;
+    const flightsArray = flightInfo.data;
+
+    if (loading) {
+      return <div>searching for a flight ...</div>;
+    }
+
     return (
       <div>
-        <pre>
-          <code>{JSON.stringify(this.state.flightInfo.quotes, null, 4)}</code>
-        </pre>
-        flightPage
+        {flightsArray.map((flight) => (
+          <FlightCard flight={flight} />
+        ))}
       </div>
     );
   }

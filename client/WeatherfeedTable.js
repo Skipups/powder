@@ -132,7 +132,7 @@ class WeatherfeedTable extends React.Component {
                 <th className="weatherfeed-table-flightLink-td">
                   {flightIconArray.map((icon) => (
                     <Link
-                      to="/flightDesination"
+                      to="/flightDestination"
                       // state: {
                       //   resortName: resortName,
                       // },
@@ -153,3 +153,4 @@ export default WeatherfeedTable;
 
 //  <Link to=`/flightDesination/${resortName}`> why doesn't this work
 // why isn't passing state in link workking?
+//@russell

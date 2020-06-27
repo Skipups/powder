@@ -3,10 +3,11 @@ const axios = require("axios");
 
 const apiFlightRequest = Router();
 
-apiFlightRequest.post("/flightRequest", (req, res) => {
+apiFlightRequest.get("/flightRequest", (req, res) => {
   let { closestAirCode, departingDate, departingAirCode } = req.body;
+  console.log("***********inside flightRequest");
   axios({
-    method: "POST",
+    method: "GET",
     url:
       "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/SFO-sky/JFK-sky/2019-09-01",
     headers: {
