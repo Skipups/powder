@@ -8,7 +8,8 @@ class ResortCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      resortInfo: {},
+      resortForecast: [],
+      name: this.props.resortName,
       loading: true,
     };
   }
@@ -16,20 +17,41 @@ class ResortCard extends React.Component {
   componentDidMount() {
     const { resortName } = this.props;
     let resort;
+    let groupedByDayMatrix = [];
 
     axios
       .post(`/api/snowRequest`, { resortName: resortName })
       .then((res) => {
         resort = res.data;
-        this.setState({ resortInfo: resort, loading: false });
+
+        groupedByDayMatrix = this.grouped(resort.forecast);
+
+        this.setState({ resortForecast: groupedByDayMatrix, loading: false });
+        console.log("this.state.resortForecast", this.state.resortForecast);
       })
       .catch((e) => {
         console.error(e);
       });
   }
+  grouped = (data) => {
+    let i = 0;
+    let groupedByDayMatrix = [];
+    while (i < 18) {
+      for (let row = 0; row < 6; row++) {
+        groupedByDayMatrix[row] = [];
+        for (let col = 0; col < 3; col++) {
+          groupedByDayMatrix[row][col] = data[i];
+          i++;
+        }
+      }
+    }
+
+    return groupedByDayMatrix;
+  };
+
   render() {
-    const { loading, resortInfo } = this.state;
-    const { forecast, name } = resortInfo;
+    const { loading, resortForecast, name } = this.state;
+
     if (loading) {
       return <div>searching for a storm...</div>;
     }
@@ -42,7 +64,11 @@ class ResortCard extends React.Component {
             <WeatherfeedHeadersTable />
           </div>
           <div className="weatherfeed-container">
-            <WeatherfeedTable forecast={forecast} resortName={name} />
+            <WeatherfeedTable
+              resortForecast={resortForecast}
+              resortName={name}
+            />
+            ;
           </div>
         </div>
       </div>
@@ -59,4 +85,18 @@ export default ResortCard;
   {JSON.stringify(this.state.resortInfo.forecast, null, 4)}
 </code>
 </pre> */
+}
+
+{
+  /* <div className="resortCard-wrapper">
+        <div className="resortCard-container">
+          <div className="brand-container">{name}</div>
+          <div className="weatherfeedHeader-container">
+            <WeatherfeedHeadersTable />
+          </div>
+          <div className="weatherfeed-container">
+            <WeatherfeedTable forecast={resortForecast} resortName={name} />
+          </div>
+        </div>
+      </div> */
 }

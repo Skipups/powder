@@ -86,6 +86,29 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./client/DayCard.js":
+/*!***************************!*\
+  !*** ./client/DayCard.js ***!
+  \***************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var DayCard = function DayCard(_ref) {
+  var dayForecast = _ref.dayForecast;
+  console.log("dayForecast", dayForecast);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "hi");
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (DayCard);
+
+/***/ }),
+
 /***/ "./client/FlightCard.js":
 /*!******************************!*\
   !*** ./client/FlightCard.js ***!
@@ -97,107 +120,64 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
+var FlightCard = function FlightCard(props) {
+  var timeConverter = function timeConverter(UNIX_timestamp) {
+    var a = new Date(UNIX_timestamp * 1000);
+    var hour = a.getHours();
+    var min = a.getMinutes();
+    var time = hour + ":" + min;
+    console.log("time", time);
+    return time;
+  };
 
-var FlightCard = /*#__PURE__*/function (_React$Component) {
-  _inherits(FlightCard, _React$Component);
-
-  var _super = _createSuper(FlightCard);
-
-  function FlightCard(props) {
-    var _this;
-
-    _classCallCheck(this, FlightCard);
-
-    _this = _super.call(this, props);
-
-    _defineProperty(_assertThisInitialized(_this), "timeConverter", function (UNIX_timestamp) {
-      var a = new Date(UNIX_timestamp * 1000);
-      var hour = a.getHours();
-      var min = a.getMinutes();
-      var time = hour + ":" + min;
-      console.log("time", time);
-      return time;
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "airlineConverter", function (IATA_code) {
-      var airlineCodePairs = {
-        B6: "JetBlue",
-        DL: "Delta"
-      };
-      return airlineCodePairs[IATA_code];
-    });
-
-    _this.state = {
-      arrrivalTime: null,
-      departureTime: null,
-      airline: _this.props.airlines,
-      seats: null,
-      price: _this.props.price
+  var airlineConverter = function airlineConverter(IATA_code) {
+    var airlineCodePairs = {
+      B6: "JetBlue",
+      DL: "Delta"
     };
-    return _this;
-  }
+    return airlineCodePairs[IATA_code];
+  };
 
-  _createClass(FlightCard, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var _this$props = this.props,
-          arrivalTime = _this$props.arrivalTime,
-          departureTime = _this$props.departureTime,
-          airlines = _this$props.airlines,
-          seats = _this$props.seats,
-          price = _this$props.price;
-      var convertedAirline = this.airlineConverter(airlines);
-      this.setState({
-        airline: convertedAirline,
-        price: price
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "resortCard-wrapper"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "resortCard-container"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.airline), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "$", this.state.price)));
-    }
-  }]);
+  var departureTime = timeConverter(props.flight.dTime);
+  var arrivalTime = timeConverter(props.flight.aTime);
+  var price = props.flight.price;
+  var airline = airlineConverter(props.flight.airlines);
+  var routeNum = props.flight.route[0].flight_no;
+  var seats = props.flight.availability.seats;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "resortCard-wrapper"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "resortCard-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " ", airline, " flight number: ", routeNum), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " $", price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " departureTime: ", departureTime), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " arrivalTime: ", arrivalTime), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " available seats: ", seats)));
+};
 
-  return FlightCard;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+/* harmony default export */ __webpack_exports__["default"] = (FlightCard); //why is there no this context needed for functions in functional components
+// const funcComponent = (props) => {
+//   const converter = (num) => num * 100;
+//   const price = converter(props.price);
+//   return <div>'Hello' {price}</div>;
+// };
 
-/* harmony default export */ __webpack_exports__["default"] = (FlightCard);
-{
-  /* <div>departureTime: {convertedDepartureTime}</div>
-  <div>available seats: {seats}</div> 
-   / <div> {this.state.airline} </div>
-  */
-}
+{}
+/* <div>departureTime: {convertedDepartureTime}</div>
+<div>available seats: {seats}</div> 
+ / <div> {this.state.airline} </div>
+*/
+// function addThenMult({flightInfo}) {
+//   let time = makeTimeReadable(flightInfo.time)
+//   return JSX that includes time that is readable
+//   let added = add(a,b)
+//   let multed = mult(a,b)
+//   return added + multed;
+// }
+// function add(a,b) {
+//   return a + b;
+// }
+// function mult(a,b) {
+//   return a * b
+// }
 
 /***/ }),
 
@@ -256,9 +236,9 @@ var FlightPage = /*#__PURE__*/function (_React$Component) {
       selected: "",
       loading: true,
       closestAirCode: "SLC",
-      departingDate: "2020-06-27",
+      departingDate: "29/06/2020",
       departingAirCode: "JFK",
-      flightInfo: {}
+      flightInfo: []
     };
     return _this;
   }
@@ -273,18 +253,34 @@ var FlightPage = /*#__PURE__*/function (_React$Component) {
           departingDate = _this$state.departingDate,
           departingAirCode = _this$state.departingAirCode;
       var flightInfo = {};
+      var withSeats = []; // array of unique flights and available seats
+
+      var uniqueFlights = [];
       axios__WEBPACK_IMPORTED_MODULE_1___default()({
         method: "GET",
-        url: "https://api.skypicker.com/flights?flyFrom=JFK&to=SLC&dateFrom=29/06/2020&partner=picky&v=3&curr=USD&max_stopovers=0"
+        url: "https://api.skypicker.com/flights?flyFrom=".concat(departingAirCode, "&to=").concat(closestAirCode, "&dateFrom=").concat(departingDate, "&partner=picky&v=3&curr=USD&max_stopovers=0")
       }).then(function (response) {
-        flightInfo = response.data;
+        flightInfo = response.data; //filter data to only save flights with seats and unique flight numbers
+
+        withSeats = flightInfo.data.filter(function (flight) {
+          return flight.availability.seats > 0;
+        });
+        uniqueFlights = withSeats.reduce(function (acc, current) {
+          var x = acc.find(function (item) {
+            return item.route[0].flight_no === current.route[0].flight_no;
+          });
+
+          if (!x) {
+            return acc.concat([current]);
+          } else {
+            return acc;
+          }
+        }, []);
 
         _this2.setState({
-          flightInfo: flightInfo,
+          flightInfo: uniqueFlights,
           loading: false
         });
-
-        console.log(_this2.state.flightInfo.data, _this2.state.loading);
       })["catch"](function (error) {
         console.log(error);
       });
@@ -295,13 +291,12 @@ var FlightPage = /*#__PURE__*/function (_React$Component) {
       var _this$state2 = this.state,
           loading = _this$state2.loading,
           flightInfo = _this$state2.flightInfo;
-      var flightsArray = flightInfo.data;
 
       if (loading) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "searching for a flight ...");
       }
 
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, flightsArray.map(function (flight) {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, flightInfo.map(function (flight) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FlightCard__WEBPACK_IMPORTED_MODULE_2__["default"], {
           flight: flight
         });
@@ -312,7 +307,8 @@ var FlightPage = /*#__PURE__*/function (_React$Component) {
   return FlightPage;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (FlightPage);
+/* harmony default export */ __webpack_exports__["default"] = (FlightPage); //practice redue method
+// add sort on price, arrival, take off
 
 /***/ }),
 
@@ -552,6 +548,8 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -569,8 +567,28 @@ var ResortCard = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, ResortCard);
 
     _this = _super.call(this, props);
+
+    _defineProperty(_assertThisInitialized(_this), "grouped", function (data) {
+      var i = 0;
+      var groupedByDayMatrix = [];
+
+      while (i < 18) {
+        for (var row = 0; row < 6; row++) {
+          groupedByDayMatrix[row] = [];
+
+          for (var col = 0; col < 3; col++) {
+            groupedByDayMatrix[row][col] = data[i];
+            i++;
+          }
+        }
+      }
+
+      return groupedByDayMatrix;
+    });
+
     _this.state = {
-      resortInfo: {},
+      resortForecast: [],
+      name: _this.props.resortName,
       loading: true
     };
     return _this;
@@ -583,15 +601,19 @@ var ResortCard = /*#__PURE__*/function (_React$Component) {
 
       var resortName = this.props.resortName;
       var resort;
+      var groupedByDayMatrix = [];
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/api/snowRequest", {
         resortName: resortName
       }).then(function (res) {
         resort = res.data;
+        groupedByDayMatrix = _this2.grouped(resort.forecast);
 
         _this2.setState({
-          resortInfo: resort,
+          resortForecast: groupedByDayMatrix,
           loading: false
         });
+
+        console.log("this.state.resortForecast", _this2.state.resortForecast);
       })["catch"](function (e) {
         console.error(e);
       });
@@ -601,9 +623,8 @@ var ResortCard = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this$state = this.state,
           loading = _this$state.loading,
-          resortInfo = _this$state.resortInfo;
-      var forecast = resortInfo.forecast,
-          name = resortInfo.name;
+          resortForecast = _this$state.resortForecast,
+          name = _this$state.name;
 
       if (loading) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "searching for a storm...");
@@ -620,9 +641,9 @@ var ResortCard = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_WeatherfeedHeadersTable__WEBPACK_IMPORTED_MODULE_3__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "weatherfeed-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_WeatherfeedTable__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        forecast: forecast,
+        resortForecast: resortForecast,
         resortName: name
-      }))));
+      }), ";")));
     }
   }]);
 
@@ -637,6 +658,19 @@ var ResortCard = /*#__PURE__*/function (_React$Component) {
   {JSON.stringify(this.state.resortInfo.forecast, null, 4)}
   </code>
   </pre> */
+}
+{
+  /* <div className="resortCard-wrapper">
+        <div className="resortCard-container">
+          <div className="brand-container">{name}</div>
+          <div className="weatherfeedHeader-container">
+            <WeatherfeedHeadersTable />
+          </div>
+          <div className="weatherfeed-container">
+            <WeatherfeedTable forecast={resortForecast} resortName={name} />
+          </div>
+        </div>
+      </div> */
 }
 
 /***/ }),
@@ -724,167 +758,153 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _reach_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @reach/router */ "./node_modules/@reach/router/es/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_3__);
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+/* harmony import */ var _DayCard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./DayCard */ "./client/DayCard.js");
 
 
 
 
  //need to move to utils folder?
 
-var WeatherfeedTable = /*#__PURE__*/function (_React$Component) {
-  _inherits(WeatherfeedTable, _React$Component);
+var WeatherfeedTable = function WeatherfeedTable(_ref) {
+  var name = _ref.name,
+      resortForecast = _ref.resortForecast;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+    className: "weatherfeed-table"
+  }, resortForecast.map(function (dayForecast) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_DayCard__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      dayForecast: dayForecast
+    });
+  })));
+}; //   render() {
+//     const { forecast, resortName } = this.props;
+//     const { selectedDate, selectedResort } = this.state;
+//     console.log("forecast", forecast);
+//     //make a day card.
+//     // group forcast days and map over that
+//     //helper function to set correct start of day of week
+//     let weekDays = [
+//       "Sunday",
+//       "Monday",
+//       "Tuesday",
+//       "Wednesday",
+//       "Thursday",
+//       "Friday",
+//       "Saturday",
+//       "Sunday",
+//       "Monday",
+//       "Tuesday",
+//       "Wednesday",
+//       "Thursday",
+//       "Friday",
+//       "Saturday",
+//     ];
+//     const firstDayofForecast = forecast[0].time.split(" ")[0];
+//     let startIndex = weekDays.indexOf(firstDayofForecast);
+//     let sortedWeekDays = [];
+//     for (let i = startIndex; i < weekDays.length; i++) {
+//       if (sortedWeekDays.length < 6) {
+//         sortedWeekDays.push(weekDays[i]);
+//       }
+//     }
+//     let listOfTime = forecast.map((_forecast) => _forecast.time.split(" ")[1]);
+//     //helper to get date of request and next 6 days
+//     let todaysDate = forecast[0].date.split(" ")[2];
+//     let datesToDisplay = [todaysDate];
+//     while (datesToDisplay.length < 6) {
+//       todaysDate = 1 + Number(todaysDate);
+//       datesToDisplay.push(todaysDate);
+//     }
+//     let flightIconArray = [];
+//     for (let i = 0; i < weekDays.length; i++) {
+//       if (flightIconArray.length < 6) {
+//         flightIconArray.push(<span class="flightIcon">✈️</span>);
+//       }
+//     }
+//     return (
+//       <div>
+//         <table className="weatherfeed-table">
+//           <thead>
+//             <tr className="weatherfeed-tr">
+//               <div className="weatherfeed-table-days-container">
+//                 <td className="weatherfeed-table-days-td">
+//                   {sortedWeekDays.map((day) => (
+//                     <div class="weatherfeed-table-days-div-name">{day}</div>
+//                   ))}
+//                 </td>
+//                 <td className="weatherfeed-table-days-td">
+//                   {datesToDisplay.map((date) => (
+//                     <div className="weatherfeed-table-days-div-date">
+//                       {date}{" "}
+//                     </div>
+//                   ))}
+//                 </td>
+//                 <td className="weatherfeed-table-days-td">
+//                   {listOfTime.map((_time, index) => (
+//                     <div key={`${_time}+${index}`}>{_time}</div>
+//                   ))}
+//                 </td>
+//                 <td className="weatherfeed-table-days-td">
+//                   {forecast.map((_forecast, index) => (
+//                     <div key={`${_forecast.wind}+${index}`}>
+//                       {_forecast.wind}
+//                     </div>
+//                   ))}
+//                 </td>
+//                 <td className="weatherfeed-table-days-td">
+//                   {forecast.map((_forecast, index) => (
+//                     <div key={`${_forecast.summary}+${index}`}>
+//                       {_forecast.summary}
+//                     </div>
+//                   ))}
+//                 </td>
+//               </div>
+//             </tr>
+//           </thead>
+//           <tbody>
+//             <tr>
+//               <td className="weatherfeed-table-days-td">
+//                 {forecast.map((_forecast, index) => (
+//                   <div key={`${_forecast.snow}+${index}`}>{_forecast.snow}</div>
+//                 ))}
+//               </td>
+//               <td className="weatherfeed-table-days-td">
+//                 {forecast.map((_forecast, index) => (
+//                   <div key={`${_forecast.rain}+${index}`}>{_forecast.rain}</div>
+//                 ))}
+//               </td>
+//               <td className="weatherfeed-table-days-td">
+//                 {forecast.map((_forecast, index) => (
+//                   <div key={`${_forecast.maxTemp}+${index}`}>
+//                     {_forecast.maxTemp}
+//                   </div>
+//                 ))}
+//               </td>
+//             </tr>
+//           </tbody>
+//           <tfoot>
+//             <tr className="weatherfeed-tr">
+//               <div className="weatherfeed-table-days-container">
+//                 <th className="weatherfeed-table-flightLink-td">
+//                   {flightIconArray.map((icon) => (
+//                     <Link
+//                       to="/flightDestination"
+//                       // state: {
+//                       //   resortName: resortName,
+//                       // },
+//                     >
+//                       {icon}
+//                     </Link>
+//                   ))}
+//                 </th>
+//               </div>
+//             </tr>
+//           </tfoot>
+//         </table>
+//       </div>
+//     );
+//   }
+// }
 
-  var _super = _createSuper(WeatherfeedTable);
-
-  function WeatherfeedTable(props) {
-    var _this;
-
-    _classCallCheck(this, WeatherfeedTable);
-
-    _this = _super.call(this, props);
-    _this.state = {
-      selectedDate: "",
-      resortName: props.resortName
-    };
-    return _this;
-  }
-
-  _createClass(WeatherfeedTable, [{
-    key: "render",
-    value: function render() {
-      var _this$props = this.props,
-          forecast = _this$props.forecast,
-          resortName = _this$props.resortName;
-      var _this$state = this.state,
-          selectedDate = _this$state.selectedDate,
-          selectedResort = _this$state.selectedResort; //helper function to set correct start of day of week
-
-      var weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-      var firstDayofForecast = forecast[0].time.split(" ")[0];
-      var startIndex = weekDays.indexOf(firstDayofForecast);
-      var sortedWeekDays = [];
-
-      for (var i = startIndex; i < weekDays.length; i++) {
-        if (sortedWeekDays.length < 6) {
-          sortedWeekDays.push(weekDays[i]);
-        }
-      }
-
-      var listOfTime = forecast.map(function (_forecast) {
-        return _forecast.time.split(" ")[1];
-      }); //helper to get date of request and next 6 days
-
-      var todaysDate = forecast[0].date.split(" ")[2];
-      var datesToDisplay = [todaysDate];
-
-      while (datesToDisplay.length < 6) {
-        todaysDate = 1 + Number(todaysDate);
-        datesToDisplay.push(todaysDate);
-      }
-
-      var flightIconArray = [];
-
-      for (var _i = 0; _i < weekDays.length; _i++) {
-        if (flightIconArray.length < 6) {
-          flightIconArray.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-            "class": "flightIcon"
-          }, "\u2708\uFE0F"));
-        }
-      }
-
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
-        className: "weatherfeed-table"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-        className: "weatherfeed-tr"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "weatherfeed-table-days-container"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-        className: "weatherfeed-table-days-td"
-      }, sortedWeekDays.map(function (day) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          "class": "weatherfeed-table-days-div-name"
-        }, day);
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-        className: "weatherfeed-table-days-td"
-      }, datesToDisplay.map(function (date) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "weatherfeed-table-days-div-date"
-        }, date, " ");
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-        className: "weatherfeed-table-days-td"
-      }, listOfTime.map(function (_time, index) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          key: "".concat(_time, "+").concat(index)
-        }, _time);
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-        className: "weatherfeed-table-days-td"
-      }, forecast.map(function (_forecast, index) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          key: "".concat(_forecast.wind, "+").concat(index)
-        }, _forecast.wind);
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-        className: "weatherfeed-table-days-td"
-      }, forecast.map(function (_forecast, index) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          key: "".concat(_forecast.summary, "+").concat(index)
-        }, _forecast.summary);
-      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-        className: "weatherfeed-table-days-td"
-      }, forecast.map(function (_forecast, index) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          key: "".concat(_forecast.snow, "+").concat(index)
-        }, _forecast.snow);
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-        className: "weatherfeed-table-days-td"
-      }, forecast.map(function (_forecast, index) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          key: "".concat(_forecast.rain, "+").concat(index)
-        }, _forecast.rain);
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-        className: "weatherfeed-table-days-td"
-      }, forecast.map(function (_forecast, index) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          key: "".concat(_forecast.maxTemp, "+").concat(index)
-        }, _forecast.maxTemp);
-      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tfoot", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-        className: "weatherfeed-tr"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "weatherfeed-table-days-container"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        className: "weatherfeed-table-flightLink-td"
-      }, flightIconArray.map(function (icon) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reach_router__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-          to: "/flightDestination" // state: {
-          //   resortName: resortName,
-          // },
-
-        }, icon);
-      })))))));
-    }
-  }]);
-
-  return WeatherfeedTable;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (WeatherfeedTable); //  <Link to=`/flightDesination/${resortName}`> why doesn't this work
 // why isn't passing state in link workking?

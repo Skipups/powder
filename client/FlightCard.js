@@ -1,23 +1,7 @@
 import React from "react";
 
-class FlightCard extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      arrrivalTime: null,
-      departureTime: null,
-      airline: this.props.airlines,
-      seats: null,
-      price: this.props.price,
-    };
-  }
-  componentDidMount() {
-    const { arrivalTime, departureTime, airlines, seats, price } = this.props;
-    const convertedAirline = this.airlineConverter(airlines);
-    this.setState({ airline: convertedAirline, price: price });
-  }
-
-  timeConverter = (UNIX_timestamp) => {
+const FlightCard = (props) => {
+  const timeConverter = (UNIX_timestamp) => {
     const a = new Date(UNIX_timestamp * 1000);
     const hour = a.getHours();
     const min = a.getMinutes();
@@ -26,24 +10,43 @@ class FlightCard extends React.Component {
     return time;
   };
 
-  airlineConverter = (IATA_code) => {
+  const airlineConverter = (IATA_code) => {
     const airlineCodePairs = { B6: "JetBlue", DL: "Delta" };
     return airlineCodePairs[IATA_code];
   };
 
-  render() {
-    return (
-      <div className="resortCard-wrapper">
-        <div className="resortCard-container">
-          <div>{this.state.airline}</div>
-          <div>${this.state.price}</div>
+  const departureTime = timeConverter(props.flight.dTime);
+  const arrivalTime = timeConverter(props.flight.aTime);
+  const price = props.flight.price;
+  const airline = airlineConverter(props.flight.airlines);
+  const routeNum = props.flight.route[0].flight_no;
+  const seats = props.flight.availability.seats;
+
+  return (
+    <div className="resortCard-wrapper">
+      <div className="resortCard-container">
+        <div>
+          {" "}
+          {airline} flight number: {routeNum}
         </div>
+        <div> ${price}</div>
+        <div> departureTime: {departureTime}</div>
+        <div> arrivalTime: {arrivalTime}</div>
+        <div> available seats: {seats}</div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default FlightCard;
+
+//why is there no this context needed for functions in functional components
+
+// const funcComponent = (props) => {
+//   const converter = (num) => num * 100;
+//   const price = converter(props.price);
+//   return <div>'Hello' {price}</div>;
+// };
 
 {
   /* <div>departureTime: {convertedDepartureTime}</div>
@@ -51,3 +54,20 @@ export default FlightCard;
    / <div> {this.state.airline} </div>
 */
 }
+
+// function addThenMult({flightInfo}) {
+//   let time = makeTimeReadable(flightInfo.time)
+
+//   return JSX that includes time that is readable
+//   let added = add(a,b)
+//   let multed = mult(a,b)
+//   return added + multed;
+// }
+
+// function add(a,b) {
+//   return a + b;
+// }
+
+// function mult(a,b) {
+//   return a * b
+// }
