@@ -86,6 +86,40 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./Utils.js":
+/*!******************!*\
+  !*** ./Utils.js ***!
+  \******************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removes . and spaces, replaces with -
+var cleanedResortString = function cleanedResortString(str) {
+  var resortCleaned1 = str.replace(/\s/g, "-");
+  var resortCleaned2 = resortCleaned1.replace(/\./g, "");
+  console.log(str, resortCleaned2);
+  return resortCleaned2;
+}; // input- Thu Jul 02 2020   output-  29/06/2020
+
+
+var cleanedDepartureDate = function cleanedDepartureDate(str) {
+  var monthNumber = "JanFebMarAprMayJunJulAugSepOctNovDec".indexOf(str.split(" ")[1]) / 3 + 1; //add 0 infront of month
+
+  var month = monthNumber.toString().length === 1 ? ("0" + monthNumber).slice(-2) : monthNumber;
+  var day = str.split(" ")[2];
+  var yr = str.split(" ")[3];
+  console.log("month", month, "day", day, "yr", yr);
+  console.log("".concat(day, "/").concat(month, "/").concat(yr));
+  return "".concat(day, "/").concat(month, "/").concat(yr);
+};
+
+module.exports = {
+  cleanedResortString: cleanedResortString,
+  cleanedDepartureDate: cleanedDepartureDate
+};
+
+/***/ }),
+
 /***/ "./client/DayCard.js":
 /*!***************************!*\
   !*** ./client/DayCard.js ***!
@@ -97,15 +131,66 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _reach_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @reach/router */ "./node_modules/@reach/router/es/index.js");
+/* harmony import */ var _Utils_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Utils.js */ "./Utils.js");
+/* harmony import */ var _Utils_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_Utils_js__WEBPACK_IMPORTED_MODULE_2__);
+
+
 
 
 var DayCard = function DayCard(_ref) {
-  var dayForecast = _ref.dayForecast;
-  console.log("dayForecast", dayForecast);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "hi");
+  var dayForecast = _ref.dayForecast,
+      resortName = _ref.resortName;
+  var cleanedResortName = Object(_Utils_js__WEBPACK_IMPORTED_MODULE_2__["cleanedResortString"])(resortName);
+  var cleaneddepartureDate = dayForecast[0].date !== undefined ? Object(_Utils_js__WEBPACK_IMPORTED_MODULE_2__["cleanedDepartureDate"])(dayForecast[0].date) : "";
+  console.log("!!!!!!!!!!!", cleanedResortName, cleaneddepartureDate); // sometimes a dayForecast only has length 1 or 0
+
+  if (dayForecast.length >= 1) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, " ", dayForecast[0].time.split(" ")[0])), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, dayForecast[0].date.split(" ")[2]))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, dayForecast.map(function (dataPoint) {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        key: dataPoint.time
+      }, dataPoint.time.split(" ")[1]);
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, dayForecast.map(function (dataPoint) {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        key: dataPoint.time
+      }, dataPoint.wind);
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, dayForecast.map(function (dataPoint) {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        key: dataPoint.time
+      }, dataPoint.summary);
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, dayForecast.map(function (dataPoint) {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        key: dataPoint.time
+      }, dataPoint.rain);
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, dayForecast.map(function (dataPoint) {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        key: dataPoint.time
+      }, dataPoint.snow);
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, dayForecast.map(function (dataPoint) {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        key: dataPoint.time
+      }, dataPoint.maxTemp);
+    }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tfoot", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reach_router__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      to: "/flightDestination/".concat(cleanedResortName),
+      state: {
+        date: "".concat(cleaneddepartureDate)
+      }
+    }, "\u2708\uFE0F"))))));
+  } else return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (DayCard);
+/* harmony default export */ __webpack_exports__["default"] = (DayCard); // const NewsFeed = () => (
+//   <div>
+//     <Link to="photos/123" state={{ fromFeed: true }} />
+//   </div>
+// );
+// const Photo = ({ location, photoId }) => {
+//   if (location.state.fromFeed) {
+//     return <FromFeedPhoto id={photoId} />;
+//   } else {
+//     return <Photo id={photoId} />;
+//   }
+// };
 
 /***/ }),
 
@@ -291,6 +376,7 @@ var FlightPage = /*#__PURE__*/function (_React$Component) {
       var _this$state2 = this.state,
           loading = _this$state2.loading,
           flightInfo = _this$state2.flightInfo;
+      console.log("this.props.location.state.date departureDate!!", this.props.location.state.date);
 
       if (loading) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "searching for a flight ...");
@@ -570,15 +656,25 @@ var ResortCard = /*#__PURE__*/function (_React$Component) {
 
     _defineProperty(_assertThisInitialized(_this), "grouped", function (data) {
       var i = 0;
+      var current = "";
+      var previous = "";
       var groupedByDayMatrix = [];
 
       while (i < 18) {
-        for (var row = 0; row < 6; row++) {
+        for (var row = 0; row < 7; row++) {
           groupedByDayMatrix[row] = [];
 
-          for (var col = 0; col < 3; col++) {
-            groupedByDayMatrix[row][col] = data[i];
-            i++;
+          for (var col = 0; col <= 2; col++) {
+            if (i === 18) break;
+            previous = current;
+            current = data[i].date.split(" ")[0];
+
+            if (previous === "" || previous === current || col == 0) {
+              groupedByDayMatrix[row][col] = data[i];
+              i++;
+            } else if (previous !== current) {
+              break;
+            }
           }
         }
       }
@@ -643,7 +739,7 @@ var ResortCard = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_WeatherfeedTable__WEBPACK_IMPORTED_MODULE_2__["default"], {
         resortForecast: resortForecast,
         resortName: name
-      }), ";")));
+      }))));
     }
   }]);
 
@@ -659,19 +755,40 @@ var ResortCard = /*#__PURE__*/function (_React$Component) {
   </code>
   </pre> */
 }
-{
-  /* <div className="resortCard-wrapper">
-        <div className="resortCard-container">
-          <div className="brand-container">{name}</div>
-          <div className="weatherfeedHeader-container">
-            <WeatherfeedHeadersTable />
-          </div>
-          <div className="weatherfeed-container">
-            <WeatherfeedTable forecast={resortForecast} resortName={name} />
-          </div>
+{}
+/* <div className="resortCard-wrapper">
+      <div className="resortCard-container">
+        <div className="brand-container">{name}</div>
+        <div className="weatherfeedHeader-container">
+          <WeatherfeedHeadersTable />
         </div>
-      </div> */
-}
+        <div className="weatherfeed-container">
+          <WeatherfeedTable forecast={resortForecast} resortName={name} />
+        </div>
+      </div>
+    </div> */
+//// let i = 0;
+// let y = i > 0 ? i - 1 : 0;
+// console.log("i,y", i, y);
+// let groupedByDayMatrix = [];
+// while (i < 18) {
+//   for (let row = 0; row < 6; row++) {
+//     console.log("groupedByDayMatrix", groupedByDayMatrix);
+//     groupedByDayMatrix[row] = [];
+//     for (let col = 0; col < 3; col++) {
+//       let prev = i > 0 ? data[y].date.split(" ")[0] : 0;
+//       let current = data[i].date.split(" ")[0];
+//       console.log("prev", prev, "current", current);
+//       //set data for new row new column
+//       if (prev === 0 || prev === current) {
+//         groupedByDayMatrix[row][col] = data[i];
+//         i++;
+//       }
+//     }
+//   }
+// }
+// return groupedByDayMatrix;
+// };
 
 /***/ }),
 
@@ -758,7 +875,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _reach_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @reach/router */ "./node_modules/@reach/router/es/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _DayCard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./DayCard */ "./client/DayCard.js");
+/* harmony import */ var _DayCard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./DayCard */ "./client/DayCard.js");
 
 
 
@@ -766,14 +883,15 @@ __webpack_require__.r(__webpack_exports__);
  //need to move to utils folder?
 
 var WeatherfeedTable = function WeatherfeedTable(_ref) {
-  var name = _ref.name,
+  var resortName = _ref.resortName,
       resortForecast = _ref.resortForecast;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
     className: "weatherfeed-table"
   }, resortForecast.map(function (dayForecast) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_DayCard__WEBPACK_IMPORTED_MODULE_5__["default"], {
-      dayForecast: dayForecast
-    });
+    return dayForecast.length >= 1 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_DayCard__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      dayForecast: dayForecast,
+      resortName: resortName
+    }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
   })));
 }; //   render() {
 //     const { forecast, resortName } = this.props;
@@ -980,7 +1098,7 @@ var App = /*#__PURE__*/function (_React$Component) {
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PassPage_js__WEBPACK_IMPORTED_MODULE_3__["default"], {
         path: "/pass/:name"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FlightPage_js__WEBPACK_IMPORTED_MODULE_5__["default"], {
-        path: "/flightDestination"
+        path: "/flightDestination/:resortName"
       })));
     }
   }]);
@@ -2154,12 +2272,26 @@ var resolve = function resolve(to, base) {
 
 ////////////////////////////////////////////////////////////////////////////////
 // insertParams(path, params)
+
 var insertParams = function insertParams(path, params) {
-  var segments = segmentize(path);
-  return "/" + segments.map(function (segment) {
+  var _path$split = path.split("?"),
+      pathBase = _path$split[0],
+      _path$split$ = _path$split[1],
+      query = _path$split$ === undefined ? "" : _path$split$;
+
+  var segments = segmentize(pathBase);
+  var constructedPath = "/" + segments.map(function (segment) {
     var match = paramRe.exec(segment);
     return match ? params[match[1]] : segment;
   }).join("/");
+  var _params$location = params.location;
+  _params$location = _params$location === undefined ? {} : _params$location;
+  var _params$location$sear = _params$location.search,
+      search = _params$location$sear === undefined ? "" : _params$location$sear;
+
+  var searchSplit = search.split("?")[1] || "";
+  constructedPath = addQuery(constructedPath, query, searchSplit);
+  return constructedPath;
 };
 
 var validateRedirect = function validateRedirect(from, to) {
@@ -2212,8 +2344,15 @@ var segmentize = function segmentize(uri) {
   .replace(/(^\/+|\/+$)/g, "").split("/");
 };
 
-var addQuery = function addQuery(pathname, query) {
-  return pathname + (query ? "?" + query : "");
+var addQuery = function addQuery(pathname) {
+  for (var _len = arguments.length, query = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+    query[_key - 1] = arguments[_key];
+  }
+
+  query = query.filter(function (q) {
+    return q && q.length > 0;
+  });
+  return pathname + (query && query.length > 0 ? "?" + query.join("&") : "");
 };
 
 var reservedNames = ["uri", "path"];

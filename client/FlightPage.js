@@ -49,6 +49,10 @@ class FlightPage extends React.Component {
   }
   render() {
     const { loading, flightInfo } = this.state;
+    console.log(
+      "this.props.location.state.date departureDate!!",
+      this.props.location.state.date
+    );
 
     if (loading) {
       return <div>searching for a flight ...</div>;

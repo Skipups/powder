@@ -23,27 +23,9 @@ const passList = [
 ];
 
 const resortList = [
-  {
-    name: "Alta",
-    location: [69.9687, 23.2715],
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR_W6Fk6zrahr6VC3fqDP_E09uhvTKf821sz1lbuf35ZqNUC0Xr",
-    closestAirCode: "SLC",
-  },
-  {
-    name: "SnowBird",
-    location: [40.5818948, -111.65520240000001],
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTlSZjFgCQastkpL1Mf9ucyjmMw1C_wdQkubTaJzUFp98YB7lsB",
-    closestAirCode: "SLC",
-  },
-  {
-    name: "Jackson Hole",
-    location: [43.5875, 110.8279],
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSrpxPucPuenCAi84llz2tBDhPkZyQj-IQgokxUw1st2QE4U0e_",
-    closestAirCode: "JAC",
-  },
+  { id: 10, name: "Alta", closestAirCode: "SLC", passId: 1 },
+  { id: 11, name: "SnowBird", closestAirCode: "SLC", passId: 1 },
+  { id: 12, name: "Jackson Hole", closestAirCode: "JAC" },
 ];
 
 const userList = [
@@ -64,21 +46,14 @@ async function syncAndSeedDatabase() {
   try {
     await db.sync({ force: true });
     console.log("DB SYNCED");
-  } catch (e) {
-    console.log("ERROR SYNCING DB");
-    console.log(e);
-    throw new Error(e);
-  }
-  try {
-    await Pass.bulkCreate(passList);
     await Resort.bulkCreate(resortList);
+    await Pass.bulkCreate(passList);
     await User.bulkCreate(userList);
   } catch (e) {
     console.log("ERROR SEEDING DB");
     console.log(e);
     throw new Error(e);
   }
-  console.log("done seeding and associating!");
 }
 
 module.exports = { syncAndSeedDatabase };

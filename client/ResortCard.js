@@ -35,17 +35,28 @@ class ResortCard extends React.Component {
   }
   grouped = (data) => {
     let i = 0;
+    let current = "";
+    let previous = "";
     let groupedByDayMatrix = [];
+
     while (i < 18) {
-      for (let row = 0; row < 6; row++) {
+      for (let row = 0; row < 7; row++) {
         groupedByDayMatrix[row] = [];
-        for (let col = 0; col < 3; col++) {
-          groupedByDayMatrix[row][col] = data[i];
-          i++;
+
+        for (let col = 0; col <= 2; col++) {
+          if (i === 18) break;
+          previous = current;
+          current = data[i].date.split(" ")[0];
+
+          if (previous === "" || previous === current || col == 0) {
+            groupedByDayMatrix[row][col] = data[i];
+            i++;
+          } else if (previous !== current) {
+            break;
+          }
         }
       }
     }
-
     return groupedByDayMatrix;
   };
 
@@ -68,7 +79,6 @@ class ResortCard extends React.Component {
               resortForecast={resortForecast}
               resortName={name}
             />
-            ;
           </div>
         </div>
       </div>
@@ -100,3 +110,28 @@ export default ResortCard;
         </div>
       </div> */
 }
+
+//// let i = 0;
+// let y = i > 0 ? i - 1 : 0;
+// console.log("i,y", i, y);
+// let groupedByDayMatrix = [];
+// while (i < 18) {
+//   for (let row = 0; row < 6; row++) {
+//     console.log("groupedByDayMatrix", groupedByDayMatrix);
+//     groupedByDayMatrix[row] = [];
+//     for (let col = 0; col < 3; col++) {
+//       let prev = i > 0 ? data[y].date.split(" ")[0] : 0;
+//       let current = data[i].date.split(" ")[0];
+
+//       console.log("prev", prev, "current", current);
+//       //set data for new row new column
+//       if (prev === 0 || prev === current) {
+//         groupedByDayMatrix[row][col] = data[i];
+//         i++;
+//       }
+//     }
+//   }
+// }
+
+// return groupedByDayMatrix;
+// };
