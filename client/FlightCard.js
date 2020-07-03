@@ -6,7 +6,7 @@ const FlightCard = (props) => {
     const hour = a.getHours();
     const min = a.getMinutes();
     const time = hour + ":" + min;
-    console.log("time", time);
+
     return time;
   };
 

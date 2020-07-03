@@ -9,8 +9,6 @@ const DayCard = ({ dayForecast, resortName }) => {
       ? cleanedDepartureDate(dayForecast[0].date)
       : "";
 
-  console.log("!!!!!!!!!!!", cleanedResortName, cleaneddepartureDate);
-
   // sometimes a dayForecast only has length 1 or 0
   if (dayForecast.length >= 1) {
     return (

@@ -9,7 +9,7 @@ class FlightPage extends React.Component {
       selected: "",
       loading: true,
       closestAirCode: "SLC",
-      departingDate: "29/06/2020",
+      departingDate: props.location.state.date,
       departingAirCode: "JFK",
       flightInfo: [],
     };
@@ -49,10 +49,6 @@ class FlightPage extends React.Component {
   }
   render() {
     const { loading, flightInfo } = this.state;
-    console.log(
-      "this.props.location.state.date departureDate!!",
-      this.props.location.state.date
-    );
 
     if (loading) {
       return <div>searching for a flight ...</div>;
