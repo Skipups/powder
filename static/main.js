@@ -141,6 +141,7 @@ __webpack_require__.r(__webpack_exports__);
 var DayCard = function DayCard(_ref) {
   var dayForecast = _ref.dayForecast,
       resortName = _ref.resortName;
+  console.log("dayforecast", dayForecast);
   var cleanedResortName = Object(_Utils_js__WEBPACK_IMPORTED_MODULE_2__["cleanedResortString"])(resortName);
   var cleaneddepartureDate = dayForecast[0].date !== undefined ? Object(_Utils_js__WEBPACK_IMPORTED_MODULE_2__["cleanedDepartureDate"])(dayForecast[0].date) : ""; // sometimes a dayForecast only has length 1 or 0
 
@@ -324,7 +325,8 @@ var FlightPage = /*#__PURE__*/function (_React$Component) {
       flightInfo: []
     };
     return _this;
-  }
+  } //make db request here before flight info
+
 
   _createClass(FlightPage, [{
     key: "componentDidMount",
@@ -448,30 +450,40 @@ var Nav = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, Nav);
 
     _this = _super.call(this, props);
+    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
+    _this.changeHandler = _this.changeHandler.bind(_assertThisInitialized(_this));
     _this.state = {
       origin: ""
     };
-    _this.changeHandler = _this.changeHandler.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(Nav, [{
-    key: "changeHandler",
-    value: function changeHandler(input) {
-      console.log("input", input);
+    key: "handleChange",
+    value: function handleChange(e) {
+      var capatilized = e.target.value.toUpperCase();
       this.setState({
-        origin: input
+        origin: capatilized
       });
-      console.log(this.state);
+    }
+  }, {
+    key: "changeHandler",
+    value: function changeHandler(e) {
+      var capatilized = e.target.value.toUpperCase();
+      this.setState({
+        origin: capatilized
+      });
     }
   }, {
     key: "render",
     value: function render() {
+      var origin = this.state.origin;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reach_router__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         to: "/"
-      }, "Choose a Pass"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_OriginAirportForm__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        onChange: this.changeHandler
-      }));
+      }, "Choose a Pass"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("fieldset", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("legend", null, "Enter Origin AirportCode:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        value: origin,
+        onChange: this.handleChange
+      })));
     }
   }]);
 
@@ -479,6 +491,9 @@ var Nav = /*#__PURE__*/function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (Nav);
+{
+  /*  */
+}
 
 /***/ }),
 
@@ -532,25 +547,18 @@ var OriginAirportForm = /*#__PURE__*/function (_React$Component) {
       value: ""
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
-    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
     return _this;
-  }
+  } // handleChange(event) {
+  //   console.log("event", event);
+  //   this.setState({ value: event.target.value }, () => {
+  //     if (this.props.onChange) {
+  //       this.props.onChange(this.state.value);
+  //     }
+  //   });
+  // }
+
 
   _createClass(OriginAirportForm, [{
-    key: "handleChange",
-    value: function handleChange(event) {
-      var _this2 = this;
-
-      console.log("event", event);
-      this.setState({
-        value: event.target.value
-      }, function () {
-        if (_this2.props.onChange) {
-          _this2.props.onChange(_this2.state.value);
-        }
-      });
-    }
-  }, {
     key: "handleSubmit",
     value: function handleSubmit(event) {
       alert("A name was submitted: " + this.state.value);
@@ -560,12 +568,12 @@ var OriginAirportForm = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        onSubmit: this.handleChange
+        onSubmit: this.handleSubmit
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Enter Origin AirportCode:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
-        value: this.value,
+        value: this.state.value,
         placeholder: "SEA",
-        onChange: this.handleChange
+        onChange: this.props.changeHandler
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "submit",
         value: "Submit"
@@ -837,6 +845,7 @@ var ResortCard = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
 
     _defineProperty(_assertThisInitialized(_this), "grouped", function (data) {
+      // given 18 forecast objects, this will give me those objsgrouped by day.
       var i = 0;
       var current = "";
       var previous = "";
@@ -858,7 +867,8 @@ var ResortCard = /*#__PURE__*/function (_React$Component) {
               break;
             }
           }
-        }
+        } // check for i!
+
       }
 
       return groupedByDayMatrix;
@@ -1274,6 +1284,15 @@ var App = /*#__PURE__*/function (_React$Component) {
 
   _createClass(App, [{
     key: "render",
+    // state for the app that different componenets can access.
+    // provider? React Context?
+    // need to refactor, and learn.
+    // Lifting state to a parent comoonenet. LIKE THIS ONE!
+    // cons - prop drilling, (endless), a huge component this one!
+    // pros - knows this works
+    // Redux?
+    // daycard, needs airport code
+    // airportcode
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Nav_js__WEBPACK_IMPORTED_MODULE_6__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reach_router__WEBPACK_IMPORTED_MODULE_2__["Router"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PowderHome_js__WEBPACK_IMPORTED_MODULE_4__["default"], {
         path: "/"

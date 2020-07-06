@@ -14,7 +14,7 @@ class FlightPage extends React.Component {
       flightInfo: [],
     };
   }
-
+  //make db request here before flight info
   componentDidMount() {
     const { closestAirCode, departingDate, departingAirCode } = this.state;
     let flightInfo = {};

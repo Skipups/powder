@@ -3,6 +3,7 @@ import { Link } from "@reach/router";
 import { cleanedResortString, cleanedDepartureDate } from "../Utils.js";
 
 const DayCard = ({ dayForecast, resortName }) => {
+  console.log("dayforecast", dayForecast);
   const cleanedResortName = cleanedResortString(resortName);
   const cleaneddepartureDate =
     dayForecast[0].date !== undefined
