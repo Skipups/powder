@@ -7,6 +7,10 @@ const Pass = db.define("pass", {
   id: {
     type: Sequelize.INTEGER,
     primaryKey: true,
+    validate: {
+      min: 1,
+      max: 3,
+    },
   },
   name: {
     type: Sequelize.STRING,

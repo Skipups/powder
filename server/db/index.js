@@ -4,17 +4,11 @@ const { Pass } = require("./models/pass");
 const { Resort } = require("./models/resort");
 
 //associations
-User.belongsTo(Pass, { foreignKey: "passId" });
-Pass.hasMany(User, { as: "passHolder" });
+// User.belongsTo(Pass, { foreignKey: "passId" });
+// Pass.hasMany(User, { as: "passHolder" });
+Pass.belongsToMany(Resort, { through: "ResortPass" });
 
-Resort.belongsToMany(Pass, {
-  through: "ResortsPasses",
-  foreignKey: "resortId",
-});
-Pass.belongsToMany(Resort, {
-  through: "ResortsPasses",
-  foreignKey: "passId",
-});
+Resort.belongsToMany(Pass, { through: "ResortPass" });
 
 module.exports = {
   Pass,

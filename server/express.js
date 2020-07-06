@@ -1,26 +1,27 @@
 const express = require("express");
 const path = require("path");
-const snow = require("snow-forecast-sfr").default;
 const chalk = require("chalk");
 const axios = require("axios");
 const app = express();
 const PORT = process.env.PORT || 3000;
 const apiPasses = require("./api/passes");
+const apiSnowRequest = require("./api/snowRequest");
+const apiFlightRequest = require("./api/flightRequest");
+
+const morgan = require("morgan");
+const cors = require("cors");
+
+app.use(cors());
 
 app.use(express.json());
+app.use(morgan("dev"));
+app.use(express.urlencoded({ extended: true }));
 
-app.use(express.static(path.join(__dirname, "../static")));
+app.use("/", express.static(path.join(__dirname, "../static")));
 
 app.use("/api", apiPasses);
-
-app.get("/api/snowRequest", (req, res) => {
-  snow.parseResort("Snowbird", "mid", function (json) {
-    console.log(json);
-    return res.status(200).send(JSON.stringify(json));
-  });
-});
-
-//app.use("/api", apiRouter);
+app.use("/api", apiSnowRequest);
+app.use("/api", apiFlightRequest);
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../static/index.html"));

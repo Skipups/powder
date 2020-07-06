@@ -1,15 +1,19 @@
 import React from "react";
+import ResortCard from "./ResortCard";
 
-let mountainCollective = [
-  "Aspen",
-  "Snowbird",
-  "Alta",
-  "Banff Sunshine",
-  "Big Sky Resort",
-  "Jackson Hole Mountain Resort",
-];
-let ikon = ["Snowbird", "Alta", "Big Bear Mountain Resort", "Mt. Bachelor"];
-let epic = ["Telluride", "Sun Valley", "Snowbasin", "Vail", "Heavenly"];
+let resortsSortedByPass = {
+  mountaincollective: [
+    "Aspen",
+    "Snowbird",
+    "Alta",
+    "Banff Sunshine",
+    "Big Sky Resort",
+    "Jackson Hole Mountain Resort",
+  ],
+  ikon: ["Snowbird", "Alta", "Big Bear Mountain", "Mt. Bachelor"],
+  epic: ["Telluride", "Sun Valley", "Snowbasin", "Vail", "Heavenly"],
+};
+
 class PassPage extends React.Component {
   constructor(props) {
     super(props);
@@ -19,8 +23,11 @@ class PassPage extends React.Component {
     };
   }
   render() {
-    console.log(this.props);
-    return <div>map resort card here</div>;
+    let selectedPassName = this.props.name.toLowerCase();
+
+    return resortsSortedByPass[selectedPassName].map((resort) => {
+      return <ResortCard resortName={resort} />;
+    });
   }
 }
 
