@@ -8,14 +8,29 @@ class FlightPage extends React.Component {
     this.state = {
       selected: "",
       loading: true,
-      closestAirCode: "SLC",
+      closestAirCode: "",
+      resortName: props.location.state.resortName,
       departingDate: props.location.state.date,
-      departingAirCode: "JFK",
+      departingAirCode: props.location.state.originAirport,
       flightInfo: [],
     };
   }
   //make db request here before flight info
   componentDidMount() {
+    let resortName = this.state.resortName;
+    let resortResponse = {};
+    let resortAirport = "";
+    axios
+      .get(`/api/resortRequest/${resortName}`)
+      .then((response) => {
+        resortResponse = response.data;
+        resortAirport = resortResponse.closestAirCode;
+        console.log("resportAiport string", resortAirport);
+        this.setState({ closestAirCode: resortAirport });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
     const { closestAirCode, departingDate, departingAirCode } = this.state;
     let flightInfo = {};
     let withSeats = []; // array of unique flights and available seats
@@ -48,7 +63,7 @@ class FlightPage extends React.Component {
       });
   }
   render() {
-    const { loading, flightInfo } = this.state;
+    const { loading, flightInfo, departingAirCode } = this.state;
 
     if (loading) {
       return <div>searching for a flight ...</div>;
@@ -56,9 +71,14 @@ class FlightPage extends React.Component {
 
     return (
       <div>
-        {flightInfo.map((flight) => (
-          <FlightCard flight={flight} />
-        ))}
+        <div>
+          {`Departure Date: ${this.state.departingDate}, Orgin Airport: ${this.state.departingAirCode}, Destination Airport: ${this.state.closestAirCode}`}
+        </div>
+        <div>
+          {flightInfo.map((flight) => (
+            <FlightCard flight={flight} />
+          ))}
+        </div>
       </div>
     );
   }
