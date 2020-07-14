@@ -2,20 +2,17 @@
 const epicList = [
   { id: 1, name: "Telluride", closestAirCode: "DEN" },
   { id: 2, name: "Vail", closestAirCode: "DEN" },
-
   { id: 5, name: "Park City", closestAirCode: "SLC" },
   { id: 6, name: "Beaver Creek", closestAirCode: "DEN" },
   { id: 7, name: "Breckenridge", closestAirCode: "DEN" },
   { id: 8, name: "Kirkwood", closestAirCode: "RNO" },
   { id: 9, name: "Crested Butte", closestAirCode: "DEN" },
-
   { id: 11, name: "Stevens Pass", closestAirCode: "SEA" },
-  { id: 12, name: "Keyston", closestAirCode: "DEN" },
+  { id: 12, name: "Keystone", closestAirCode: "DEN" },
   { id: 13, name: "Snowbasin", closestAirCode: "SLC" },
   { id: 14, name: "Northstar at Tahoe", closestAirCode: "RNO" },
-  { id: 15, name: "Heavenly", closestAirCode: "RNO" },
+  { id: 15, name: "Heavenly Ski", closestAirCode: "RNO" },
   { id: 16, name: "Sun Valley", closestAirCode: "BOI" },
-
   { id: 18, name: "Stowe", closestAirCode: "BOS" },
 ];
 

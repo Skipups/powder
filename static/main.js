@@ -134,50 +134,95 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _reach_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @reach/router */ "./node_modules/@reach/router/es/index.js");
 /* harmony import */ var _Utils_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Utils.js */ "./Utils.js");
 /* harmony import */ var _Utils_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_Utils_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _OriginAirSearchContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./OriginAirSearchContext */ "./client/OriginAirSearchContext.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 
 
 
-var DayCard = function DayCard(_ref) {
-  var dayForecast = _ref.dayForecast,
-      resortName = _ref.resortName;
-  console.log("dayforecast", dayForecast);
-  var cleanedResortName = Object(_Utils_js__WEBPACK_IMPORTED_MODULE_2__["cleanedResortString"])(resortName);
-  var cleaneddepartureDate = dayForecast[0].date !== undefined ? Object(_Utils_js__WEBPACK_IMPORTED_MODULE_2__["cleanedDepartureDate"])(dayForecast[0].date) : ""; // sometimes a dayForecast only has length 1 or 0
 
-  if (dayForecast.length >= 1) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, " ", dayForecast[0].time.split(" ")[0])), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, dayForecast[0].date.split(" ")[2]))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, dayForecast.map(function (dataPoint) {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-        key: dataPoint.time
-      }, dataPoint.time.split(" ")[1]);
-    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, dayForecast.map(function (dataPoint) {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-        key: dataPoint.time
-      }, dataPoint.wind);
-    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, dayForecast.map(function (dataPoint) {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-        key: dataPoint.time
-      }, dataPoint.summary);
-    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, dayForecast.map(function (dataPoint) {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-        key: dataPoint.time
-      }, dataPoint.rain);
-    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, dayForecast.map(function (dataPoint) {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-        key: dataPoint.time
-      }, dataPoint.snow);
-    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, dayForecast.map(function (dataPoint) {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-        key: dataPoint.time
-      }, dataPoint.maxTemp);
-    }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tfoot", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reach_router__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-      to: "/flightDestination/".concat(cleanedResortName),
-      state: {
-        date: "".concat(cleaneddepartureDate)
-      }
-    }, "\u2708\uFE0F"))))));
-  } else return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
-};
+
+var DayCard = /*#__PURE__*/function (_React$Component) {
+  _inherits(DayCard, _React$Component);
+
+  var _super = _createSuper(DayCard);
+
+  function DayCard(props) {
+    _classCallCheck(this, DayCard);
+
+    return _super.call(this, props);
+  }
+
+  _createClass(DayCard, [{
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          dayForecast = _this$props.dayForecast,
+          resortName = _this$props.resortName;
+      var cleanedResortName = Object(_Utils_js__WEBPACK_IMPORTED_MODULE_2__["cleanedResortString"])(resortName);
+      var cleaneddepartureDate = dayForecast[0].date !== undefined ? Object(_Utils_js__WEBPACK_IMPORTED_MODULE_2__["cleanedDepartureDate"])(dayForecast[0].date) : ""; // sometimes a dayForecast only has length 1 or 0
+
+      if (dayForecast.length >= 1) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_OriginAirSearchContext__WEBPACK_IMPORTED_MODULE_3__["Consumer"], null, function (context) {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, " ", dayForecast[0].time.split(" ")[0])), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, dayForecast[0].date.split(" ")[2]))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, dayForecast.map(function (dataPoint) {
+            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+              key: dataPoint.time
+            }, dataPoint.time.split(" ")[1]);
+          })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, dayForecast.map(function (dataPoint) {
+            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+              key: dataPoint.time
+            }, dataPoint.wind);
+          })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, dayForecast.map(function (dataPoint) {
+            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+              key: dataPoint.time
+            }, dataPoint.summary);
+          })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, dayForecast.map(function (dataPoint) {
+            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+              key: dataPoint.time
+            }, dataPoint.rain);
+          })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, dayForecast.map(function (dataPoint) {
+            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+              key: dataPoint.time
+            }, dataPoint.snow);
+          })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, dayForecast.map(function (dataPoint) {
+            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+              key: dataPoint.time
+            }, dataPoint.maxTemp);
+          }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tfoot", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reach_router__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+            to: "/flightDestination/".concat(cleanedResortName),
+            state: {
+              date: "".concat(cleaneddepartureDate),
+              originAirport: "".concat(context.originAirport),
+              resortName: "".concat(resortName)
+            }
+          }, "\u2708\uFE0F"))))));
+        });
+      } else return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
+    }
+  }]);
+
+  return DayCard;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (DayCard); // const NewsFeed = () => (
 //   <div>
@@ -319,9 +364,10 @@ var FlightPage = /*#__PURE__*/function (_React$Component) {
     _this.state = {
       selected: "",
       loading: true,
-      closestAirCode: "SLC",
+      closestAirCode: "",
+      resortName: props.location.state.resortName,
       departingDate: props.location.state.date,
-      departingAirCode: "JFK",
+      departingAirCode: props.location.state.originAirport,
       flightInfo: []
     };
     return _this;
@@ -333,6 +379,20 @@ var FlightPage = /*#__PURE__*/function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
+      var resortName = this.state.resortName;
+      var resortResponse = {};
+      var resortAirport = "";
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/resortRequest/".concat(resortName)).then(function (response) {
+        resortResponse = response.data;
+        resortAirport = resortResponse.closestAirCode;
+        console.log("resportAiport string", resortAirport);
+
+        _this2.setState({
+          closestAirCode: resortAirport
+        });
+      })["catch"](function (error) {
+        console.log(error);
+      });
       var _this$state = this.state,
           closestAirCode = _this$state.closestAirCode,
           departingDate = _this$state.departingDate,
@@ -375,17 +435,18 @@ var FlightPage = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this$state2 = this.state,
           loading = _this$state2.loading,
-          flightInfo = _this$state2.flightInfo;
+          flightInfo = _this$state2.flightInfo,
+          departingAirCode = _this$state2.departingAirCode;
 
       if (loading) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "searching for a flight ...");
       }
 
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, flightInfo.map(function (flight) {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Departure Date: ".concat(this.state.departingDate, ", Orgin Airport: ").concat(this.state.departingAirCode, ", Destination Airport: ").concat(this.state.closestAirCode)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, flightInfo.map(function (flight) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FlightCard__WEBPACK_IMPORTED_MODULE_2__["default"], {
           flight: flight
         });
-      }));
+      })));
     }
   }]);
 
@@ -411,7 +472,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _reach_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @reach/router */ "./node_modules/@reach/router/es/index.js");
-/* harmony import */ var _OriginAirportForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./OriginAirportForm */ "./client/OriginAirportForm.js");
+/* harmony import */ var _OriginAirSearchContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./OriginAirSearchContext */ "./client/OriginAirSearchContext.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -444,46 +505,23 @@ var Nav = /*#__PURE__*/function (_React$Component) {
 
   var _super = _createSuper(Nav);
 
-  function Nav(props) {
-    var _this;
-
+  function Nav() {
     _classCallCheck(this, Nav);
 
-    _this = _super.call(this, props);
-    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
-    _this.changeHandler = _this.changeHandler.bind(_assertThisInitialized(_this));
-    _this.state = {
-      origin: ""
-    };
-    return _this;
+    return _super.apply(this, arguments);
   }
 
   _createClass(Nav, [{
-    key: "handleChange",
-    value: function handleChange(e) {
-      var capatilized = e.target.value.toUpperCase();
-      this.setState({
-        origin: capatilized
-      });
-    }
-  }, {
-    key: "changeHandler",
-    value: function changeHandler(e) {
-      var capatilized = e.target.value.toUpperCase();
-      this.setState({
-        origin: capatilized
-      });
-    }
-  }, {
     key: "render",
     value: function render() {
-      var origin = this.state.origin;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reach_router__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-        to: "/"
-      }, "Choose a Pass"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("fieldset", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("legend", null, "Enter Origin AirportCode:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        value: origin,
-        onChange: this.handleChange
-      })));
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_OriginAirSearchContext__WEBPACK_IMPORTED_MODULE_3__["Consumer"], null, function (context) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reach_router__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+          to: "/"
+        }, "Choose a Pass"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("fieldset", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("legend", null, "Enter Origin AirportCode:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          value: context.originAirport,
+          onChange: context.handleOriginAirportChange
+        })));
+      });
     }
   }]);
 
@@ -497,94 +535,27 @@ var Nav = /*#__PURE__*/function (_React$Component) {
 
 /***/ }),
 
-/***/ "./client/OriginAirportForm.js":
-/*!*************************************!*\
-  !*** ./client/OriginAirportForm.js ***!
-  \*************************************/
-/*! exports provided: default */
+/***/ "./client/OriginAirSearchContext.js":
+/*!******************************************!*\
+  !*** ./client/OriginAirSearchContext.js ***!
+  \******************************************/
+/*! exports provided: Provider, Consumer */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Provider", function() { return Provider; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Consumer", function() { return Consumer; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+var OriginAirSearchContext = react__WEBPACK_IMPORTED_MODULE_0___default.a.createContext({
+  originAirport: "SEA",
+  handleOriginAirportChange: function handleOriginAirportChange() {}
+});
+var Provider = OriginAirSearchContext.Provider; //entrance portal
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-
-
-var OriginAirportForm = /*#__PURE__*/function (_React$Component) {
-  _inherits(OriginAirportForm, _React$Component);
-
-  var _super = _createSuper(OriginAirportForm);
-
-  function OriginAirportForm(props) {
-    var _this;
-
-    _classCallCheck(this, OriginAirportForm);
-
-    _this = _super.call(this, props);
-    _this.state = {
-      value: ""
-    };
-    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
-    return _this;
-  } // handleChange(event) {
-  //   console.log("event", event);
-  //   this.setState({ value: event.target.value }, () => {
-  //     if (this.props.onChange) {
-  //       this.props.onChange(this.state.value);
-  //     }
-  //   });
-  // }
-
-
-  _createClass(OriginAirportForm, [{
-    key: "handleSubmit",
-    value: function handleSubmit(event) {
-      alert("A name was submitted: " + this.state.value);
-      event.preventDefault();
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        onSubmit: this.handleSubmit
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Enter Origin AirportCode:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        value: this.state.value,
-        placeholder: "SEA",
-        onChange: this.props.changeHandler
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "submit",
-        value: "Submit"
-      }));
-    }
-  }]);
-
-  return OriginAirportForm;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
-
-/* harmony default export */ __webpack_exports__["default"] = (OriginAirportForm); // stopped at trying to pa
+var Consumer = OriginAirSearchContext.Consumer; // exist portal
 
 /***/ }),
 
@@ -1235,11 +1206,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _reach_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @reach/router */ "./node_modules/@reach/router/es/index.js");
-/* harmony import */ var _PassPage_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./PassPage.js */ "./client/PassPage.js");
-/* harmony import */ var _PowderHome_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./PowderHome.js */ "./client/PowderHome.js");
-/* harmony import */ var _FlightPage_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./FlightPage.js */ "./client/FlightPage.js");
-/* harmony import */ var _Nav_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Nav.js */ "./client/Nav.js");
+/* harmony import */ var _OriginAirSearchContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./OriginAirSearchContext */ "./client/OriginAirSearchContext.js");
+/* harmony import */ var _reach_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @reach/router */ "./node_modules/@reach/router/es/index.js");
+/* harmony import */ var _PassPage_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./PassPage.js */ "./client/PassPage.js");
+/* harmony import */ var _PowderHome_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./PowderHome.js */ "./client/PowderHome.js");
+/* harmony import */ var _FlightPage_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./FlightPage.js */ "./client/FlightPage.js");
+/* harmony import */ var _Nav_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Nav.js */ "./client/Nav.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1262,52 +1234,71 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-
- //import Weather from "./Weather";
-
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
 
 
+
+
+
+ //only origin is at the root state level. All other choices are lower component level.
 
 var App = /*#__PURE__*/function (_React$Component) {
   _inherits(App, _React$Component);
 
   var _super = _createSuper(App);
 
-  function App() {
+  function App(props) {
+    var _this;
+
     _classCallCheck(this, App);
 
-    return _super.apply(this, arguments);
+    _this = _super.call(this, props);
+
+    _defineProperty(_assertThisInitialized(_this), "handleOriginAirportChange", function (e) {
+      var capatilized = e.target.value.toUpperCase();
+
+      _this.setState({
+        originAirport: capatilized
+      });
+    });
+
+    _this.state = {
+      originAirport: "JFK",
+      handleOriginAirportChange: _this.handleOriginAirportChange
+    };
+    return _this;
   }
 
   _createClass(App, [{
     key: "render",
-    // state for the app that different componenets can access.
-    // provider? React Context?
-    // need to refactor, and learn.
-    // Lifting state to a parent comoonenet. LIKE THIS ONE!
-    // cons - prop drilling, (endless), a huge component this one!
-    // pros - knows this works
-    // Redux?
-    // daycard, needs airport code
-    // airportcode
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Nav_js__WEBPACK_IMPORTED_MODULE_6__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reach_router__WEBPACK_IMPORTED_MODULE_2__["Router"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PowderHome_js__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_OriginAirSearchContext__WEBPACK_IMPORTED_MODULE_2__["Provider"], {
+        value: this.state
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Nav_js__WEBPACK_IMPORTED_MODULE_7__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reach_router__WEBPACK_IMPORTED_MODULE_3__["Router"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PowderHome_js__WEBPACK_IMPORTED_MODULE_5__["default"], {
         path: "/"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PassPage_js__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PassPage_js__WEBPACK_IMPORTED_MODULE_4__["default"], {
         path: "/pass/:name"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FlightPage_js__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FlightPage_js__WEBPACK_IMPORTED_MODULE_6__["default"], {
         path: "/flightDestination/:resortName"
-      })));
+      }))));
     }
   }]);
 
   return App;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(App, null), document.getElementById("root"));
+react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(App, null), document.getElementById("root")); // state for the app that different componenets can access.
+// provider? React Context?
+// need to refactor, and learn.
+// Lifting state to a parent comoonenet. LIKE THIS ONE!
+// cons - prop drilling, (endless), a huge component this one!
+// pros - knows this works
+// Redux?
+// daycard, needs airport code
+// airportcode
 
 /***/ }),
 

@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const { Pass } = require("../db/index");
+const chalk = require("chalk");
 
 const apiPasses = Router();
 
