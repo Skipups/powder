@@ -9,7 +9,7 @@ class DayCard extends React.Component {
   }
 
   render() {
-    const { dayForecast, resortName } = this.props;
+    const { dayForecast, resortName, closestAirCode } = this.props;
     const cleanedResortName = cleanedResortString(resortName);
     const cleaneddepartureDate =
       dayForecast[0].date !== undefined
@@ -73,6 +73,7 @@ class DayCard extends React.Component {
                           date: `${cleaneddepartureDate}`,
                           originAirport: `${context.originAirport}`,
                           resortName: `${resortName}`,
+                          closestAirCode: `${closestAirCode}`,
                         }}
                       >
                         ✈️

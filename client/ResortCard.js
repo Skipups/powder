@@ -2,20 +2,19 @@ import React from "react";
 import axios from "axios";
 import WeatherfeedTable from "./WeatherfeedTable";
 import WeatherfeedHeadersTable from "./WeatherfeedHeadersTable";
-import snowRequest from "snow-forecast-sfr";
 
 class ResortCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       resortForecast: [],
-      name: this.props.resortName,
       loading: true,
+      destinationAirport: "",
     };
   }
 
   componentDidMount() {
-    const { resortName } = this.props;
+    const resortName = this.props.resort.name;
     let resort;
     let groupedByDayMatrix = [];
 
@@ -27,7 +26,6 @@ class ResortCard extends React.Component {
         groupedByDayMatrix = this.grouped(resort.forecast);
 
         this.setState({ resortForecast: groupedByDayMatrix, loading: false });
-        console.log("this.state.resortForecast", this.state.resortForecast);
       })
       .catch((e) => {
         console.error(e);
@@ -63,7 +61,8 @@ class ResortCard extends React.Component {
   };
 
   render() {
-    const { loading, resortForecast, name } = this.state;
+    const { loading, resortForecast } = this.state;
+    const { name, closestAirCode } = this.props.resort;
 
     if (loading) {
       return <div>searching for a storm...</div>;
@@ -80,6 +79,7 @@ class ResortCard extends React.Component {
             <WeatherfeedTable
               resortForecast={resortForecast}
               resortName={name}
+              closestAirCode={closestAirCode}
             />
           </div>
         </div>
