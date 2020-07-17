@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { Pass } = require("../db/index");
+const { Pass, Resort } = require("../db/index");
 const chalk = require("chalk");
 
 const apiPasses = Router();
@@ -9,6 +9,14 @@ apiPasses.get("/passes", (req, res, next) => {
     .then((foundPasses) => {
       res.status(200).send(foundPasses);
     })
+    .catch((e) => next());
+});
+
+apiPasses.get("/passes/:selectedPass", (req, res, next) => {
+  let selectedPass = req.params.selectedPass;
+  Pass.findOne({ where: { name: selectedPass }, include: [{ model: Resort }] })
+
+    .then((foundPass) => res.status(200).send(foundPass))
     .catch((e) => next());
 });
 

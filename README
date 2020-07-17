@@ -15,3 +15,16 @@ July 6th to be done:
   pass nav info down
 
 3. heroku
+
+
+
+1. how do i switch back and forth from production and dev db?
+2. why are some epic resorts not coming through
+3. git vulnerability
+4. From resort card I pass closestAirCode={closestAirCode} multiple times, ended up passing instead of api call
+5. can't reload origin unless I start over app
+6. is this a single page application
+7. what if there isn't a direct flight, how do I choose the closest aircode
+
+July 16
+getting error when mountain collective pass selected can't read map of undefined. how can i use devtools for this?

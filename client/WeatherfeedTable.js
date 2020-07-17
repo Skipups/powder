@@ -6,13 +6,17 @@ import DayCard from "./DayCard";
 
 //need to move to utils folder?
 
-const WeatherfeedTable = ({ resortName, resortForecast }) => {
+const WeatherfeedTable = ({ resortName, resortForecast, closestAirCode }) => {
   return (
     <div>
       <table className="weatherfeed-table">
         {resortForecast.map((dayForecast) =>
           dayForecast.length >= 1 ? (
-            <DayCard dayForecast={dayForecast} resortName={resortName} />
+            <DayCard
+              dayForecast={dayForecast}
+              resortName={resortName}
+              closestAirCode={closestAirCode}
+            />
           ) : (
             <div></div>
           )

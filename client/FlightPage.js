@@ -8,7 +8,7 @@ class FlightPage extends React.Component {
     this.state = {
       selected: "",
       loading: true,
-      closestAirCode: "",
+      closestAirCode: props.location.state.closestAirCode,
       resortName: props.location.state.resortName,
       departingDate: props.location.state.date,
       departingAirCode: props.location.state.originAirport,
@@ -17,20 +17,20 @@ class FlightPage extends React.Component {
   }
   //make db request here before flight info
   componentDidMount() {
-    let resortName = this.state.resortName;
-    let resortResponse = {};
-    let resortAirport = "";
-    axios
-      .get(`/api/resortRequest/${resortName}`)
-      .then((response) => {
-        resortResponse = response.data;
-        resortAirport = resortResponse.closestAirCode;
-        console.log("resportAiport string", resortAirport);
-        this.setState({ closestAirCode: resortAirport });
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    // let resortName = this.state.resortName;
+    // let resortResponse = {};
+    // let resortAirport = "";
+    // axios
+    //   .get(`/api/resortRequest/${resortName}`)
+    //   .then((response) => {
+    //     resortResponse = response.data;
+    //     resortAirport = resortResponse.closestAirCode;
+    //     console.log("resportAiport string", resortAirport);
+    //     this.setState({ closestAirCode: resortAirport });
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error);
+    //   });
     const { closestAirCode, departingDate, departingAirCode } = this.state;
     let flightInfo = {};
     let withSeats = []; // array of unique flights and available seats
