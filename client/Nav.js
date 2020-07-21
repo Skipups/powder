@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Link } from "@reach/router";
 import { Consumer } from "./OriginAirSearchContext";
+import OriginAirportForm from "./OriginAirportForm.js";
 
 class Nav extends React.Component {
   render() {
@@ -17,6 +18,7 @@ class Nav extends React.Component {
                 onChange={context.handleOriginAirportChange}
               />
             </fieldset>
+            <OriginAirportForm />
           </div>
         )}
       </Consumer>

@@ -28,3 +28,11 @@ July 6th to be done:
 
 July 16
 getting error when mountain collective pass selected can't read map of undefined. how can i use devtools for this?
+
+1. form validations see if airport codes work, needs to be a valid code
+2. enter another code on the flight page
+3. get logos of resorts https://www.snow-forecast.com/logos/Breckenridge.jpg
+4. check for airport validations https://docs.kiwi.com/#header-table-of-contents
+  a. airport code valisation api https://rapidapi.com/iatacodes/api/iatacodes
+5. weather icons
+5. CSS it up

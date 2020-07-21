@@ -37,6 +37,8 @@ class PassPage extends React.Component {
           participatingResorts: participatingResorts,
           loading: false,
         });
+
+        console.log("participating resorts", this.state.participatingResorts);
       })
       .catch((e) => {
         console.error(e);

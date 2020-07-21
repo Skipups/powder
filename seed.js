@@ -24,10 +24,12 @@ async function syncAndSeedDatabase() {
       taos,
     ] = await Resort.bulkCreate(mountainCList);
     const [ikon, epic, mc] = await Pass.bulkCreate(passList);
+
+    // await ikon.setPasses([taos, aspen])
     //creating exclusive epic resorts
     let joinedEpicResorts = await Promise.all(
-      createdEpicList.map(async (res) => {
-        await ResortPass.create({
+      createdEpicList.map((res) => {
+        ResortPass.create({
           resortId: res.id,
           passId: epic.id,
         });

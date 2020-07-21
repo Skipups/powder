@@ -1,37 +1,34 @@
 import React from "react";
 
 class OriginAirportForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: "",
-    };
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-  // handleChange(event) {
-  //   console.log("event", event);
-  //   this.setState({ value: event.target.value }, () => {
-  //     if (this.props.onChange) {
-  //       this.props.onChange(this.state.value);
-  //     }
-  //   });
-  // }
-  handleSubmit(event) {
-    alert("A name was submitted: " + this.state.value);
+  state = {
+    value: "",
+    valueError: "Not a valid Airport Code",
+  };
+
+  handleChange = (event) => {
+    console.log("event", event);
+    console.log(event.target.value);
+    this.setState({ [event.target.value]: event.target.value });
+  };
+  handleSubmit = (event) => {
     event.preventDefault();
-  }
+    console.log(this.state);
+  };
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <label>
-          Enter Origin AirportCode:
+        <label>Origin AirportCode:</label>
+        <div>
           <input
-            type="text"
+            name="value"
             value={this.state.value}
-            placeholder="SEA"
-            onChange={this.props.changeHandler}
+            placeholder="Airport code"
+            onChange={() => this.handleChange}
           />
-        </label>
+        </div>
+        <div style={{ color: "red" }}>{this.state.valueError}</div>
+
         <input type="submit" value="Submit" />
       </form>
     );

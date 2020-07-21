@@ -13,6 +13,7 @@ apiPasses.get("/passes", (req, res, next) => {
 });
 
 apiPasses.get("/passes/:selectedPass", (req, res, next) => {
+  console.log(chalk.red(req.params.selectedPass));
   let selectedPass = req.params.selectedPass;
   Pass.findOne({ where: { name: selectedPass }, include: [{ model: Resort }] })
 
