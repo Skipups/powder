@@ -5,7 +5,7 @@ const apiFlightRequest = Router();
 
 apiFlightRequest.get("/flightRequest", (req, res) => {
   let { closestAirCode, departingDate, departingAirCode } = req.body;
-  console.log("***********inside flightRequest");
+
   axios({
     method: "GET",
     url:

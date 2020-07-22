@@ -1,8 +1,9 @@
 import React from "react";
 
 const OriginAirSearchContext = React.createContext({
-  originAirport: "SEA",
-  handleOriginAirportChange() {},
+  airport: "",
+  handleChange() {},
+  handleSubmit() {},
 });
 
 export const Provider = OriginAirSearchContext.Provider; //entrance portal

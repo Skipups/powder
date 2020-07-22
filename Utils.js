@@ -2,7 +2,7 @@
 const cleanedResortString = (str) => {
   const resortCleaned1 = str.replace(/\s/g, "-");
   const resortCleaned2 = resortCleaned1.replace(/\./g, "");
-  console.log(str, resortCleaned2);
+
   return resortCleaned2;
 };
 
@@ -19,8 +19,6 @@ const cleanedDepartureDate = (str) => {
 
   let day = str.split(" ")[2];
   let yr = str.split(" ")[3];
-  console.log("month", month, "day", day, "yr", yr);
-  console.log(`${day}/${month}/${yr}`);
 
   return `${day}/${month}/${yr}`;
 };

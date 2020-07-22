@@ -71,7 +71,7 @@ class DayCard extends React.Component {
                         to={`/flightDestination/${cleanedResortName}`}
                         state={{
                           date: `${cleaneddepartureDate}`,
-                          originAirport: `${context.originAirport}`,
+                          originAirport: `${context.airport}`,
                           resortName: `${resortName}`,
                           closestAirCode: `${closestAirCode}`,
                         }}

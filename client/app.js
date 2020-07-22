@@ -13,12 +13,25 @@ class App extends React.Component {
     super(props);
     this.state = {
       originAirport: "JFK",
+      airport: "",
       handleOriginAirportChange: this.handleOriginAirportChange,
+      handleChange: this.handleChange,
+      handleSubmit: this.handleSubmit,
     };
   }
   handleOriginAirportChange = (e) => {
     const capatilized = e.target.value.toUpperCase();
     this.setState({ originAirport: capatilized });
+  };
+
+  handleChange = (event) => {
+    const capatilized = event.target.value.toUpperCase();
+    this.setState({ airport: capatilized });
+  };
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    console.log("submited", this.state.airport);
   };
   render() {
     return (

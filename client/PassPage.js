@@ -37,8 +37,6 @@ class PassPage extends React.Component {
           participatingResorts: participatingResorts,
           loading: false,
         });
-
-        console.log("participating resorts", this.state.participatingResorts);
       })
       .catch((e) => {
         console.error(e);
@@ -50,7 +48,6 @@ class PassPage extends React.Component {
       return <div>finding participating resorts... elevator music</div>;
     } else {
       return this.state.participatingResorts.map((resort) => {
-        console.log(resort);
         return <ResortCard resort={resort} />;
       });
     }
