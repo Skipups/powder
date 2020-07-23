@@ -370,43 +370,33 @@ var FlightPage = /*#__PURE__*/function (_React$Component) {
       closestAirCode: props.location.state.closestAirCode,
       resortName: props.location.state.resortName,
       departingDate: props.location.state.date,
-      airport: props.ariport,
+      airport: props.airport,
       flightInfo: []
     };
+    _this.flightRequestFunction = _this.flightRequestFunction.bind(_assertThisInitialized(_this));
     return _this;
-  } //make db request here before flight info
-
+  }
 
   _createClass(FlightPage, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps, prevState) {
+      if (this.props.airport !== prevProps.airport) {
+        this.flightRequestFunction();
+      }
+    }
+  }, {
+    key: "flightRequestFunction",
+    value: function flightRequestFunction() {
       var _this2 = this;
 
-      // let resortName = this.state.resortName;
-      // let resortResponse = {};
-      // let resortAirport = "";
-      // axios
-      //   .get(`/api/resortRequest/${resortName}`)
-      //   .then((response) => {
-      //     resortResponse = response.data;
-      //     resortAirport = resortResponse.closestAirCode;
-      //     console.log("resportAiport string", resortAirport);
-      //     this.setState({ closestAirCode: resortAirport });
-      //   })
-      //   .catch(function (error) {
-      //     console.log(error);
-      //   });
-      var _this$state = this.state,
-          closestAirCode = _this$state.closestAirCode,
-          departingDate = _this$state.departingDate;
-      var airport = this.props.airport;
-      var value = this.context;
-      console.log("value", value);
-      console.log("new airport", this.props.airport);
       var flightInfo = {};
       var withSeats = []; // array of unique flights and available seats
 
       var uniqueFlights = [];
+      var _this$state = this.state,
+          closestAirCode = _this$state.closestAirCode,
+          departingDate = _this$state.departingDate;
+      var airport = this.props.airport;
       axios__WEBPACK_IMPORTED_MODULE_1___default()({
         method: "GET",
         url: "https://api.skypicker.com/flights?flyFrom=".concat(airport, "&to=").concat(closestAirCode, "&dateFrom=").concat(departingDate, "&partner=picky&v=3&curr=USD&max_stopovers=0")
@@ -435,6 +425,11 @@ var FlightPage = /*#__PURE__*/function (_React$Component) {
       })["catch"](function (error) {
         console.log(error);
       });
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.flightRequestFunction();
     }
   }, {
     key: "render",

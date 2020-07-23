@@ -12,21 +12,22 @@ class FlightPage extends React.Component {
       closestAirCode: props.location.state.closestAirCode,
       resortName: props.location.state.resortName,
       departingDate: props.location.state.date,
-      airport: props.ariport,
+      airport: props.airport,
       flightInfo: [],
     };
+    this.flightRequestFunction = this.flightRequestFunction.bind(this);
   }
-  //making api request for flight info
-  //why am I not getting a 2nd api request when i submit a new airport code??
-  componentDidMount() {
-    const { closestAirCode, departingDate } = this.state;
-    const { airport } = this.props;
-    let value = this.context;
-    console.log("value", value); // this doesn't get called again!! Only after the initial render
-    console.log("new airport", this.props.airport);
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.airport !== prevProps.airport) {
+      this.flightRequestFunction();
+    }
+  }
+  flightRequestFunction() {
     let flightInfo = {};
     let withSeats = []; // array of unique flights and available seats
     let uniqueFlights = [];
+    const { closestAirCode, departingDate } = this.state;
+    const { airport } = this.props;
     axios({
       method: "GET",
       url: `https://api.skypicker.com/flights?flyFrom=${airport}&to=${closestAirCode}&dateFrom=${departingDate}&partner=picky&v=3&curr=USD&max_stopovers=0`,
@@ -54,6 +55,11 @@ class FlightPage extends React.Component {
         console.log(error);
       });
   }
+
+  componentDidMount() {
+    this.flightRequestFunction();
+  }
+
   render() {
     const { loading, flightInfo } = this.state;
     const { airport } = this.props;
