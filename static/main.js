@@ -206,7 +206,7 @@ var DayCard = /*#__PURE__*/function (_React$Component) {
             return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
               key: dataPoint.time
             }, dataPoint.maxTemp);
-          }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tfoot", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reach_router__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tfoot", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, context.airport !== closestAirCode ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reach_router__WEBPACK_IMPORTED_MODULE_1__["Link"], {
             to: "/flightDestination/".concat(cleanedResortName),
             state: {
               date: "".concat(cleaneddepartureDate),
@@ -214,7 +214,7 @@ var DayCard = /*#__PURE__*/function (_React$Component) {
               resortName: "".concat(resortName),
               closestAirCode: "".concat(closestAirCode)
             }
-          }, "\u2708\uFE0F"))))));
+          }, "\u2708\uFE0F") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "\uD83D\uDED1"))))));
         });
       } else return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
     }
@@ -385,6 +385,9 @@ var FlightPage = /*#__PURE__*/function (_React$Component) {
       }
     }
   }, {
+    key: "validateDiffLocations",
+    value: function validateDiffLocations(orginAir, destinationAir) {}
+  }, {
     key: "flightRequestFunction",
     value: function flightRequestFunction() {
       var _this2 = this;
@@ -397,6 +400,7 @@ var FlightPage = /*#__PURE__*/function (_React$Component) {
           closestAirCode = _this$state.closestAirCode,
           departingDate = _this$state.departingDate;
       var airport = this.props.airport;
+      console.log("airport, closestAirCode, departingDate", this.props.airport, this.state.closestAirCode, departingDate);
       axios__WEBPACK_IMPORTED_MODULE_1___default()({
         method: "GET",
         url: "https://api.skypicker.com/flights?flyFrom=".concat(airport, "&to=").concat(closestAirCode, "&dateFrom=").concat(departingDate, "&partner=picky&v=3&curr=USD&max_stopovers=0")
@@ -555,8 +559,10 @@ __webpack_require__.r(__webpack_exports__);
 
 var OriginAirSearchContext = react__WEBPACK_IMPORTED_MODULE_0___default.a.createContext({
   airport: "",
+  airportError: "",
   handleChange: function handleChange() {},
-  handleSubmit: function handleSubmit() {}
+  handleSubmit: function handleSubmit() {},
+  validateLength: function validateLength() {}
 });
 var Provider = OriginAirSearchContext.Provider; //entrance portal
 
@@ -618,11 +624,15 @@ var OriginAirportForm = /*#__PURE__*/function (_React$Component) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_OriginAirSearchContext__WEBPACK_IMPORTED_MODULE_1__["Consumer"], null, function (context) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
           onSubmit: context.handleSubmit
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Origin AirportCode:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-          value: context.airport // placeholder="Airport code"
-          ,
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Origin Airportcode:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          value: context.airport,
+          placeholder: "LGA",
           onChange: context.handleChange
-        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          style: {
+            color: "red"
+          }
+        }, context.airportError), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           type: "submit"
         }, "submit"));
       });
@@ -1367,14 +1377,6 @@ var App = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
 
-    _defineProperty(_assertThisInitialized(_this), "handleOriginAirportChange", function (e) {
-      var capatilized = e.target.value.toUpperCase();
-
-      _this.setState({
-        originAirport: capatilized
-      });
-    });
-
     _defineProperty(_assertThisInitialized(_this), "handleChange", function (event) {
       var capatilized = event.target.value.toUpperCase();
 
@@ -1383,17 +1385,46 @@ var App = /*#__PURE__*/function (_React$Component) {
       });
     });
 
+    _defineProperty(_assertThisInitialized(_this), "validateLength", function () {
+      console.log("vl");
+      var airportError = "";
+
+      if (_this.state.airport.length !== 3) {
+        airportError = "invalid airport code";
+        console.log(airportError);
+      }
+
+      if (airportError) {
+        _this.setState({
+          airportError: airportError
+        });
+
+        return false;
+      }
+
+      return true;
+    });
+
     _defineProperty(_assertThisInitialized(_this), "handleSubmit", function (event) {
       event.preventDefault();
-      console.log("submited", _this.state.airport);
+
+      var isValid = _this.validateLength();
+
+      if (isValid) {
+        console.log("submited", _this.state.airport); //clear error if aircode valid length
+
+        _this.setState({
+          airportError: ""
+        });
+      }
     });
 
     _this.state = {
-      originAirport: "JFK",
       airport: "",
-      handleOriginAirportChange: _this.handleOriginAirportChange,
+      airportError: "",
       handleChange: _this.handleChange,
-      handleSubmit: _this.handleSubmit
+      handleSubmit: _this.handleSubmit,
+      validateLength: _this.validateLength
     };
     return _this;
   }

@@ -39,3 +39,19 @@ getting error when mountain collective pass selected can't read map of undefined
 
 July 23
 1. flightpage 2 api calls- clean up code?
+2. airline names not dislayed just code
+3. origin not valid code- display error response from api
+4. origin and destination are the same
+
+
+
+Resolved issues list:
+1. FlightPage - needed to have functionality to submit new airport codes after initial api call. 
+  Bug- my api call was inside CDM and wasn't being triggered when the props aircode changed
+  Misunderstanding- CDm would rerender on prop change
+  how I fixed it- moved logic for api call into separate function added CDUpdate
+  what I know now- CDM only gets triggered once
+2. when there is no aiport code entered defaults to MSP
+2. flight data coming back
+3. when submitting an empty or invalid airport code, flights would still popuate with a random origin
+  was uning static url

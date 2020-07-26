@@ -7,15 +7,15 @@ class OriginAirportForm extends React.Component {
       <Consumer>
         {(context) => (
           <form onSubmit={context.handleSubmit}>
-            <label>Origin AirportCode:</label>
+            <label>Origin Airportcode:</label>
             <div>
               <input
                 value={context.airport}
-                // placeholder="Airport code"
+                placeholder="LGA"
                 onChange={context.handleChange}
               />
             </div>
-            {/* <div style={{ color: "red" }}>{this.state.valueError}</div> */}
+            <div style={{ color: "red" }}>{context.airportError}</div>
             <button type="submit">submit</button>
           </form>
         )}

@@ -22,12 +22,20 @@ class FlightPage extends React.Component {
       this.flightRequestFunction();
     }
   }
+  validateDiffLocations(orginAir, destinationAir) {}
   flightRequestFunction() {
     let flightInfo = {};
     let withSeats = []; // array of unique flights and available seats
     let uniqueFlights = [];
     const { closestAirCode, departingDate } = this.state;
     const { airport } = this.props;
+    console.log(
+      "airport, closestAirCode, departingDate",
+      this.props.airport,
+      this.state.closestAirCode,
+      departingDate
+    );
+
     axios({
       method: "GET",
       url: `https://api.skypicker.com/flights?flyFrom=${airport}&to=${closestAirCode}&dateFrom=${departingDate}&partner=picky&v=3&curr=USD&max_stopovers=0`,

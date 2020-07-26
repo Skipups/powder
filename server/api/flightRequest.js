@@ -5,11 +5,15 @@ const apiFlightRequest = Router();
 
 apiFlightRequest.get("/flightRequest", (req, res) => {
   let { closestAirCode, departingDate, departingAirCode } = req.body;
-
+  console.log(
+    "closestAirCode, departingDate, departingAirCode ",
+    closestAirCode,
+    departingDate,
+    departingAirCode
+  );
   axios({
     method: "GET",
-    url:
-      "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/SFO-sky/JFK-sky/2019-09-01",
+    url: `https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/${departingAirCode}-sky/${closestAirCode}-sky/${departingDate}`,
     headers: {
       "content-type": "application/octet-stream",
       "x-rapidapi-host":
