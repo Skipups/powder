@@ -20,7 +20,6 @@ class PowderHome extends React.Component {
     axios
       .get("api/passes")
       .then((res) => {
-        console.log("api/passes", res);
         passes = res.data;
         this.setState({ passes: passes, loading: false });
       })

@@ -67,17 +67,21 @@ class DayCard extends React.Component {
                 <tfoot>
                   <tr>
                     <td>
-                      <Link
-                        to={`/flightDestination/${cleanedResortName}`}
-                        state={{
-                          date: `${cleaneddepartureDate}`,
-                          originAirport: `${context.originAirport}`,
-                          resortName: `${resortName}`,
-                          closestAirCode: `${closestAirCode}`,
-                        }}
-                      >
-                        ✈️
-                      </Link>
+                      {context.airport !== closestAirCode ? (
+                        <Link
+                          to={`/flightDestination/${cleanedResortName}`}
+                          state={{
+                            date: `${cleaneddepartureDate}`,
+                            originAirport: `${context.airport}`,
+                            resortName: `${resortName}`,
+                            closestAirCode: `${closestAirCode}`,
+                          }}
+                        >
+                          ✈️
+                        </Link>
+                      ) : (
+                        <div>🛑</div>
+                      )}
                     </td>
                   </tr>
                 </tfoot>

@@ -12,13 +12,41 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      originAirport: "JFK",
-      handleOriginAirportChange: this.handleOriginAirportChange,
+      airport: "",
+      airportError: "",
+      handleChange: this.handleChange,
+      handleSubmit: this.handleSubmit,
+      validateLength: this.validateLength,
     };
   }
-  handleOriginAirportChange = (e) => {
-    const capatilized = e.target.value.toUpperCase();
-    this.setState({ originAirport: capatilized });
+
+  handleChange = (event) => {
+    const capatilized = event.target.value.toUpperCase();
+    this.setState({ airport: capatilized });
+  };
+  validateLength = () => {
+    console.log("vl");
+    let airportError = "";
+    if (this.state.airport.length !== 3) {
+      airportError = "invalid airport code";
+      console.log(airportError);
+    }
+    if (airportError) {
+      this.setState({ airportError });
+      return false;
+    }
+    return true;
+  };
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    const isValid = this.validateLength();
+    if (isValid) {
+      console.log("submited", this.state.airport);
+
+      //clear error if aircode valid length
+      this.setState({ airportError: "" });
+    }
   };
   render() {
     return (

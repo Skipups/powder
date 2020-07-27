@@ -48,7 +48,6 @@ class PassPage extends React.Component {
       return <div>finding participating resorts... elevator music</div>;
     } else {
       return this.state.participatingResorts.map((resort) => {
-        console.log(resort);
         return <ResortCard resort={resort} />;
       });
     }

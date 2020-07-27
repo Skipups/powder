@@ -13,7 +13,7 @@ const passList = [
   },
   {
     id: 902,
-    name: "Mountain Collective",
+    name: "MountainCollective",
     image:
       "https://www.skiutah.com/blog/authors/erika/want-to-save-on-2017-18-lift-tickets/listing_picture_override/hero--xl",
   },

@@ -28,3 +28,31 @@ July 6th to be done:
 
 July 16
 getting error when mountain collective pass selected can't read map of undefined. how can i use devtools for this?
+
+1. form validations see if airport codes work, needs to be a valid code
+2. enter another code on the flight page
+3. get logos of resorts https://www.snow-forecast.com/logos/Breckenridge.jpg
+4. check for airport validations https://docs.kiwi.com/#header-table-of-contents
+  a. airport code valisation api https://rapidapi.com/iatacodes/api/iatacodes
+5. weather icons
+5. CSS it up
+
+July 23
+1. flightpage 2 api calls- clean up code?
+2. airline names not dislayed just code
+3. origin not valid code- display error response from api
+4. origin and destination are the same
+
+
+
+Resolved issues list:
+1. FlightPage - needed to have functionality to submit new airport codes after initial api call. 
+  Bug- my api call was inside CDM and wasn't being triggered when the props aircode changed
+  Misunderstanding- CDm would rerender on prop change
+  how I fixed it- moved logic for api call into separate function added CDUpdate
+  what I know now- CDM only gets triggered once
+2. when there is no aiport code entered defaults to MSP
+2. flight data coming back
+3. when submitting an empty or invalid airport code, flights would still popuate with a random origin
+  was uning static urls
+4. date configuration for flight api request wrong- no was looking a docs of wrong api!

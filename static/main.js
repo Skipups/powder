@@ -97,7 +97,6 @@
 var cleanedResortString = function cleanedResortString(str) {
   var resortCleaned1 = str.replace(/\s/g, "-");
   var resortCleaned2 = resortCleaned1.replace(/\./g, "");
-  console.log(str, resortCleaned2);
   return resortCleaned2;
 }; // input- Thu Jul 02 2020   output-  29/06/2020
 
@@ -108,14 +107,21 @@ var cleanedDepartureDate = function cleanedDepartureDate(str) {
   var month = monthNumber.toString().length === 1 ? ("0" + monthNumber).slice(-2) : monthNumber;
   var day = str.split(" ")[2];
   var yr = str.split(" ")[3];
-  console.log("month", month, "day", day, "yr", yr);
-  console.log("".concat(day, "/").concat(month, "/").concat(yr));
   return "".concat(day, "/").concat(month, "/").concat(yr);
+}; // from 30/07/2020 => 2019-09-01
+
+
+var configDepartureDateForFlightAPI = function configDepartureDateForFlightAPI(str) {
+  var yr = str.split("/")[2];
+  var month = str.split("/")[1];
+  var day = str.split("/")[0];
+  return "".concat(yr, "-").concat(month, "-").concat(day);
 };
 
 module.exports = {
   cleanedResortString: cleanedResortString,
-  cleanedDepartureDate: cleanedDepartureDate
+  cleanedDepartureDate: cleanedDepartureDate,
+  configDepartureDateForFlightAPI: configDepartureDateForFlightAPI
 };
 
 /***/ }),
@@ -209,15 +215,15 @@ var DayCard = /*#__PURE__*/function (_React$Component) {
             return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
               key: dataPoint.time
             }, dataPoint.maxTemp);
-          }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tfoot", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reach_router__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tfoot", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, context.airport !== closestAirCode ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reach_router__WEBPACK_IMPORTED_MODULE_1__["Link"], {
             to: "/flightDestination/".concat(cleanedResortName),
             state: {
               date: "".concat(cleaneddepartureDate),
-              originAirport: "".concat(context.originAirport),
+              originAirport: "".concat(context.airport),
               resortName: "".concat(resortName),
               closestAirCode: "".concat(closestAirCode)
             }
-          }, "\u2708\uFE0F"))))));
+          }, "\u2708\uFE0F") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "\uD83D\uDED1"))))));
         });
       } else return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
     }
@@ -326,6 +332,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _FlightCard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FlightCard */ "./client/FlightCard.js");
+/* harmony import */ var _OriginAirSearchContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./OriginAirSearchContext */ "./client/OriginAirSearchContext.js");
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -352,6 +361,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var FlightPage = /*#__PURE__*/function (_React$Component) {
   _inherits(FlightPage, _React$Component);
 
@@ -369,43 +379,40 @@ var FlightPage = /*#__PURE__*/function (_React$Component) {
       closestAirCode: props.location.state.closestAirCode,
       resortName: props.location.state.resortName,
       departingDate: props.location.state.date,
-      departingAirCode: props.location.state.originAirport,
+      airport: props.airport,
       flightInfo: []
     };
+    _this.flightRequestFunction = _this.flightRequestFunction.bind(_assertThisInitialized(_this));
     return _this;
-  } //make db request here before flight info
-
+  }
 
   _createClass(FlightPage, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps, prevState) {
+      if (this.props.airport !== prevProps.airport) {
+        this.flightRequestFunction();
+      }
+    }
+  }, {
+    key: "validateDiffLocations",
+    value: function validateDiffLocations(orginAir, destinationAir) {}
+  }, {
+    key: "flightRequestFunction",
+    value: function flightRequestFunction() {
       var _this2 = this;
 
-      // let resortName = this.state.resortName;
-      // let resortResponse = {};
-      // let resortAirport = "";
-      // axios
-      //   .get(`/api/resortRequest/${resortName}`)
-      //   .then((response) => {
-      //     resortResponse = response.data;
-      //     resortAirport = resortResponse.closestAirCode;
-      //     console.log("resportAiport string", resortAirport);
-      //     this.setState({ closestAirCode: resortAirport });
-      //   })
-      //   .catch(function (error) {
-      //     console.log(error);
-      //   });
-      var _this$state = this.state,
-          closestAirCode = _this$state.closestAirCode,
-          departingDate = _this$state.departingDate,
-          departingAirCode = _this$state.departingAirCode;
       var flightInfo = {};
       var withSeats = []; // array of unique flights and available seats
 
       var uniqueFlights = [];
+      var _this$state = this.state,
+          closestAirCode = _this$state.closestAirCode,
+          departingDate = _this$state.departingDate;
+      var airport = this.props.airport;
+      console.log("airport, closestAirCode, departingDate", this.props.airport, this.state.closestAirCode, departingDate);
       axios__WEBPACK_IMPORTED_MODULE_1___default()({
         method: "GET",
-        url: "https://api.skypicker.com/flights?flyFrom=".concat(departingAirCode, "&to=").concat(closestAirCode, "&dateFrom=").concat(departingDate, "&partner=picky&v=3&curr=USD&max_stopovers=0")
+        url: "https://api.skypicker.com/flights?flyFrom=".concat(airport, "&to=").concat(closestAirCode, "&dateFrom=").concat(departingDate, "&partner=picky&v=3&curr=USD&max_stopovers=0")
       }).then(function (response) {
         flightInfo = response.data; //filter data to only save flights with seats and unique flight numbers
 
@@ -433,29 +440,42 @@ var FlightPage = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.flightRequestFunction();
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this$state2 = this.state,
           loading = _this$state2.loading,
-          flightInfo = _this$state2.flightInfo,
-          departingAirCode = _this$state2.departingAirCode;
+          flightInfo = _this$state2.flightInfo;
+      var airport = this.props.airport;
 
       if (loading) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "searching for a flight ...");
       }
 
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Departure Date: ".concat(this.state.departingDate, ", Orgin Airport: ").concat(this.state.departingAirCode, ", Destination Airport: ").concat(this.state.closestAirCode)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, flightInfo.map(function (flight) {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Departure Date: ".concat(this.state.departingDate, ", Orgin Airport: ").concat(airport, ", Destination Airport: ").concat(this.state.closestAirCode)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, flightInfo.length !== 0 ? flightInfo.map(function (flight) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FlightCard__WEBPACK_IMPORTED_MODULE_2__["default"], {
           flight: flight
         });
-      })));
+      }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "No flights found")));
     }
   }]);
 
   return FlightPage;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (FlightPage); //practice redue method
+/* harmony default export */ __webpack_exports__["default"] = (function (props) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_OriginAirSearchContext__WEBPACK_IMPORTED_MODULE_3__["Consumer"], null, function (_ref) {
+    var airport = _ref.airport;
+    console.log("prrrrops", props, airport);
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(FlightPage, _extends({}, props, {
+      airport: airport
+    }));
+  });
+}); //practice redue method
 // add sort on price, arrival, take off
 
 /***/ }),
@@ -474,7 +494,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _reach_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @reach/router */ "./node_modules/@reach/router/es/index.js");
-/* harmony import */ var _OriginAirSearchContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./OriginAirSearchContext */ "./client/OriginAirSearchContext.js");
+/* harmony import */ var _OriginAirportForm_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./OriginAirportForm.js */ "./client/OriginAirportForm.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -516,14 +536,9 @@ var Nav = /*#__PURE__*/function (_React$Component) {
   _createClass(Nav, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_OriginAirSearchContext__WEBPACK_IMPORTED_MODULE_3__["Consumer"], null, function (context) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reach_router__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-          to: "/"
-        }, "Choose a Pass"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("fieldset", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("legend", null, "Enter Origin AirportCode:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-          value: context.originAirport,
-          onChange: context.handleOriginAirportChange
-        })));
-      });
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reach_router__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        to: "/"
+      }, "Choose a Pass"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_OriginAirportForm_js__WEBPACK_IMPORTED_MODULE_3__["default"], null));
     }
   }]);
 
@@ -552,12 +567,91 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
 var OriginAirSearchContext = react__WEBPACK_IMPORTED_MODULE_0___default.a.createContext({
-  originAirport: "SEA",
-  handleOriginAirportChange: function handleOriginAirportChange() {}
+  airport: "",
+  airportError: "",
+  handleChange: function handleChange() {},
+  handleSubmit: function handleSubmit() {},
+  validateLength: function validateLength() {}
 });
 var Provider = OriginAirSearchContext.Provider; //entrance portal
 
 var Consumer = OriginAirSearchContext.Consumer; // exist portal
+
+/***/ }),
+
+/***/ "./client/OriginAirportForm.js":
+/*!*************************************!*\
+  !*** ./client/OriginAirportForm.js ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _OriginAirSearchContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./OriginAirSearchContext */ "./client/OriginAirSearchContext.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+var OriginAirportForm = /*#__PURE__*/function (_React$Component) {
+  _inherits(OriginAirportForm, _React$Component);
+
+  var _super = _createSuper(OriginAirportForm);
+
+  function OriginAirportForm() {
+    _classCallCheck(this, OriginAirportForm);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(OriginAirportForm, [{
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_OriginAirSearchContext__WEBPACK_IMPORTED_MODULE_1__["Consumer"], null, function (context) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+          onSubmit: context.handleSubmit
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Origin Airportcode:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          value: context.airport,
+          placeholder: "LGA",
+          onChange: context.handleChange
+        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          style: {
+            color: "red"
+          }
+        }, context.airportError), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          type: "submit"
+        }, "submit"));
+      });
+    }
+  }]);
+
+  return OriginAirportForm;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (OriginAirportForm); // stopped at trying to pa
 
 /***/ }),
 
@@ -659,7 +753,6 @@ var PassPage = /*#__PURE__*/function (_React$Component) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "finding participating resorts... elevator music");
       } else {
         return this.state.participatingResorts.map(function (resort) {
-          console.log(resort);
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ResortCard__WEBPACK_IMPORTED_MODULE_1__["default"], {
             resort: resort
           });
@@ -746,7 +839,6 @@ var PowderHome = /*#__PURE__*/function (_React$Component) {
 
       var passes = [];
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("api/passes").then(function (res) {
-        console.log("api/passes", res);
         passes = res.data;
 
         _this2.setState({
@@ -1294,17 +1386,54 @@ var App = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
 
-    _defineProperty(_assertThisInitialized(_this), "handleOriginAirportChange", function (e) {
-      var capatilized = e.target.value.toUpperCase();
+    _defineProperty(_assertThisInitialized(_this), "handleChange", function (event) {
+      var capatilized = event.target.value.toUpperCase();
 
       _this.setState({
-        originAirport: capatilized
+        airport: capatilized
       });
     });
 
+    _defineProperty(_assertThisInitialized(_this), "validateLength", function () {
+      console.log("vl");
+      var airportError = "";
+
+      if (_this.state.airport.length !== 3) {
+        airportError = "invalid airport code";
+        console.log(airportError);
+      }
+
+      if (airportError) {
+        _this.setState({
+          airportError: airportError
+        });
+
+        return false;
+      }
+
+      return true;
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleSubmit", function (event) {
+      event.preventDefault();
+
+      var isValid = _this.validateLength();
+
+      if (isValid) {
+        console.log("submited", _this.state.airport); //clear error if aircode valid length
+
+        _this.setState({
+          airportError: ""
+        });
+      }
+    });
+
     _this.state = {
-      originAirport: "JFK",
-      handleOriginAirportChange: _this.handleOriginAirportChange
+      airport: "",
+      airportError: "",
+      handleChange: _this.handleChange,
+      handleSubmit: _this.handleSubmit,
+      validateLength: _this.validateLength
     };
     return _this;
   }
