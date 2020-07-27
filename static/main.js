@@ -108,11 +108,20 @@ var cleanedDepartureDate = function cleanedDepartureDate(str) {
   var day = str.split(" ")[2];
   var yr = str.split(" ")[3];
   return "".concat(day, "/").concat(month, "/").concat(yr);
+}; // from 30/07/2020 => 2019-09-01
+
+
+var configDepartureDateForFlightAPI = function configDepartureDateForFlightAPI(str) {
+  var yr = str.split("/")[2];
+  var month = str.split("/")[1];
+  var day = str.split("/")[0];
+  return "".concat(yr, "-").concat(month, "-").concat(day);
 };
 
 module.exports = {
   cleanedResortString: cleanedResortString,
-  cleanedDepartureDate: cleanedDepartureDate
+  cleanedDepartureDate: cleanedDepartureDate,
+  configDepartureDateForFlightAPI: configDepartureDateForFlightAPI
 };
 
 /***/ }),
@@ -447,11 +456,11 @@ var FlightPage = /*#__PURE__*/function (_React$Component) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "searching for a flight ...");
       }
 
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Departure Date: ".concat(this.state.departingDate, ", Orgin Airport: ").concat(airport, ", Destination Airport: ").concat(this.state.closestAirCode)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, flightInfo.map(function (flight) {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Departure Date: ".concat(this.state.departingDate, ", Orgin Airport: ").concat(airport, ", Destination Airport: ").concat(this.state.closestAirCode)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, flightInfo.length !== 0 ? flightInfo.map(function (flight) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FlightCard__WEBPACK_IMPORTED_MODULE_2__["default"], {
           flight: flight
         });
-      })));
+      }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "No flights found")));
     }
   }]);
 

@@ -22,5 +22,17 @@ const cleanedDepartureDate = (str) => {
 
   return `${day}/${month}/${yr}`;
 };
+// from 30/07/2020 => 2019-09-01
+const configDepartureDateForFlightAPI = (str) => {
+  let yr = str.split("/")[2];
+  let month = str.split("/")[1];
+  let day = str.split("/")[0];
 
-module.exports = { cleanedResortString, cleanedDepartureDate };
+  return `${yr}-${month}-${day}`;
+};
+
+module.exports = {
+  cleanedResortString,
+  cleanedDepartureDate,
+  configDepartureDateForFlightAPI,
+};

@@ -82,9 +82,11 @@ class FlightPage extends React.Component {
           {`Departure Date: ${this.state.departingDate}, Orgin Airport: ${airport}, Destination Airport: ${this.state.closestAirCode}`}
         </div>
         <div>
-          {flightInfo.map((flight) => (
-            <FlightCard flight={flight} />
-          ))}
+          {flightInfo.length !== 0 ? (
+            flightInfo.map((flight) => <FlightCard flight={flight} />)
+          ) : (
+            <div>No flights found</div>
+          )}
         </div>
       </div>
     );

@@ -54,4 +54,5 @@ Resolved issues list:
 2. when there is no aiport code entered defaults to MSP
 2. flight data coming back
 3. when submitting an empty or invalid airport code, flights would still popuate with a random origin
-  was uning static url
+  was uning static urls
+4. date configuration for flight api request wrong- no was looking a docs of wrong api!
