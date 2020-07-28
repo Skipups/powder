@@ -22,7 +22,7 @@ class FlightPage extends React.Component {
       this.flightRequestFunction();
     }
   }
-  validateDiffLocations(orginAir, destinationAir) {}
+
   flightRequestFunction() {
     let flightInfo = {};
     let withSeats = []; // array of unique flights and available seats
@@ -58,6 +58,7 @@ class FlightPage extends React.Component {
         }, []);
 
         this.setState({ flightInfo: uniqueFlights, loading: false });
+        console.log("this.state", this.state);
       })
       .catch((error) => {
         console.log(error);
@@ -78,15 +79,20 @@ class FlightPage extends React.Component {
 
     return (
       <div>
-        <div>
-          {`Departure Date: ${this.state.departingDate}, Orgin Airport: ${airport}, Destination Airport: ${this.state.closestAirCode}`}
-        </div>
-        <div>
-          {flightInfo.length !== 0 ? (
-            flightInfo.map((flight) => <FlightCard flight={flight} />)
-          ) : (
-            <div>No flights found</div>
-          )}
+        <div className="flightresults-container">
+          <div className="flightinfobar">
+            <div>{`Departure Date: ${this.state.departingDate}`}</div>
+            <div>{`Orgin Airport: ${airport}`}</div>
+            <div>✈</div>
+            <div>{`Destination Airport: ${this.state.closestAirCode}`}</div>
+          </div>
+          <div>
+            {flightInfo.length !== 0 ? (
+              flightInfo.map((flight) => <FlightCard flight={flight} />)
+            ) : (
+              <div>No flights found</div>
+            )}
+          </div>
         </div>
       </div>
     );
