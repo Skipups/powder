@@ -7,10 +7,15 @@ import OriginAirportForm from "./OriginAirportForm.js";
 class Nav extends React.Component {
   render() {
     return (
-      <div>
-        <Link to="/">Choose a Pass</Link>
-
-        <OriginAirportForm />
+      <div className="card nav">
+        <div className="navform">
+          <OriginAirportForm />
+        </div>
+        <div className="navlink">
+          <Link className="navlink" to="/">
+            Choose a Pass
+          </Link>
+        </div>
       </div>
     );
   }

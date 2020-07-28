@@ -266,7 +266,21 @@ var FlightCard = function FlightCard(props) {
     var hour = a.getHours();
     var min = a.getMinutes();
     var time = hour + ":" + min;
-    return time;
+    var timeValue;
+
+    if (hour > 0 && hour <= 12) {
+      timeValue = "" + hour;
+    } else if (hour > 12) {
+      timeValue = "" + (hour - 12);
+    } else if (hour == 0) {
+      timeValue = "12";
+    }
+
+    timeValue += min < 10 ? ":0" + min : ":" + min; // get minutes
+
+    timeValue += hour >= 12 ? " P.M." : " A.M."; // get AM/PM
+
+    return timeValue;
   };
 
   var airlineConverter = function airlineConverter(IATA_code) {
@@ -282,12 +296,22 @@ var FlightCard = function FlightCard(props) {
   var price = props.flight.price;
   var airline = airlineConverter(props.flight.airlines);
   var routeNum = props.flight.route[0].flight_no;
-  var seats = props.flight.availability.seats;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "resortCard-wrapper"
+  var seats = props.flight.availability.seats; //need to save airline images
+
+  console.log("ran");
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "flightresults-container card"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "resortCard-container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " ", airline, " flight number: ", routeNum), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " $", price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " departureTime: ", departureTime), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " arrivalTime: ", arrivalTime), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " available seats: ", seats)));
+    className: "imagenum"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "airline"
+  }, props.flight.airlines), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "flightnum"
+  }, "fl#: ", routeNum)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "time"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, departureTime), " - ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, arrivalTime))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "priceseats"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " $", price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " \uD83D\uDCBAseats: ", seats))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (FlightCard); //why is there no this context needed for functions in functional components
@@ -394,9 +418,6 @@ var FlightPage = /*#__PURE__*/function (_React$Component) {
       }
     }
   }, {
-    key: "validateDiffLocations",
-    value: function validateDiffLocations(orginAir, destinationAir) {}
-  }, {
     key: "flightRequestFunction",
     value: function flightRequestFunction() {
       var _this2 = this;
@@ -435,6 +456,8 @@ var FlightPage = /*#__PURE__*/function (_React$Component) {
           flightInfo: uniqueFlights,
           loading: false
         });
+
+        console.log("this.state", _this2.state);
       })["catch"](function (error) {
         console.log(error);
       });
@@ -456,11 +479,15 @@ var FlightPage = /*#__PURE__*/function (_React$Component) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "searching for a flight ...");
       }
 
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Departure Date: ".concat(this.state.departingDate, ", Orgin Airport: ").concat(airport, ", Destination Airport: ").concat(this.state.closestAirCode)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, flightInfo.length !== 0 ? flightInfo.map(function (flight) {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "flightresults-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "flightinfobar"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Departure Date: ".concat(this.state.departingDate)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Orgin Airport: ".concat(airport)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "\u2708"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Destination Airport: ".concat(this.state.closestAirCode))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, flightInfo.length !== 0 ? flightInfo.map(function (flight) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FlightCard__WEBPACK_IMPORTED_MODULE_2__["default"], {
           flight: flight
         });
-      }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "No flights found")));
+      }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "No flights found"))));
     }
   }]);
 
@@ -536,9 +563,16 @@ var Nav = /*#__PURE__*/function (_React$Component) {
   _createClass(Nav, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reach_router__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card nav"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "navform"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_OriginAirportForm_js__WEBPACK_IMPORTED_MODULE_3__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "navlink"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reach_router__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        className: "navlink",
         to: "/"
-      }, "Choose a Pass"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_OriginAirportForm_js__WEBPACK_IMPORTED_MODULE_3__["default"], null));
+      }, "Choose a Pass")));
     }
   }]);
 

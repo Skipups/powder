@@ -1,11 +1,9 @@
-
 html {
   box-sizing: border-box;
 }
 /* PowerderHome comp*/
-.wrarpper {
+.wrapper {
   width: 97%;
-  max-width: 120px;
 }
 div img {
   width: 100%;
@@ -31,32 +29,29 @@ div img {
 
 /* resortCard*/
 
-*, 
-*:before, 
+*,
+*:before,
 *:after {
   box-sizing: inherit;
 }
 
-.resortCard-wrapper{
+.resortCard-wrapper {
   width: 97%;
-	max-width: 1500px;
-	margin: 5px auto;
-	float: none;
-	background-color:pink;
+  max-width: 1500px;
+  margin: 5px auto;
+  float: none;
+  background-color: pink;
 }
 .resortCard-container {
   /*  position: relative;*/
-	display: flex;
-	flex-flow: row wrap;
-	flex: 0 1 95%;
-  
+  display: flex;
+  flex-flow: row wrap;
+  flex: 0 1 95%;
 }
 
-
-.brand-container{
-
+.brand-container {
   flex: 0 0 10%;
-  background-color:yellow
+  background-color: yellow;
 }
 
 .weatherfeed-container {
@@ -64,11 +59,11 @@ div img {
   font-size: 12px;
   line-height: 1.4em;
   color: #333;
-  background-color:lightblue;
-  flex:  0 0 85%;
+  background-color: lightblue;
+  flex: 0 0 85%;
 }
-.weatherfeedHeader-container{
-  flex:  0 0 5%;
+.weatherfeedHeader-container {
+  flex: 0 0 5%;
   font-size: 12px;
   line-height: 1.4em;
 }
@@ -78,7 +73,7 @@ div img {
   height: auto;
   padding: 0;
   margin: 0;
-  font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 10px;
   font-style: normal;
   font-weight: 400;
@@ -90,44 +85,38 @@ div img {
   width: 100%;
 }
 
-.weatherfeed-tr{
-  
-    border-color: inherit;
-    
+.weatherfeed-tr {
+  border-color: inherit;
 }
-.weatherfeed-table-days-container{
+.weatherfeed-table-days-container {
   background-color: lightcoral;
 
- 
   width: 100%;
 }
-.weatherfeed-table-days-td{
+.weatherfeed-table-days-td {
   width: 100%;
- column-span: 3;
-  padding:1px;
+  column-span: 3;
+  padding: 1px;
   flex-direction: row;
   display: flex;
   justify-content: space-evenly;
-  
 }
-.weatherfeed-table-days-div-name{
-  border:red, solid, 1px;
+.weatherfeed-table-days-div-name {
+  border: red, solid, 1px;
   padding: 3px;
   column-span: 3;
- 
- 
 }
 
-.weatherfeed-table-days-th-time{
+.weatherfeed-table-days-th-time {
   column-span: 1;
 }
-.weatherfeed-table-flightLink-td{
+.weatherfeed-table-flightLink-td {
   width: 100%;
   column-span: 3;
-   padding:1px;
-   flex-direction: row;
-   display: flex;
-   justify-content: space-evenly;
+  padding: 1px;
+  flex-direction: row;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .flightIcon:hover {
@@ -135,14 +124,87 @@ div img {
   opacity: 0.6;
 }
 
-.flightCard{
-  
+.flightCard {
 }
-/* table#wf-table a {
+/* /* table#wf-table a {
   color: #3c8dbc;
 }
 
 #wf-weatherfeed a:hover {
   color: #333;
+} */
+
+/* //FlightPage// */
+.flightresults-container {
+  font-weight: 400;
+  font-stretch: normal;
+  font-size: 16px;
+  line-height: 24px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  width: 95%;
+  margin: 5px auto;
+  background-color: yellow;
+  justify-content: space-around;
+  align-items: center;
+  color: #3c4043;
+}
+.card {
+  /*  position: relative;*/
+  display: flex;
+  flex-flow: row wrap;
+  flex: 0 1 95%;
+  background-color: pink;
+  padding: 16px 24px;
+  margin-bottom: lightgrey 1em;
+  box-sizing: border-box;
+  border-radius: 1px;
+  color: #3c4043;
+}
+/* .nav {
+  border-radius: 25px;
+  border: 2px solid blanchedalmond;
+  padding: 20px;
+} */
+.navlink {
+  text-decoration: none;
+  color: #3c4043;
+}
+.navlink:hover {
+  color: #1087e9;
 }
 
+.imagenum,
+.priceseats {
+  display: flex;
+  flex-direction: column;
+  padding: 1px, 4px, 1px, 2px;
+}
+.flightinfobar,
+.nav {
+  display: flex;
+  flex-direction: row;
+  padding: 1px, 4px, 1px, 2px;
+  justify-content: space-around;
+  align-items: center;
+  font-weight: 400;
+  font-stretch: normal;
+  font-size: 16px;
+  line-height: 24px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.flightnum {
+  font: 10px;
+  color: #3c4043;
+}
+.time span {
+  font-weight: 500;
+  font-stretch: normal;
+  font-size: 16px;
+  line-height: 24px;
+  font-family: "Google Sans", Roboto, HelveticaNeue, Arial, sans-serif;
+  letter-spacing: normal;
+  align-items: center;
+}

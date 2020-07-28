@@ -6,8 +6,19 @@ const FlightCard = (props) => {
     const hour = a.getHours();
     const min = a.getMinutes();
     const time = hour + ":" + min;
+    let timeValue;
 
-    return time;
+    if (hour > 0 && hour <= 12) {
+      timeValue = "" + hour;
+    } else if (hour > 12) {
+      timeValue = "" + (hour - 12);
+    } else if (hour == 0) {
+      timeValue = "12";
+    }
+
+    timeValue += min < 10 ? ":0" + min : ":" + min; // get minutes
+    timeValue += hour >= 12 ? " P.M." : " A.M."; // get AM/PM
+    return timeValue;
   };
 
   const airlineConverter = (IATA_code) => {
@@ -21,18 +32,26 @@ const FlightCard = (props) => {
   const airline = airlineConverter(props.flight.airlines);
   const routeNum = props.flight.route[0].flight_no;
   const seats = props.flight.availability.seats;
-
+  //need to save airline images
+  console.log("ran");
   return (
-    <div className="resortCard-wrapper">
-      <div className="resortCard-container">
-        <div>
-          {" "}
-          {airline} flight number: {routeNum}
+    <div>
+      <div className="flightresults-container card">
+        <div className="imagenum">
+          <div className="airline">{props.flight.airlines}</div>
+          <div className="flightnum">fl#: {routeNum}</div>
         </div>
-        <div> ${price}</div>
-        <div> departureTime: {departureTime}</div>
-        <div> arrivalTime: {arrivalTime}</div>
-        <div> available seats: {seats}</div>
+
+        <div className="time">
+          <div>
+            {" "}
+            <span>{departureTime}</span> - <span>{arrivalTime}</span>
+          </div>
+        </div>
+        <div className="priceseats">
+          <div> ${price}</div>
+          <div> 💺seats: {seats}</div>
+        </div>
       </div>
     </div>
   );
