@@ -43,21 +43,30 @@ div img {
   /*  position: relative;*/
   display: flex;
   flex-flow: row wrap;
-  background-color: purple;
+  border: #60696e solid 1px;
   flex: 1 0 auto;
   margin-bottom: 5px;
   overflow: auto;
+  align-items: center;
+  font-family: Georgia, sans-serif;
+}
+.resortCard-wrapper:nth-child(2n + 1) {
+  background-color: rgb(243, 243, 192);
 }
 
 .brand-container {
-  flex: 0 4 80px;
-  background-color: yellow;
+  flex: 0 4 100px;
+  font-size: 18px;
+  font-weight: 200;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 .weatherfeedHeader-container {
   flex: 0 4 20px;
-  font-size: 12px;
+  font-size: 20px;
   line-height: 1.4em;
-  justify-content: flex-end;
+  padding: 16px 10px;
 }
 
 .weatherfeed-container {
@@ -65,60 +74,49 @@ div img {
   font-size: 12px;
   line-height: 1.4em;
   color: #333;
-  background-color: lightblue;
-  flex: 10 1 600;
+
+  display: flex;
+  min-height: 100%;
+  bottom: 0;
+  flex: 1 500;
+  width: 100%;
+  text-align: center;
 }
 
 .weatherfeed-table-container {
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: row;
+
+  text-align: center;
 }
 .weatherfeedheaders-table {
   justify-content: flex-end;
 }
 
+.dayCard {
+  flex: 1 0 auto;
+  background-color: white;
+  justify-content: center;
+  border: 1px solid ghostwhite;
+}
 .dayCard-container {
   display: flex;
   flex-flow: column wrap;
   border: white solid 1px;
+  flex: 0 1 95%;
+
+  padding: 16px 24px;
 }
-/*   width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 10px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1;
-  background: 0;
-  border: 0;
-  border-collapse: collapse;
-  table-layout: auto;
-  width: 100%;
-  flex: 1 0 auto; */
-.dayCard {
-  flex: 1 0 auto;
-  background-color: white;
-  justify-content: space-evenly;
-  border: 1px solid ghostwhite;
+.dayCard-table-weekday {
+  text-align: center;
 }
 
-.weatherfeed-tr {
-  border-color: inherit;
-}
-.weatherfeed-table-days-container {
-  background-color: lightcoral;
-
-  width: 100%;
-}
 .weatherfeed-table-days-td {
   width: 100%;
   column-span: 3;
   padding: 1px;
   flex-direction: row;
   display: flex;
-  justify-content: space-evenly;
 }
 .weatherfeed-table-days-div-name {
   border: red, solid, 1px;
@@ -137,10 +135,16 @@ div img {
   display: flex;
   justify-content: space-evenly;
 }
+.flightIcon-container {
+  text-align: center;
+}
+
+.flightIcon {
+  text-decoration: none;
+}
 
 .flightIcon:hover {
-  border: 1px solid greenyellow;
-  opacity: 0.6;
+  opacity: 0.2;
 }
 
 .flightCard {
@@ -163,7 +167,7 @@ div img {
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   width: 95%;
   margin: 5px auto;
-  background-color: yellow;
+  background-color: rgb(243, 243, 192);
   justify-content: space-around;
   align-items: center;
   color: #3c4043;

@@ -9,11 +9,7 @@ const WeatherfeedHeadersTable = (props) => {
       <table className="weatherfeedheaders-table">
         <thead>
           <tr className="weatherfeed-tr">
-            <div className="weatherfeed-table-days-container">
-              <td class="weatherfeed-table-days-td">&nbsp;</td>
-              <td class="weatherfeed-table-days-td">&nbsp;</td>
-              <td class="weatherfeed-table-days-td">&nbsp;</td>
-            </div>
+            <div className="weatherfeed-table-days-container"></div>
           </tr>
         </thead>
 

@@ -22,8 +22,17 @@ const FlightCard = (props) => {
   };
 
   const airlineConverter = (IATA_code) => {
-    const airlineCodePairs = { B6: "JetBlue", DL: "Delta" };
-    return airlineCodePairs[IATA_code];
+    const airlineCodePairs = {
+      B6: "JetBlue",
+      DL: "Delta",
+      F9: "Frontier",
+      AS: "Alaska",
+      WN: "Southwest",
+      UA: "United",
+    };
+    return airlineCodePairs[IATA_code]
+      ? airlineCodePairs[IATA_code]
+      : IATA_code;
   };
 
   const departureTime = timeConverter(props.flight.dTime);
@@ -38,7 +47,7 @@ const FlightCard = (props) => {
     <div>
       <div className="flightresults-container card">
         <div className="imagenum">
-          <div className="airline">{props.flight.airlines}</div>
+          <div className="airline">{airline}</div>
           <div className="flightnum">fl#: {routeNum}</div>
         </div>
 
