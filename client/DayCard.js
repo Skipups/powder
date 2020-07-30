@@ -21,8 +21,8 @@ class DayCard extends React.Component {
         <Consumer>
           {(context) => (
             <div>
-              <table>
-                <thead>
+              <table className="dayCard-table-container">
+                <thead className="dayCard-table-weekday">
                   <tr>
                     <td> {dayForecast[0].time.split(" ")[0]}</td>
                   </tr>
@@ -66,9 +66,10 @@ class DayCard extends React.Component {
                 </tbody>
                 <tfoot>
                   <tr>
-                    <td>
+                    <td className="flightIcon-container">
                       {context.airport !== closestAirCode ? (
                         <Link
+                          className="flightIcon"
                           to={`/flightDestination/${cleanedResortName}`}
                           state={{
                             date: `${cleaneddepartureDate}`,
