@@ -23,7 +23,7 @@ div img {
 }
 
 .pass-image-container-pass:hover {
-  border-color: #ad343e;
+  border-color: rgb(212, 247, 212);
   opacity: 0.6;
 }
 
@@ -51,7 +51,7 @@ div img {
   font-family: Georgia, sans-serif;
 }
 .resortCard-wrapper:nth-child(2n + 1) {
-  background-color: rgb(243, 243, 192);
+  background-color: rgb(178, 222, 247);
 }
 
 .brand-container {
@@ -167,7 +167,7 @@ div img {
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   width: 95%;
   margin: 5px auto;
-  background-color: rgb(243, 243, 192);
+  background-color: rgb(178, 222, 247);
   justify-content: space-around;
   align-items: center;
   color: #3c4043;
@@ -177,7 +177,7 @@ div img {
   display: flex;
   flex-flow: row wrap;
   flex: 0 1 95%;
-  background-color: pink;
+  background-color: rgb(212, 247, 212);
   padding: 16px 24px;
   margin-bottom: lightgrey 1em;
   box-sizing: border-box;
