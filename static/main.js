@@ -572,7 +572,7 @@ var Nav = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reach_router__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         className: "navlink",
         to: "/"
-      }, "Choose a Pass")));
+      }, "Choose a different Pass")));
     }
   }]);
 
@@ -667,7 +667,7 @@ var OriginAirportForm = /*#__PURE__*/function (_React$Component) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_OriginAirSearchContext__WEBPACK_IMPORTED_MODULE_1__["Consumer"], null, function (context) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
           onSubmit: context.handleSubmit
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Origin Airportcode:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Input Origin Airportcode:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
           value: context.airport,
           placeholder: "LGA",
           onChange: context.handleChange
@@ -677,7 +677,7 @@ var OriginAirportForm = /*#__PURE__*/function (_React$Component) {
           }
         }, context.airportError), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           type: "submit"
-        }, "submit"));
+        }, "save"));
       });
     }
   }]);
@@ -727,19 +727,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
- // let resortsSortedByPass = {
-//   mountaincollective: [
-//     "Aspen",
-//     "Snowbird",
-//     "Alta",
-//     "Banff Sunshine",
-//     "Big Sky Resort",
-//     "Jackson Hole Mountain Resort",
-//   ],
-//   ikon: ["Snowbird", "Alta", "Big Bear Mountain", "Mt. Bachelor"],
-//   epic: ["Telluride"],
-// };
-//make api call to db to all resorts belonging to selected pass  from props
+ //make api call to db to all resorts belonging to selected pass  from props
 
 var PassPage = /*#__PURE__*/function (_React$Component) {
   _inherits(PassPage, _React$Component);
@@ -786,11 +774,13 @@ var PassPage = /*#__PURE__*/function (_React$Component) {
       if (this.state.loading) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "finding participating resorts... elevator music");
       } else {
-        return this.state.participatingResorts.map(function (resort) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "pagePage-container"
+        }, this.state.participatingResorts.map(function (resort) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ResortCard__WEBPACK_IMPORTED_MODULE_1__["default"], {
             resort: resort
           });
-        });
+        }));
       }
     }
   }]);
@@ -1135,7 +1125,7 @@ __webpack_require__.r(__webpack_exports__);
 var WeatherfeedHeadersTable = function WeatherfeedHeadersTable(props) {
   var forecast = props.forecast;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
-    className: "weatherfeed-table"
+    className: "weatherfeedheaders-table"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
     className: "weatherfeed-tr"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1164,19 +1154,19 @@ var WeatherfeedHeadersTable = function WeatherfeedHeadersTable(props) {
     "class": "weatherfeed-table-summary"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     "class": "snow"
-  }, "\u2603\uFE0F in"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+  }, "snow in"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
     "class": "weatherfeed-table-days-td"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     "class": "weatherfeed-table-summary"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     "class": "rain"
-  }, "\u2614\uFE0F in"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+  }, "rain in"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
     "class": "weatherfeed-table-days-td"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     "class": "weatherfeed-table-summary"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     "class": "temp"
-  }, "\uD83C\uDF21 max\u05AF\u05AF F")))))));
+  }, "max f")))))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (WeatherfeedHeadersTable);
@@ -1211,13 +1201,15 @@ var WeatherfeedTable = function WeatherfeedTable(_ref) {
       resortForecast = _ref.resortForecast,
       closestAirCode = _ref.closestAirCode;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
-    className: "weatherfeed-table"
+    className: "weatherfeed-table-container"
   }, resortForecast.map(function (dayForecast) {
-    return dayForecast.length >= 1 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_DayCard__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    return dayForecast.length >= 1 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "dayCard-container"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_DayCard__WEBPACK_IMPORTED_MODULE_4__["default"], {
       dayForecast: dayForecast,
       resortName: resortName,
       closestAirCode: closestAirCode
-    }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
+    })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
   })));
 }; //   render() {
 //     const { forecast, resortName } = this.props;

@@ -13,7 +13,7 @@ class Nav extends React.Component {
         </div>
         <div className="navlink">
           <Link className="navlink" to="/">
-            Choose a Pass
+            Choose a different Pass
           </Link>
         </div>
       </div>

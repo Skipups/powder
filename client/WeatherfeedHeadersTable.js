@@ -6,7 +6,7 @@ const WeatherfeedHeadersTable = (props) => {
 
   return (
     <div>
-      <table className="weatherfeed-table">
+      <table className="weatherfeedheaders-table">
         <thead>
           <tr className="weatherfeed-tr">
             <div className="weatherfeed-table-days-container">
@@ -31,17 +31,17 @@ const WeatherfeedHeadersTable = (props) => {
             </td>
             <td class="weatherfeed-table-days-td">
               <div class="weatherfeed-table-summary">
-                <span class="snow">☃️ in</span>
+                <span class="snow">snow in</span>
               </div>
             </td>
             <td class="weatherfeed-table-days-td">
               <div class="weatherfeed-table-summary">
-                <span class="rain">☔️ in</span>
+                <span class="rain">rain in</span>
               </div>
             </td>
             <td class="weatherfeed-table-days-td">
               <div class="weatherfeed-table-summary">
-                <span class="temp">🌡 max֯֯ F</span>
+                <span class="temp">max f</span>
               </div>
             </td>
           </tr>
