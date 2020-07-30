@@ -7,7 +7,7 @@ class OriginAirportForm extends React.Component {
       <Consumer>
         {(context) => (
           <form onSubmit={context.handleSubmit}>
-            <label>Origin Airportcode:</label>
+            <label>Input Origin Airportcode:</label>
             <div>
               <input
                 value={context.airport}
@@ -16,7 +16,7 @@ class OriginAirportForm extends React.Component {
               />
             </div>
             <div style={{ color: "red" }}>{context.airportError}</div>
-            <button type="submit">submit</button>
+            <button type="submit">save</button>
           </form>
         )}
       </Consumer>

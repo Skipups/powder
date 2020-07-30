@@ -2,19 +2,6 @@ import React from "react";
 import ResortCard from "./ResortCard";
 import axios from "axios";
 
-// let resortsSortedByPass = {
-//   mountaincollective: [
-//     "Aspen",
-//     "Snowbird",
-//     "Alta",
-//     "Banff Sunshine",
-//     "Big Sky Resort",
-//     "Jackson Hole Mountain Resort",
-//   ],
-//   ikon: ["Snowbird", "Alta", "Big Bear Mountain", "Mt. Bachelor"],
-//   epic: ["Telluride"],
-// };
-
 //make api call to db to all resorts belonging to selected pass  from props
 class PassPage extends React.Component {
   constructor(props) {
@@ -47,9 +34,13 @@ class PassPage extends React.Component {
     if (this.state.loading) {
       return <div>finding participating resorts... elevator music</div>;
     } else {
-      return this.state.participatingResorts.map((resort) => {
-        return <ResortCard resort={resort} />;
-      });
+      return (
+        <div className="pagePage-container">
+          {this.state.participatingResorts.map((resort) => {
+            return <ResortCard resort={resort} />;
+          })}
+        </div>
+      );
     }
   }
 }
