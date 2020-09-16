@@ -72,15 +72,17 @@ class ResortCard extends React.Component {
       <div className="resortCard-wrapper">
         <div className="resortCard-container">
           <div className="brand-container">{name}</div>
-          <div className="weatherfeedHeader-container">
-            <WeatherfeedHeadersTable />
-          </div>
-          <div className="weatherfeed-container">
-            <WeatherfeedTable
-              resortForecast={resortForecast}
-              resortName={name}
-              closestAirCode={closestAirCode}
-            />
+          <div className="wfandh-container">
+            <div className="weatherfeedHeader-container">
+              <WeatherfeedHeadersTable />
+            </div>
+            <div className="weatherfeed-container">
+              <WeatherfeedTable
+                resortForecast={resortForecast}
+                resortName={name}
+                closestAirCode={closestAirCode}
+              />
+            </div>
           </div>
         </div>
       </div>

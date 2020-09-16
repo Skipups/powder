@@ -56,3 +56,4 @@ Resolved issues list:
 3. when submitting an empty or invalid airport code, flights would still popuate with a random origin
   was uning static urls
 4. date configuration for flight api request wrong- no was looking a docs of wrong api!
+5. css only displaying 1 card but running multipletimes

@@ -55,18 +55,29 @@ div img {
 }
 
 .brand-container {
-  flex: 0 4 100px;
+  flex: 1 4 50px;
   font-size: 18px;
   font-weight: 200;
   align-items: center;
   justify-content: center;
   text-align: center;
+  background-color: rgb(215, 247, 178);
+}
+.wfandh-container {
+  flex: 1 1 500px;
+  width: 100%;
+  background-color: rgb(247, 178, 195);
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
 }
 .weatherfeedHeader-container {
-  flex: 0 4 20px;
+  /* flex: 0 4 20px; */
   font-size: 20px;
   line-height: 1.4em;
   padding: 16px 10px;
+  background-color: rgb(237, 247, 178);
 }
 
 .weatherfeed-container {
@@ -74,20 +85,21 @@ div img {
   font-size: 12px;
   line-height: 1.4em;
   color: #333;
-
   display: flex;
   min-height: 100%;
   bottom: 0;
-  flex: 1 500;
-  width: 100%;
+  /* flex: 1 500;
+  width: 100%; */
   text-align: center;
 }
 
 .weatherfeed-table-container {
   display: flex;
   flex-flow: row;
-
   text-align: center;
+}
+.weatherfeed-table-days-td:nth-child(2n + 1) {
+  background-color: rgb(178, 222, 247);
 }
 .weatherfeedheaders-table {
   justify-content: flex-end;
@@ -104,11 +116,17 @@ div img {
   flex-flow: column wrap;
   border: white solid 1px;
   flex: 0 1 95%;
+  background-color: rgb(235, 8, 8);
 
   padding: 16px 24px;
 }
 .dayCard-table-weekday {
-  text-align: center;
+  display: flex;
+  flex-flow: column wrap;
+  text-align: justify;
+  background-color: rgb(178, 222, 247);
+  column-span: 1;
+  align-items: center;
 }
 
 .weatherfeed-table-days-td {

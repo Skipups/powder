@@ -24,20 +24,23 @@ class DayCard extends React.Component {
               <table className="dayCard-table-container">
                 <thead className="dayCard-table-weekday">
                   <tr>
+                    {/* weekday */}
                     <td> {dayForecast[0].time.split(" ")[0]}</td>
                   </tr>
                   <tr>
+                    {/* date */}
                     <td>{dayForecast[0].date.split(" ")[2]}</td>
                   </tr>
-                </thead>
-                <tbody>
                   <tr>
+                    {/* night, AM, PM */}
                     {dayForecast.map((dataPoint) => (
                       <td key={dataPoint.time}>
                         {dataPoint.time.split(" ")[1]}
                       </td>
                     ))}
                   </tr>
+                </thead>
+                <tbody>
                   <tr>
                     {dayForecast.map((dataPoint) => (
                       <td key={dataPoint.time}>{dataPoint.wind}</td>

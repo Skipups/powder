@@ -195,11 +195,11 @@ var DayCard = /*#__PURE__*/function (_React$Component) {
             className: "dayCard-table-container"
           }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", {
             className: "dayCard-table-weekday"
-          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, " ", dayForecast[0].time.split(" ")[0])), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, dayForecast[0].date.split(" ")[2]))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, dayForecast.map(function (dataPoint) {
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, " ", dayForecast[0].time.split(" ")[0])), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, dayForecast[0].date.split(" ")[2])), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, dayForecast.map(function (dataPoint) {
             return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
               key: dataPoint.time
             }, dataPoint.time.split(" ")[1]);
-          })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, dayForecast.map(function (dataPoint) {
+          }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, dayForecast.map(function (dataPoint) {
             return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
               key: dataPoint.time
             }, dataPoint.wind);
@@ -1057,6 +1057,8 @@ var ResortCard = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "brand-container"
       }, name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "wfandh-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "weatherfeedHeader-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_WeatherfeedHeadersTable__WEBPACK_IMPORTED_MODULE_3__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "weatherfeed-container"
@@ -1064,7 +1066,7 @@ var ResortCard = /*#__PURE__*/function (_React$Component) {
         resortForecast: resortForecast,
         resortName: name,
         closestAirCode: closestAirCode
-      }))));
+      })))));
     }
   }]);
 
@@ -1189,17 +1191,9 @@ var WeatherfeedHeadersTable = function WeatherfeedHeadersTable(props) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_table__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-table */ "./node_modules/react-table/index.js");
-/* harmony import */ var react_table__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_table__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _reach_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @reach/router */ "./node_modules/@reach/router/es/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _DayCard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./DayCard */ "./client/DayCard.js");
+/* harmony import */ var _DayCard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DayCard */ "./client/DayCard.js");
 
 
-
-
- //need to move to utils folder?
 
 var WeatherfeedTable = function WeatherfeedTable(_ref) {
   var resortName = _ref.resortName,
@@ -1210,146 +1204,15 @@ var WeatherfeedTable = function WeatherfeedTable(_ref) {
   }, resortForecast.map(function (dayForecast) {
     return dayForecast.length >= 1 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "dayCard-container"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_DayCard__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_DayCard__WEBPACK_IMPORTED_MODULE_1__["default"], {
       dayForecast: dayForecast,
       resortName: resortName,
       closestAirCode: closestAirCode
     })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
   })));
-}; //   render() {
-//     const { forecast, resortName } = this.props;
-//     const { selectedDate, selectedResort } = this.state;
-//     console.log("forecast", forecast);
-//     //make a day card.
-//     // group forcast days and map over that
-//     //helper function to set correct start of day of week
-//     let weekDays = [
-//       "Sunday",
-//       "Monday",
-//       "Tuesday",
-//       "Wednesday",
-//       "Thursday",
-//       "Friday",
-//       "Saturday",
-//       "Sunday",
-//       "Monday",
-//       "Tuesday",
-//       "Wednesday",
-//       "Thursday",
-//       "Friday",
-//       "Saturday",
-//     ];
-//     const firstDayofForecast = forecast[0].time.split(" ")[0];
-//     let startIndex = weekDays.indexOf(firstDayofForecast);
-//     let sortedWeekDays = [];
-//     for (let i = startIndex; i < weekDays.length; i++) {
-//       if (sortedWeekDays.length < 6) {
-//         sortedWeekDays.push(weekDays[i]);
-//       }
-//     }
-//     let listOfTime = forecast.map((_forecast) => _forecast.time.split(" ")[1]);
-//     //helper to get date of request and next 6 days
-//     let todaysDate = forecast[0].date.split(" ")[2];
-//     let datesToDisplay = [todaysDate];
-//     while (datesToDisplay.length < 6) {
-//       todaysDate = 1 + Number(todaysDate);
-//       datesToDisplay.push(todaysDate);
-//     }
-//     let flightIconArray = [];
-//     for (let i = 0; i < weekDays.length; i++) {
-//       if (flightIconArray.length < 6) {
-//         flightIconArray.push(<span class="flightIcon">✈️</span>);
-//       }
-//     }
-//     return (
-//       <div>
-//         <table className="weatherfeed-table">
-//           <thead>
-//             <tr className="weatherfeed-tr">
-//               <div className="weatherfeed-table-days-container">
-//                 <td className="weatherfeed-table-days-td">
-//                   {sortedWeekDays.map((day) => (
-//                     <div class="weatherfeed-table-days-div-name">{day}</div>
-//                   ))}
-//                 </td>
-//                 <td className="weatherfeed-table-days-td">
-//                   {datesToDisplay.map((date) => (
-//                     <div className="weatherfeed-table-days-div-date">
-//                       {date}{" "}
-//                     </div>
-//                   ))}
-//                 </td>
-//                 <td className="weatherfeed-table-days-td">
-//                   {listOfTime.map((_time, index) => (
-//                     <div key={`${_time}+${index}`}>{_time}</div>
-//                   ))}
-//                 </td>
-//                 <td className="weatherfeed-table-days-td">
-//                   {forecast.map((_forecast, index) => (
-//                     <div key={`${_forecast.wind}+${index}`}>
-//                       {_forecast.wind}
-//                     </div>
-//                   ))}
-//                 </td>
-//                 <td className="weatherfeed-table-days-td">
-//                   {forecast.map((_forecast, index) => (
-//                     <div key={`${_forecast.summary}+${index}`}>
-//                       {_forecast.summary}
-//                     </div>
-//                   ))}
-//                 </td>
-//               </div>
-//             </tr>
-//           </thead>
-//           <tbody>
-//             <tr>
-//               <td className="weatherfeed-table-days-td">
-//                 {forecast.map((_forecast, index) => (
-//                   <div key={`${_forecast.snow}+${index}`}>{_forecast.snow}</div>
-//                 ))}
-//               </td>
-//               <td className="weatherfeed-table-days-td">
-//                 {forecast.map((_forecast, index) => (
-//                   <div key={`${_forecast.rain}+${index}`}>{_forecast.rain}</div>
-//                 ))}
-//               </td>
-//               <td className="weatherfeed-table-days-td">
-//                 {forecast.map((_forecast, index) => (
-//                   <div key={`${_forecast.maxTemp}+${index}`}>
-//                     {_forecast.maxTemp}
-//                   </div>
-//                 ))}
-//               </td>
-//             </tr>
-//           </tbody>
-//           <tfoot>
-//             <tr className="weatherfeed-tr">
-//               <div className="weatherfeed-table-days-container">
-//                 <th className="weatherfeed-table-flightLink-td">
-//                   {flightIconArray.map((icon) => (
-//                     <Link
-//                       to="/flightDestination"
-//                       // state: {
-//                       //   resortName: resortName,
-//                       // },
-//                     >
-//                       {icon}
-//                     </Link>
-//                   ))}
-//                 </th>
-//               </div>
-//             </tr>
-//           </tfoot>
-//         </table>
-//       </div>
-//     );
-//   }
-// }
+};
 
-
-/* harmony default export */ __webpack_exports__["default"] = (WeatherfeedTable); //  <Link to=`/flightDesination/${resortName}`> why doesn't this work
-// why isn't passing state in link workking?
-//@russell
+/* harmony default export */ __webpack_exports__["default"] = (WeatherfeedTable);
 
 /***/ }),
 
