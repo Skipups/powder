@@ -188,8 +188,10 @@ var DayCard = /*#__PURE__*/function (_React$Component) {
           closestAirCode = _this$props.closestAirCode;
       var cleanedResortName = Object(_Utils_js__WEBPACK_IMPORTED_MODULE_2__["cleanedResortString"])(resortName);
       var cleaneddepartureDate = dayForecast[0].date !== undefined ? Object(_Utils_js__WEBPACK_IMPORTED_MODULE_2__["cleanedDepartureDate"])(dayForecast[0].date) : ""; // sometimes a dayForecast only has length 1 or 0
+      // changed code so all daycards have same number of data points
+      // code before: if (dayForecast.length >= 1)
 
-      if (dayForecast.length >= 1) {
+      if (dayForecast.length === 3) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_OriginAirSearchContext__WEBPACK_IMPORTED_MODULE_3__["Consumer"], null, function (context) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
             className: "dayCard-table-container"
@@ -1147,31 +1149,49 @@ var WeatherfeedHeadersTable = function WeatherfeedHeadersTable(props) {
     "class": "weatherfeed-table-days-td"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     "class": "weatherfeed-table-wind"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    "class": "windu"
+  }, "day"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+    "class": "weatherfeed-table-days-td"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    "class": "weatherfeed-table-wind"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    "class": "windu"
+  }, "date"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+    "class": "weatherfeed-table-days-td"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    "class": "weatherfeed-table-wind"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    "class": "windu"
+  }, "time"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+    "class": "weatherfeed-table-days-td"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    "class": "weatherfeed-table-wind"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     "class": "windu"
   }, "mph"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
     "class": "weatherfeed-table-days-td"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     "class": "weatherfeed-table-summary"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     "class": "summary"
   }, "summary"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
     "class": "weatherfeed-table-days-td"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     "class": "weatherfeed-table-summary"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     "class": "snow"
   }, "snow in"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
     "class": "weatherfeed-table-days-td"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     "class": "weatherfeed-table-summary"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     "class": "rain"
   }, "rain in"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
     "class": "weatherfeed-table-days-td"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     "class": "weatherfeed-table-summary"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     "class": "temp"
   }, "max f")))))));
 };

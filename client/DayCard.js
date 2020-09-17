@@ -16,7 +16,9 @@ class DayCard extends React.Component {
         ? cleanedDepartureDate(dayForecast[0].date)
         : "";
     // sometimes a dayForecast only has length 1 or 0
-    if (dayForecast.length >= 1) {
+    // changed code so all daycards have same number of data points
+    // code before: if (dayForecast.length >= 1)
+    if (dayForecast.length === 3) {
       return (
         <Consumer>
           {(context) => (

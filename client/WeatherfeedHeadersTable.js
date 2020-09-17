@@ -17,27 +17,42 @@ const WeatherfeedHeadersTable = (props) => {
           <tr>
             <td class="weatherfeed-table-days-td">
               <div class="weatherfeed-table-wind">
-                <span class="windu">mph</span>
+                <div class="windu">day</div>
+              </div>
+            </td>
+            <td class="weatherfeed-table-days-td">
+              <div class="weatherfeed-table-wind">
+                <div class="windu">date</div>
+              </div>
+            </td>
+            <td class="weatherfeed-table-days-td">
+              <div class="weatherfeed-table-wind">
+                <div class="windu">time</div>
+              </div>
+            </td>
+            <td class="weatherfeed-table-days-td">
+              <div class="weatherfeed-table-wind">
+                <div class="windu">mph</div>
               </div>
             </td>
             <td class="weatherfeed-table-days-td">
               <div class="weatherfeed-table-summary">
-                <span class="summary">summary</span>
+                <div class="summary">summary</div>
               </div>
             </td>
             <td class="weatherfeed-table-days-td">
               <div class="weatherfeed-table-summary">
-                <span class="snow">snow in</span>
+                <div class="snow">snow in</div>
               </div>
             </td>
             <td class="weatherfeed-table-days-td">
               <div class="weatherfeed-table-summary">
-                <span class="rain">rain in</span>
+                <div class="rain">rain in</div>
               </div>
             </td>
             <td class="weatherfeed-table-days-td">
               <div class="weatherfeed-table-summary">
-                <span class="temp">max f</span>
+                <div class="temp">max f</div>
               </div>
             </td>
           </tr>

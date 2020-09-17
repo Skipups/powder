@@ -57,3 +57,6 @@ Resolved issues list:
   was uning static urls
 4. date configuration for flight api request wrong- no was looking a docs of wrong api!
 5. css only displaying 1 card but running multipletimes
+
+
+1. how do dynamically set dayCard widths depending on content to be inside container??
