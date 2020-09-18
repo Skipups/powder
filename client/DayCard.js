@@ -23,27 +23,32 @@ class DayCard extends React.Component {
         <Consumer>
           {(context) => (
             <div>
-              <table className="dayCard-table-container">
-                <thead className="dayCard-table-weekday">
-                  <tr>
-                    {/* weekday */}
-                    <td> {dayForecast[0].time.split(" ")[0]}</td>
-                  </tr>
-                  <tr>
-                    {/* date */}
-                    <td>{dayForecast[0].date.split(" ")[2]}</td>
-                  </tr>
-                  <tr>
-                    {/* night, AM, PM */}
-                    {dayForecast.map((dataPoint) => (
-                      <td key={dataPoint.time}>
-                        {dataPoint.time.split(" ")[1]}
+              <table className="dayCard-container">
+                <thead className="dayCard-table-heading-row">
+                  <tr className="dayCard-table-heading-col">
+                    <tr>
+                      {/* weekday */}
+                      <td className="dayCard-table-heading-tr">
+                        {" "}
+                        {dayForecast[0].time.split(" ")[0]}
                       </td>
-                    ))}
+                    </tr>
+                    <tr className="dayCard-table-heading-tr">
+                      {/* date */}
+                      <td>{dayForecast[0].date.split(" ")[2]}</td>
+                    </tr>
+                    <tr>
+                      {/* night, AM, PM */}
+                      {dayForecast.map((dataPoint) => (
+                        <td key={dataPoint.time}>
+                          {dataPoint.time.split(" ")[1]}
+                        </td>
+                      ))}
+                    </tr>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
+                <tbody className="dayCard-body">
+                  <tr className="dayCard-body-col">
                     {dayForecast.map((dataPoint) => (
                       <td key={dataPoint.time}>{dataPoint.wind}</td>
                     ))}

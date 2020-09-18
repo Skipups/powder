@@ -6,17 +6,16 @@ const WeatherfeedTable = ({ resortName, resortForecast, closestAirCode }) => {
     <div>
       <table className="weatherfeed-table-container">
         {resortForecast.map((dayForecast) =>
-          dayForecast.length >= 1 ? (
-            <div className="dayCard-container">
+          //changed code  dayForecast.length >= 1
+          dayForecast.length === 3 ? (
+            <div className="dayCard">
               <DayCard
                 dayForecast={dayForecast}
                 resortName={resortName}
                 closestAirCode={closestAirCode}
               />
             </div>
-          ) : (
-            <div></div>
-          )
+          ) : null
         )}
       </table>
     </div>
