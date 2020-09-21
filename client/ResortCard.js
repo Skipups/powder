@@ -69,13 +69,13 @@ class ResortCard extends React.Component {
     }
 
     return (
-      <div className="resortCard-wrapper">
-        <div className="resortCard-container">
-          <div className="brand-container">{name}</div>
-          <div className="weatherfeedHeader-container">
+      <div className="resortCard-container">
+        <div className="brand-container">{name}</div>
+        <div className="header-weather-container">
+          <div className="header-container">
             <WeatherfeedHeadersTable />
           </div>
-          <div className="weatherfeed-container">
+          <div className="weather-container">
             <WeatherfeedTable
               resortForecast={resortForecast}
               resortName={name}
@@ -89,51 +89,3 @@ class ResortCard extends React.Component {
 }
 
 export default ResortCard;
-
-// <WeatherfeedTable resortInfo={this.state.resortInfo} />
-{
-  /* <pre>
-<code>
-  {JSON.stringify(this.state.resortInfo.forecast, null, 4)}
-</code>
-</pre> */
-}
-
-{
-  /* <div className="resortCard-wrapper">
-        <div className="resortCard-container">
-          <div className="brand-container">{name}</div>
-          <div className="weatherfeedHeader-container">
-            <WeatherfeedHeadersTable />
-          </div>
-          <div className="weatherfeed-container">
-            <WeatherfeedTable forecast={resortForecast} resortName={name} />
-          </div>
-        </div>
-      </div> */
-}
-
-//// let i = 0;
-// let y = i > 0 ? i - 1 : 0;
-// console.log("i,y", i, y);
-// let groupedByDayMatrix = [];
-// while (i < 18) {
-//   for (let row = 0; row < 6; row++) {
-//     console.log("groupedByDayMatrix", groupedByDayMatrix);
-//     groupedByDayMatrix[row] = [];
-//     for (let col = 0; col < 3; col++) {
-//       let prev = i > 0 ? data[y].date.split(" ")[0] : 0;
-//       let current = data[i].date.split(" ")[0];
-
-//       console.log("prev", prev, "current", current);
-//       //set data for new row new column
-//       if (prev === 0 || prev === current) {
-//         groupedByDayMatrix[row][col] = data[i];
-//         i++;
-//       }
-//     }
-//   }
-// }
-
-// return groupedByDayMatrix;
-// };

@@ -23,7 +23,7 @@ div img {
 }
 
 .pass-image-container-pass:hover {
-  border-color: rgb(212, 247, 212);
+  background-color: rgb(226, 250, 206);
   opacity: 0.6;
 }
 
@@ -49,113 +49,142 @@ div img {
   overflow: auto;
   align-items: center;
   font-family: Georgia, sans-serif;
-}
-.resortCard-wrapper:nth-child(2n + 1) {
-  background-color: rgb(178, 222, 247);
+  height: 100%;
+  background-color: rgb(197, 229, 247);
+  margin-bottom: 5px;
 }
 
 .brand-container {
-  flex: 0 4 100px;
+  flex: 2 4 50px;
   font-size: 18px;
   font-weight: 200;
   align-items: center;
   justify-content: center;
   text-align: center;
 }
-.weatherfeedHeader-container {
-  flex: 0 4 20px;
-  font-size: 20px;
-  line-height: 1.4em;
-  padding: 16px 10px;
-}
-
-.weatherfeed-container {
+.header-weather-container {
+  flex: 10 1 500px;
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  border-left: 1px solid black;
   font-family: Georgia, sans-serif;
   font-size: 12px;
   line-height: 1.4em;
-  color: #333;
+}
+/*header inside reasortContainer*/
+.header-container {
+  align-self: start;
+  flex: 1;
+  border-right: 1px solid black;
+  /* Want to make this static and weather to scroll under it */
+}
 
+.r1-container:nth-child(2n + 1) {
+  background-color: rgb(199, 247, 202);
+}
+
+.dayCard-heading-row:nth-child(2n + 1) {
+  background-color: rgb(199, 247, 202);
+}
+.dayCard-body-row:nth-child(2n + 1) {
+  background-color: rgb(199, 247, 202);
+}
+.weather-container {
+  color: #333;
   display: flex;
-  min-height: 100%;
   bottom: 0;
-  flex: 1 500;
-  width: 100%;
   text-align: center;
+  width: 100%;
+  align-items: stretch;
+  flex: 11 1 500px;
 }
 
 .weatherfeed-table-container {
   display: flex;
   flex-flow: row;
+  flex: 1;
+  /* align-items: stretch; */
+  /* text-align: center; */
+}
+/* .weatherfeed-table-days-td:nth-child(2n + 1) {
+  background-color: rgb(19, 19, 2);
+} */
 
-  text-align: center;
-}
-.weatherfeedheaders-table {
-  justify-content: flex-end;
-}
+/* .weatherfeed-table-container {
+  background-color: rgb(63, 226, 63);
+  width: 100%;
+} */
 
 .dayCard {
   flex: 1 0 auto;
-  background-color: white;
   justify-content: center;
-  border: 1px solid ghostwhite;
+  border: 1px solid black;
+  height: 100%;
 }
-.dayCard-container {
+/* .dayCard:nth-child(2n + 1) {
+  background-color: rgb(244, 247, 242);
+} */
+/* .dayCard-table-heading-tr {
+
+  justify-content: right;
+} */
+
+.c1-3r-container {
+  max-height: 30%;
+}
+.c1-5r-container {
+  height: 60%;
+}
+.c1-1r-container {
+  height: 10%;
+}
+.dayCard-heading-row {
   display: flex;
-  flex-flow: column wrap;
-  border: white solid 1px;
-  flex: 0 1 95%;
+  flex: 1;
 
-  padding: 16px 24px;
+  justify-content: space-evenly;
 }
-.dayCard-table-weekday {
-  text-align: center;
+.dayCard-heading-row:first-child {
+  background-color: rgb(243, 239, 14);
 }
 
-.weatherfeed-table-days-td {
-  width: 100%;
-  column-span: 3;
-  padding: 1px;
-  flex-direction: row;
+.dayCard-body-row {
   display: flex;
+  flex: 1;
+
+  justify-content: space-evenly;
 }
-.weatherfeed-table-days-div-name {
-  border: red, solid, 1px;
-  padding: 3px;
-  column-span: 3;
+.row-3col {
+  flex: 4;
 }
 
-.weatherfeed-table-days-th-time {
-  column-span: 1;
+.row-1col {
+  flex: 1;
 }
-.weatherfeed-table-flightLink-td {
+/* .weatherfeed-table-flightLink-td {
   width: 100%;
   column-span: 3;
   padding: 1px;
   flex-direction: row;
   display: flex;
   justify-content: space-evenly;
-}
-.flightIcon-container {
-  text-align: center;
+} */
+.flightIcon-row {
+  display: flex;
+  flex: 1;
+  background-color: rgb(243, 239, 14);
+  justify-content: space-evenly;
 }
 
 .flightIcon {
   text-decoration: none;
+  text-align: center;
 }
 
 .flightIcon:hover {
   opacity: 0.2;
 }
-
-.flightCard {
-}
-/* /* table#wf-table a {
-  color: #3c8dbc;
-}
-
-#wf-weatherfeed a:hover {
-  color: #333;
-} */
 
 /* //FlightPage// */
 .flightresults-container {
@@ -177,7 +206,7 @@ div img {
   display: flex;
   flex-flow: row wrap;
   flex: 0 1 95%;
-  background-color: rgb(212, 247, 212);
+  background-color: rgb(226, 250, 206);
   padding: 16px 24px;
   margin-bottom: lightgrey 1em;
   box-sizing: border-box;

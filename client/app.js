@@ -48,6 +48,7 @@ class App extends React.Component {
       this.setState({ airportError: "" });
     }
   };
+  //Lifting state to a parent comoonenet, daycard needs airport code
   render() {
     return (
       <div>
@@ -67,13 +68,3 @@ class App extends React.Component {
 }
 
 ReactDOM.render(<App />, document.getElementById("root"));
-// state for the app that different componenets can access.
-// provider? React Context?
-// need to refactor, and learn.
-// Lifting state to a parent comoonenet. LIKE THIS ONE!
-// cons - prop drilling, (endless), a huge component this one!
-// pros - knows this works
-// Redux?
-
-// daycard, needs airport code
-// airportcode

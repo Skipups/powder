@@ -6,20 +6,10 @@ const apiFlightRequest = Router();
 
 apiFlightRequest.get("/flightRequest", (req, res) => {
   let { closestAirCode, departingDate, departingAirCode } = req.body;
-  console.log(
-    "1closestAirCode, departingDate, departingAirCode ",
-    closestAirCode,
-    departingDate,
-    departingAirCode
-  );
 
+  //use Utils function to configure date
   departingAirCode = configDepartureDateForFlightAPI(departingAirCode);
-  console.log(
-    "2closestAirCode, departingDate, departingAirCode ",
-    closestAirCode,
-    departingDate,
-    departingAirCode
-  );
+
   axios({
     method: "GET",
     url: `https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/${departingAirCode}-sky/${closestAirCode}-sky/${departingDate}`,
