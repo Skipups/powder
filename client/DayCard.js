@@ -23,80 +23,96 @@ class DayCard extends React.Component {
         <Consumer>
           {(context) => (
             <div>
-              <table className="dayCard-container">
-                <thead className="dayCard-table-heading-row">
-                  <tr className="dayCard-table-heading-col">
-                    <tr>
-                      {/* weekday */}
-                      <td className="dayCard-table-heading-tr">
-                        {" "}
-                        {dayForecast[0].time.split(" ")[0]}
-                      </td>
-                    </tr>
-                    <tr className="dayCard-table-heading-tr">
-                      {/* date */}
-                      <td>{dayForecast[0].date.split(" ")[2]}</td>
-                    </tr>
-                    <tr>
-                      {/* night, AM, PM */}
-                      {dayForecast.map((dataPoint) => (
-                        <td key={dataPoint.time}>
-                          {dataPoint.time.split(" ")[1]}
-                        </td>
-                      ))}
-                    </tr>
-                  </tr>
-                </thead>
-                <tbody className="dayCard-body">
-                  <tr className="dayCard-body-col">
-                    {dayForecast.map((dataPoint) => (
-                      <td key={dataPoint.time}>{dataPoint.wind}</td>
-                    ))}
-                  </tr>
-                  <tr>
-                    {dayForecast.map((dataPoint) => (
-                      <td key={dataPoint.time}>{dataPoint.summary}</td>
-                    ))}
-                  </tr>
-                  <tr>
-                    {dayForecast.map((dataPoint) => (
-                      <td key={dataPoint.time}>{dataPoint.rain}</td>
-                    ))}
-                  </tr>
-                  <tr>
-                    {dayForecast.map((dataPoint) => (
-                      <td key={dataPoint.time}>{dataPoint.snow}</td>
-                    ))}
-                  </tr>
-                  <tr>
-                    {dayForecast.map((dataPoint) => (
-                      <td key={dataPoint.time}>{dataPoint.maxTemp}</td>
-                    ))}
-                  </tr>
-                </tbody>
-                <tfoot>
-                  <tr>
-                    <td className="flightIcon-container">
-                      {context.airport !== closestAirCode ? (
-                        <Link
-                          className="flightIcon"
-                          to={`/flightDestination/${cleanedResortName}`}
-                          state={{
-                            date: `${cleaneddepartureDate}`,
-                            originAirport: `${context.airport}`,
-                            resortName: `${resortName}`,
-                            closestAirCode: `${closestAirCode}`,
-                          }}
-                        >
-                          ✈️
-                        </Link>
-                      ) : (
-                        <div>🛑</div>
-                      )}
-                    </td>
-                  </tr>
-                </tfoot>
-              </table>
+              <div className="c1-3r-container">
+                <div className="dayCard-heading-row">
+                  {/* weekday */}
+                  <div className="row-1col">
+                    <div className="weekday">
+                      {" "}
+                      {dayForecast[0].time.split(" ")[0]}
+                    </div>
+                  </div>
+                </div>
+                <div className="dayCard-heading-row">
+                  {/* date */}
+                  <div className="row-1col">
+                    <div className="date">
+                      {dayForecast[0].date.split(" ")[2]}
+                    </div>
+                  </div>
+                </div>
+                <div className="dayCard-heading-row">
+                  {/* night, AM, PM */}
+                  {dayForecast.map((dataPoint) => (
+                    <div className="row-3col">
+                      <div className="nightAMPM" key={dataPoint.time}>
+                        {dataPoint.time.split(" ")[1]}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="c1-5r-container">
+                <div className="dayCard-body-row"></div>
+                <div className="dayCard-body-row">
+                  {dayForecast.map((dataPoint) => (
+                    <div className="row-3col">
+                      <div key={dataPoint.time}>{dataPoint.wind}</div>
+                    </div>
+                  ))}
+                </div>
+                <div className="dayCard-body-row">
+                  {dayForecast.map((dataPoint) => (
+                    <div className="row-3col">
+                      <div key={dataPoint.time}>{dataPoint.summary}</div>
+                    </div>
+                  ))}
+                </div>
+                <div className="dayCard-body-row">
+                  {dayForecast.map((dataPoint) => (
+                    <div className="row-3col">
+                      <div key={dataPoint.time}>{dataPoint.rain}</div>
+                    </div>
+                  ))}
+                </div>
+                <div className="dayCard-body-row">
+                  {dayForecast.map((dataPoint) => (
+                    <div className="row-3col">
+                      <div key={dataPoint.time}>{dataPoint.snow}</div>
+                    </div>
+                  ))}
+                </div>
+                <div className="dayCard-body-row">
+                  {dayForecast.map((dataPoint) => (
+                    <div className="row-3col">
+                      <div key={dataPoint.time}>{dataPoint.maxTemp}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="c1-1r-container">
+                <div className="flightIcon-row">
+                  <div className="row-1col">
+                    {context.airport !== closestAirCode ? (
+                      <Link
+                        className="flightIcon"
+                        to={`/flightDestination/${cleanedResortName}`}
+                        state={{
+                          date: `${cleaneddepartureDate}`,
+                          originAirport: `${context.airport}`,
+                          resortName: `${resortName}`,
+                          closestAirCode: `${closestAirCode}`,
+                        }}
+                      >
+                        ✈️
+                      </Link>
+                    ) : (
+                      <div>🛑</div>
+                    )}
+                  </div>
+                </div>
+              </div>
             </div>
           )}
         </Consumer>

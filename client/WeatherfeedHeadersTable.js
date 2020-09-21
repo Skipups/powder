@@ -6,58 +6,40 @@ const WeatherfeedHeadersTable = (props) => {
 
   return (
     <div>
-      <table className="weatherfeedheaders-table">
-        <thead>
+      {/* <div className="weatherfeedheaders-table">
+      
           <tr className="weatherfeed-tr">
             <div className="weatherfeed-table-days-container"></div>
-          </tr>
-        </thead>
+          </tr> */}
 
-        <tbody>
-          <tr>
-            <td class="weatherfeed-table-days-td">
-              <div class="weatherfeed-table-wind">
-                <div class="windu">day</div>
-              </div>
-            </td>
-            <td class="weatherfeed-table-days-td">
-              <div class="weatherfeed-table-wind">
-                <div class="windu">date</div>
-              </div>
-            </td>
-            <td class="weatherfeed-table-days-td">
-              <div class="weatherfeed-table-wind">
-                <div class="windu">time</div>
-              </div>
-            </td>
-            <td class="weatherfeed-table-days-td">
-              <div class="weatherfeed-table-wind">
-                <div class="windu">mph</div>
-              </div>
-            </td>
-            <td class="weatherfeed-table-days-td">
-              <div class="weatherfeed-table-summary">
-                <div class="summary">summary</div>
-              </div>
-            </td>
-            <td class="weatherfeed-table-days-td">
-              <div class="weatherfeed-table-summary">
-                <div class="snow">snow in</div>
-              </div>
-            </td>
-            <td class="weatherfeed-table-days-td">
-              <div class="weatherfeed-table-summary">
-                <div class="rain">rain in</div>
-              </div>
-            </td>
-            <td class="weatherfeed-table-days-td">
-              <div class="weatherfeed-table-summary">
-                <div class="temp">max f</div>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="c1-3r-container">
+        <div class="r1-container">
+          <div class="day">day</div>
+        </div>
+        <div class="r1-container">
+          <div class="date">date</div>
+        </div>
+        <div class="r1-container">
+          <div class="time">time</div>
+        </div>
+      </div>
+      {/* <--bottom half of header--> */}
+      <div class="c1-5r-container">
+        <div class="r1-container"></div>
+        <div class="r1-container">
+          <div class="summary">summary</div>
+        </div>
+        <div class="r1-container">
+          <div class="snow">snow in</div>
+        </div>
+        <div class="r1-container">
+          <div class="rain">rain in</div>
+        </div>
+        <div class="r1-container">
+          <div class="temp">max f</div>
+        </div>
+      </div>
+      <div className="c1-1r-container"></div>
     </div>
   );
 };

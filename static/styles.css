@@ -23,7 +23,7 @@ div img {
 }
 
 .pass-image-container-pass:hover {
-  border-color: rgb(212, 247, 212);
+  background-color: rgb(226, 250, 206);
   opacity: 0.6;
 }
 
@@ -50,9 +50,8 @@ div img {
   align-items: center;
   font-family: Georgia, sans-serif;
   height: 100%;
-}
-.resortCard-wrapper:nth-child(2n + 1) {
-  background-color: rgb(178, 222, 247);
+  background-color: rgb(197, 229, 247);
+  margin-bottom: 5px;
 }
 
 .brand-container {
@@ -62,31 +61,41 @@ div img {
   align-items: center;
   justify-content: center;
   text-align: center;
-  background-color: rgb(215, 247, 178);
 }
-.wfandh-container {
+.header-weather-container {
   flex: 10 1 500px;
   width: 100%;
-  background-color: rgb(240, 203, 204);
   display: flex;
   flex-flow: row nowrap;
-  border-left: 1px solid white;
+  border-left: 1px solid black;
   font-family: Georgia, sans-serif;
   font-size: 12px;
   line-height: 1.4em;
 }
-.weatherfeedHeader-container {
+/*header inside reasortContainer*/
+.header-container {
   align-self: start;
   flex: 1;
+  border-right: 1px solid black;
+  /* Want to make this static and weather to scroll under it */
 }
 
-.weatherfeed-container {
+.r1-container:nth-child(2n + 1) {
+  background-color: rgb(199, 247, 202);
+}
+
+.dayCard-heading-row:nth-child(2n + 1) {
+  background-color: rgb(199, 247, 202);
+}
+.dayCard-body-row:nth-child(2n + 1) {
+  background-color: rgb(199, 247, 202);
+}
+.weather-container {
   color: #333;
   display: flex;
   bottom: 0;
   text-align: center;
   width: 100%;
-  background-color: rgb(112, 63, 226);
   align-items: stretch;
   flex: 11 1 500px;
 }
@@ -95,12 +104,12 @@ div img {
   display: flex;
   flex-flow: row;
   flex: 1;
-  align-items: stretch;
+  /* align-items: stretch; */
   /* text-align: center; */
 }
-.weatherfeed-table-days-td:nth-child(2n + 1) {
-  background-color: rgb(178, 222, 247);
-}
+/* .weatherfeed-table-days-td:nth-child(2n + 1) {
+  background-color: rgb(19, 19, 2);
+} */
 
 /* .weatherfeed-table-container {
   background-color: rgb(63, 226, 63);
@@ -108,89 +117,74 @@ div img {
 } */
 
 .dayCard {
-  flex: 1 0 240px;
-  /* background-color: white; */
+  flex: 1 0 auto;
   justify-content: center;
-  /* border: 1px solid ghostwhite; */
+  border: 1px solid black;
   height: 100%;
 }
-.dayCard-table-heading-tr {
-  justify-content: right;
-}
-.dayCard-container {
-  display: flex;
-  flex-flow: column wrap;
-  border-left: white solid 1px;
-  flex: 1 0 291px;
-  background-color: rgb(235, 8, 8);
+/* .dayCard:nth-child(2n + 1) {
+  background-color: rgb(244, 247, 242);
+} */
+/* .dayCard-table-heading-tr {
 
-  /* padding: 16px 24px; */
+  justify-content: right;
+} */
+
+.c1-3r-container {
+  max-height: 30%;
 }
-.dayCard-table-heading-row {
+.c1-5r-container {
+  height: 60%;
+}
+.c1-1r-container {
+  height: 10%;
+}
+.dayCard-heading-row {
   display: flex;
   flex: 1;
-  background-color: rgb(243, 239, 14);
 
   justify-content: space-evenly;
 }
-.dayCard-table-heading-col {
-  display: flex;
-  flex-flow: column wrap;
+.dayCard-heading-row:first-child {
+  background-color: rgb(243, 239, 14);
 }
-.dayCard-body {
+
+.dayCard-body-row {
+  display: flex;
   flex: 1;
-  background-color: rgb(134, 134, 126);
-}
-/* .dayCard-body-col {
-  display: flex;
-  flex-flow: column wrap;
-} */
 
-.weatherfeed-table-days-td {
-  /* width: 100%; */
-  /* column-span: 17; */
-  /* padding: 1px; */
-  flex-direction: row;
-  display: flex;
+  justify-content: space-evenly;
 }
-/* .weatherfeed-table-days-div-name {
-  border: red, solid, 1px;
-  padding: 3px;
-  column-span: 3;
-} */
+.row-3col {
+  flex: 4;
+}
 
-/* .weatherfeed-table-days-th-time {
-  column-span: 1;
-} */
-.weatherfeed-table-flightLink-td {
+.row-1col {
+  flex: 1;
+}
+/* .weatherfeed-table-flightLink-td {
   width: 100%;
   column-span: 3;
   padding: 1px;
   flex-direction: row;
   display: flex;
   justify-content: space-evenly;
-}
-.flightIcon-container {
-  text-align: center;
+} */
+.flightIcon-row {
+  display: flex;
+  flex: 1;
+  background-color: rgb(243, 239, 14);
+  justify-content: space-evenly;
 }
 
 .flightIcon {
   text-decoration: none;
+  text-align: center;
 }
 
 .flightIcon:hover {
   opacity: 0.2;
 }
-
-.flightCard {
-}
-/* /* table#wf-table a {
-  color: #3c8dbc;
-}
-
-#wf-weatherfeed a:hover {
-  color: #333;
-} */
 
 /* //FlightPage// */
 .flightresults-container {
@@ -212,7 +206,7 @@ div img {
   display: flex;
   flex-flow: row wrap;
   flex: 0 1 95%;
-  background-color: rgb(212, 247, 212);
+  background-color: rgb(226, 250, 206);
   padding: 16px 24px;
   margin-bottom: lightgrey 1em;
   box-sizing: border-box;
