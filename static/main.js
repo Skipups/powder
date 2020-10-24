@@ -217,10 +217,10 @@ var DayCard = /*#__PURE__*/function (_React$Component) {
               key: dataPoint.time
             }, dataPoint.time.split(" ")[1]));
           }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "c1-1r-container"
+          }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "c1-5r-container"
           }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "dayCard-body-row"
-          }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "dayCard-body-row"
           }, dayForecast.map(function (dataPoint) {
             return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -228,14 +228,6 @@ var DayCard = /*#__PURE__*/function (_React$Component) {
             }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
               key: dataPoint.time
             }, dataPoint.wind));
-          })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "dayCard-body-row"
-          }, dayForecast.map(function (dataPoint) {
-            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-              className: "row-3col"
-            }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-              key: dataPoint.time
-            }, dataPoint.summary));
           })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "dayCard-body-row"
           }, dayForecast.map(function (dataPoint) {
@@ -266,7 +258,7 @@ var DayCard = /*#__PURE__*/function (_React$Component) {
             className: "flightIcon-row"
           }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "row-1col"
-          }, context.airport !== closestAirCode ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reach_router__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          }, console.log("context.airport inside dayCard-", context.airport), context.airport !== closestAirCode ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reach_router__WEBPACK_IMPORTED_MODULE_1__["Link"], {
             className: "flightIcon",
             to: "/flightDestination/".concat(cleanedResortName),
             state: {
@@ -454,7 +446,7 @@ var FlightPage = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      selected: "",
+      // selected: "",
       loading: true,
       closestAirCode: props.location.state.closestAirCode,
       resortName: props.location.state.resortName,
@@ -519,6 +511,27 @@ var FlightPage = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
+    key: "checkValid",
+    value: function checkValid(airport, flightInfo, closestAirCode) {
+      if (airport.length === 0) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          "class": "warning"
+        }, "Enter Origin Airportcode to Diplay Flights ");
+      } else if (airport === closestAirCode) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          "class": "warning"
+        }, "Origin and Destination Airportcode must be different", " ");
+      } else if (flightInfo.length === 0) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "No direct flights available");
+      } else {
+        return flightInfo.map(function (flight) {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FlightCard__WEBPACK_IMPORTED_MODULE_2__["default"], {
+            flight: flight
+          });
+        });
+      }
+    }
+  }, {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.flightRequestFunction();
@@ -528,8 +541,10 @@ var FlightPage = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this$state2 = this.state,
           loading = _this$state2.loading,
-          flightInfo = _this$state2.flightInfo;
+          flightInfo = _this$state2.flightInfo,
+          closestAirCode = _this$state2.closestAirCode;
       var airport = this.props.airport;
+      console.log("airport", airport);
 
       if (loading) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "searching for a flight ...");
@@ -539,11 +554,7 @@ var FlightPage = /*#__PURE__*/function (_React$Component) {
         className: "flightresults-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "flightinfobar"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Departure Date: ".concat(this.state.departingDate)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Orgin Airport: ".concat(airport)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "\u2708"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Destination Airport: ".concat(this.state.closestAirCode))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, flightInfo.length !== 0 ? flightInfo.map(function (flight) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FlightCard__WEBPACK_IMPORTED_MODULE_2__["default"], {
-          flight: flight
-        });
-      }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "No flights found"))));
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Departure Date: ".concat(this.state.departingDate)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Orgin Airport: ".concat(airport)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "\u2708"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Destination Airport: ".concat(this.state.closestAirCode))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.checkValid(airport, flightInfo, closestAirCode)))));
     }
   }]);
 
@@ -620,7 +631,7 @@ var Nav = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card nav"
+        className: "nav"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "navform"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_OriginAirportForm_js__WEBPACK_IMPORTED_MODULE_3__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1153,26 +1164,26 @@ var WeatherfeedHeadersTable = function WeatherfeedHeadersTable(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     "class": "time"
   }, "time"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "c1-1r-container"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     "class": "c1-5r-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     "class": "r1-container"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    "class": "r1-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    "class": "summary"
-  }, "summary")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    "class": "mph"
+  }, "mph")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     "class": "r1-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     "class": "snow"
-  }, "snow in")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "snow-in")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     "class": "r1-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     "class": "rain"
-  }, "rain in")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "rain-in")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     "class": "r1-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     "class": "temp"
-  }, "max f"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "max-F"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "c1-1r-container"
   }));
 };
@@ -1292,12 +1303,10 @@ var App = /*#__PURE__*/function (_React$Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "validateLength", function () {
-      console.log("vl");
       var airportError = "";
 
       if (_this.state.airport.length !== 3) {
         airportError = "invalid airport code";
-        console.log(airportError);
       }
 
       if (airportError) {

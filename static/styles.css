@@ -1,5 +1,7 @@
 html {
   box-sizing: border-box;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 /* PowerderHome comp*/
 .wrapper {
@@ -23,7 +25,7 @@ div img {
 }
 
 .pass-image-container-pass:hover {
-  background-color: rgb(226, 250, 206);
+  background-color: rgb(243, 239, 14);
   opacity: 0.6;
 }
 
@@ -50,7 +52,7 @@ div img {
   align-items: center;
   font-family: Georgia, sans-serif;
   height: 100%;
-  background-color: rgb(197, 229, 247);
+  background: rgb(243, 239, 14, 0.9);
   margin-bottom: 5px;
 }
 
@@ -71,25 +73,21 @@ div img {
   font-family: Georgia, sans-serif;
   font-size: 12px;
   line-height: 1.4em;
+  background-color: coral;
 }
 /*header inside reasortContainer*/
 .header-container {
   align-self: start;
-  flex: 1;
+  flex-flow: 1 nowrap;
   border-right: 1px solid black;
+
   /* Want to make this static and weather to scroll under it */
 }
 
-.r1-container:nth-child(2n + 1) {
-  background-color: rgb(199, 247, 202);
+.dayCard-heading-row:first-child {
+  background-color: rgb(243, 239, 14);
 }
 
-.dayCard-heading-row:nth-child(2n + 1) {
-  background-color: rgb(199, 247, 202);
-}
-.dayCard-body-row:nth-child(2n + 1) {
-  background-color: rgb(199, 247, 202);
-}
 .weather-container {
   color: #333;
   display: flex;
@@ -104,6 +102,7 @@ div img {
   display: flex;
   flex-flow: row;
   flex: 1;
+  align-self: start;
   /* align-items: stretch; */
   /* text-align: center; */
 }
@@ -132,21 +131,25 @@ div img {
 
 .c1-3r-container {
   max-height: 30%;
+  background: rgb(255, 127, 80);
+}
+/* .c1-3r-container:nth-child(2n + 1) {
+  opacity: 0.8;
+} */
+.day {
+  opacity: 0;
 }
 .c1-5r-container {
   height: 60%;
+  background-color: cadetblue;
 }
 .c1-1r-container {
-  height: 10%;
+  height: 5%;
 }
 .dayCard-heading-row {
   display: flex;
   flex: 1;
-
   justify-content: space-evenly;
-}
-.dayCard-heading-row:first-child {
-  background-color: rgb(243, 239, 14);
 }
 
 .dayCard-body-row {
@@ -162,18 +165,11 @@ div img {
 .row-1col {
   flex: 1;
 }
-/* .weatherfeed-table-flightLink-td {
-  width: 100%;
-  column-span: 3;
-  padding: 1px;
-  flex-direction: row;
-  display: flex;
-  justify-content: space-evenly;
-} */
 .flightIcon-row {
   display: flex;
   flex: 1;
-  background-color: rgb(243, 239, 14);
+  background: rgb(255, 127, 80);
+
   justify-content: space-evenly;
 }
 
@@ -182,8 +178,9 @@ div img {
   text-align: center;
 }
 
-.flightIcon:hover {
-  opacity: 0.2;
+.flightIcon-row:hover {
+  background-color: rgb(243, 239, 14);
+  opacity: 80%;
 }
 
 /* //FlightPage// */
@@ -196,7 +193,8 @@ div img {
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   width: 95%;
   margin: 5px auto;
-  background-color: rgb(178, 222, 247);
+
+  background: rgb(243, 239, 14, 0.9);
   justify-content: space-around;
   align-items: center;
   color: #3c4043;
@@ -206,12 +204,15 @@ div img {
   display: flex;
   flex-flow: row wrap;
   flex: 0 1 95%;
-  background-color: rgb(226, 250, 206);
   padding: 16px 24px;
+  background-color: white;
   margin-bottom: lightgrey 1em;
   box-sizing: border-box;
   border-radius: 1px;
   color: #3c4043;
+}
+.nav {
+  background-color: cadetblue;
 }
 /* .nav {
   border-radius: 25px;
@@ -223,7 +224,14 @@ div img {
   color: #3c4043;
 }
 .navlink:hover {
-  color: #1087e9;
+  color: rgb(243, 239, 14);
+}
+.warning {
+  padding: 20px;
+  background-color: #f44336; /* Red */
+  color: white;
+  margin-bottom: 15px;
+  text-align: center;
 }
 
 .imagenum,
@@ -243,8 +251,6 @@ div img {
   font-stretch: normal;
   font-size: 16px;
   line-height: 24px;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 .flightnum {
@@ -256,7 +262,13 @@ div img {
   font-stretch: normal;
   font-size: 16px;
   line-height: 24px;
-  font-family: "Google Sans", Roboto, HelveticaNeue, Arial, sans-serif;
+
   letter-spacing: normal;
   align-items: center;
 }
+
+/* colors
+background-color: coral;
+background-color: rgb(243, 239, 14); 
+  background: rgb(243, 239, 14, 0.9);
+color: #3c4043; */

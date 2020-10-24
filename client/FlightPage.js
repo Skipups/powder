@@ -7,7 +7,7 @@ class FlightPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selected: "",
+      // selected: "",
       loading: true,
       closestAirCode: props.location.state.closestAirCode,
       resortName: props.location.state.resortName,
@@ -64,15 +64,32 @@ class FlightPage extends React.Component {
         console.log(error);
       });
   }
+  checkValid(airport, flightInfo, closestAirCode) {
+    if (airport.length === 0) {
+      return (
+        <div class="warning">Enter Origin Airportcode to Diplay Flights </div>
+      );
+    } else if (airport === closestAirCode) {
+      return (
+        <div class="warning">
+          Origin and Destination Airportcode must be different{" "}
+        </div>
+      );
+    } else if (flightInfo.length === 0) {
+      return <div>No direct flights available</div>;
+    } else {
+      return flightInfo.map((flight) => <FlightCard flight={flight} />);
+    }
+  }
 
   componentDidMount() {
     this.flightRequestFunction();
   }
 
   render() {
-    const { loading, flightInfo } = this.state;
+    const { loading, flightInfo, closestAirCode } = this.state;
     const { airport } = this.props;
-
+    console.log("airport", airport);
     if (loading) {
       return <div>searching for a flight ...</div>;
     }
@@ -87,11 +104,12 @@ class FlightPage extends React.Component {
             <div>{`Destination Airport: ${this.state.closestAirCode}`}</div>
           </div>
           <div>
-            {flightInfo.length !== 0 ? (
+            <div>{this.checkValid(airport, flightInfo, closestAirCode)}</div>
+            {/* {flightInfo.length !== 0 ? (
               flightInfo.map((flight) => <FlightCard flight={flight} />)
             ) : (
               <div>No flights found</div>
-            )}
+            )} */}
           </div>
         </div>
       </div>

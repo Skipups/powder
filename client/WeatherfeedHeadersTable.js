@@ -23,22 +23,23 @@ const WeatherfeedHeadersTable = (props) => {
           <div class="time">time</div>
         </div>
       </div>
+      <div className="c1-1r-container"></div>
       {/* <--bottom half of header--> */}
       <div class="c1-5r-container">
         <div class="r1-container">
           <div class="mph">mph</div>
         </div>
-        <div class="r1-container">
+        {/* <div class="r1-container">
           <div class="summary">summary</div>
+        </div> */}
+        <div class="r1-container">
+          <div class="snow">snow-in</div>
         </div>
         <div class="r1-container">
-          <div class="snow">snow in</div>
+          <div class="rain">rain-in</div>
         </div>
         <div class="r1-container">
-          <div class="rain">rain in</div>
-        </div>
-        <div class="r1-container">
-          <div class="temp">max f</div>
+          <div class="temp">max-F</div>
         </div>
       </div>
       <div className="c1-1r-container"></div>

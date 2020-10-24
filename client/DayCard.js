@@ -52,20 +52,13 @@ class DayCard extends React.Component {
                   ))}
                 </div>
               </div>
-
+              <div className="c1-1r-container"></div>
               <div className="c1-5r-container">
-                <div className="dayCard-body-row"></div>
                 <div className="dayCard-body-row">
+                  {/* mph */}
                   {dayForecast.map((dataPoint) => (
                     <div className="row-3col">
                       <div key={dataPoint.time}>{dataPoint.wind}</div>
-                    </div>
-                  ))}
-                </div>
-                <div className="dayCard-body-row">
-                  {dayForecast.map((dataPoint) => (
-                    <div className="row-3col">
-                      <div key={dataPoint.time}>{dataPoint.summary}</div>
                     </div>
                   ))}
                 </div>
@@ -94,6 +87,10 @@ class DayCard extends React.Component {
               <div className="c1-1r-container">
                 <div className="flightIcon-row">
                   <div className="row-1col">
+                    {console.log(
+                      "context.airport inside dayCard-",
+                      context.airport
+                    )}
                     {context.airport !== closestAirCode ? (
                       <Link
                         className="flightIcon"
