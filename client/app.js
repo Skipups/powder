@@ -25,11 +25,9 @@ class App extends React.Component {
     this.setState({ airport: capatilized });
   };
   validateLength = () => {
-    console.log("vl");
     let airportError = "";
     if (this.state.airport.length !== 3) {
       airportError = "invalid airport code";
-      console.log(airportError);
     }
     if (airportError) {
       this.setState({ airportError });

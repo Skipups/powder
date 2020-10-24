@@ -7,7 +7,7 @@ import OriginAirportForm from "./OriginAirportForm.js";
 class Nav extends React.Component {
   render() {
     return (
-      <div className="card nav">
+      <div className="nav">
         <div className="navform">
           <OriginAirportForm />
         </div>
