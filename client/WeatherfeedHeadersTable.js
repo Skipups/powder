@@ -26,7 +26,7 @@ const WeatherfeedHeadersTable = (props) => {
       {/* <--bottom half of header--> */}
       <div class="c1-5r-container">
         <div class="r1-container">
-          <div class="summary">summary</div>
+          <div class="mph">mph</div>
         </div>
         <div class="r1-container">
           <div class="summary">summary</div>
