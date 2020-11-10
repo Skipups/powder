@@ -1,13 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "./OriginAirSearchContext";
-import { Router, Link, useNavigate } from "@reach/router";
+import { Router } from "@reach/router";
 import PassPage from "./PassPage.js";
 import PowderHome from "./PowderHome.js";
 import FlightPage from "./FlightPage.js";
 import Nav from "./Nav.js";
 
-//only origin is at the root state level. All other choices are lower component level.
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -40,13 +39,11 @@ class App extends React.Component {
     event.preventDefault();
     const isValid = this.validateLength();
     if (isValid) {
-      console.log("submited", this.state.airport);
-
       //clear error if aircode valid length
       this.setState({ airportError: "" });
     }
   };
-  //Lifting state to a parent comoonenet, daycard needs airport code
+
   render() {
     return (
       <div>

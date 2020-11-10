@@ -1,17 +1,8 @@
 import React from "react";
-import ReactTable from "react-table";
 
-const WeatherfeedHeadersTable = (props) => {
-  const { forecast } = props;
-
+const WeatherfeedHeadersTable = () => {
   return (
     <div>
-      {/* <div className="weatherfeedheaders-table">
-      
-          <tr className="weatherfeed-tr">
-            <div className="weatherfeed-table-days-container"></div>
-          </tr> */}
-
       <div class="c1-3r-container">
         <div class="r1-container">
           <div class="day">day</div>
@@ -29,9 +20,6 @@ const WeatherfeedHeadersTable = (props) => {
         <div class="r1-container">
           <div class="mph">mph</div>
         </div>
-        {/* <div class="r1-container">
-          <div class="summary">summary</div>
-        </div> */}
         <div class="r1-container">
           <div class="snow">snow-in</div>
         </div>

@@ -7,7 +7,6 @@ class FlightPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // selected: "",
       loading: true,
       closestAirCode: props.location.state.closestAirCode,
       resortName: props.location.state.resortName,
@@ -29,12 +28,6 @@ class FlightPage extends React.Component {
     let uniqueFlights = [];
     const { closestAirCode, departingDate } = this.state;
     const { airport } = this.props;
-    console.log(
-      "airport, closestAirCode, departingDate",
-      this.props.airport,
-      this.state.closestAirCode,
-      departingDate
-    );
 
     axios({
       method: "GET",
@@ -58,7 +51,6 @@ class FlightPage extends React.Component {
         }, []);
 
         this.setState({ flightInfo: uniqueFlights, loading: false });
-        console.log("this.state", this.state);
       })
       .catch((error) => {
         console.log(error);
@@ -89,7 +81,7 @@ class FlightPage extends React.Component {
   render() {
     const { loading, flightInfo, closestAirCode } = this.state;
     const { airport } = this.props;
-    console.log("airport", airport);
+
     if (loading) {
       return <div>searching for a flight ...</div>;
     }
@@ -105,11 +97,6 @@ class FlightPage extends React.Component {
           </div>
           <div>
             <div>{this.checkValid(airport, flightInfo, closestAirCode)}</div>
-            {/* {flightInfo.length !== 0 ? (
-              flightInfo.map((flight) => <FlightCard flight={flight} />)
-            ) : (
-              <div>No flights found</div>
-            )} */}
           </div>
         </div>
       </div>
@@ -120,11 +107,7 @@ class FlightPage extends React.Component {
 export default (props) => (
   <Consumer>
     {({ airport }) => {
-      console.log("prrrrops", props, airport);
       return <FlightPage {...props} airport={airport} />;
     }}
   </Consumer>
 );
-
-//practice redue method
-// add sort on price, arrival, take off

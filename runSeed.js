@@ -12,5 +12,3 @@ db.sync()
     console.error(e);
     process.exit(1);
   });
-
-// added

@@ -2,7 +2,6 @@ const Sequelize = require("sequelize");
 const { db } = require("../db.js");
 
 //define pass model
-
 const Pass = db.define("pass", {
   id: {
     type: Sequelize.INTEGER,

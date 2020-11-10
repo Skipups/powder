@@ -2,7 +2,7 @@ import React from "react";
 import ResortCard from "./ResortCard";
 import axios from "axios";
 
-//make api call to db to all resorts belonging to selected pass  from props
+//make api call to db to all resorts belonging to selected pass from props
 class PassPage extends React.Component {
   constructor(props) {
     super(props);

@@ -1,10 +1,6 @@
 import React from "react";
 import axios from "axios";
-import PassPage from "./PassPage";
-import { navigate } from "@reach/router";
-
 import { Link } from "@reach/router";
-import { format } from "path";
 
 class PowderHome extends React.Component {
   constructor(props) {

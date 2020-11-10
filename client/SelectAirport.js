@@ -27,7 +27,6 @@ class SelectAirport extends React.Component {
       }
     )
       .then((response) => {
-        console.log(response);
         responseArray = response;
       })
       .catch((err) => {
