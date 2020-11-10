@@ -15,9 +15,6 @@ class DayCard extends React.Component {
       dayForecast[0].date !== undefined
         ? cleanedDepartureDate(dayForecast[0].date)
         : "";
-    // sometimes a dayForecast only has length 1 or 0
-    // changed code so all daycards have same number of data points
-    // code before: if (dayForecast.length >= 1)
     if (dayForecast.length === 3) {
       return (
         <Consumer>
@@ -87,10 +84,6 @@ class DayCard extends React.Component {
               <div className="c1-1r-container">
                 <div className="flightIcon-row">
                   <div className="row-1col">
-                    {console.log(
-                      "context.airport inside dayCard-",
-                      context.airport
-                    )}
                     {context.airport !== closestAirCode ? (
                       <Link
                         className="flightIcon"
@@ -119,16 +112,3 @@ class DayCard extends React.Component {
 }
 
 export default DayCard;
-// const NewsFeed = () => (
-//   <div>
-//     <Link to="photos/123" state={{ fromFeed: true }} />
-//   </div>
-// );
-
-// const Photo = ({ location, photoId }) => {
-//   if (location.state.fromFeed) {
-//     return <FromFeedPhoto id={photoId} />;
-//   } else {
-//     return <Photo id={photoId} />;
-//   }
-// };

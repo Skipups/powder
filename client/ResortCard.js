@@ -32,7 +32,7 @@ class ResortCard extends React.Component {
       });
   }
   grouped = (data) => {
-    // given 18 forecast objects, this will give me those objsgrouped by day.
+    // given 18 forecast objects, this will give those objs grouped by day.
     let i = 0;
     let current = "";
     let previous = "";
@@ -55,7 +55,6 @@ class ResortCard extends React.Component {
           }
         }
       }
-      // check for i!
     }
     return groupedByDayMatrix;
   };

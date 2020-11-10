@@ -1,11 +1,11 @@
 const { Pass, Resort, db } = require("./server/db/index.js");
 
 const ResortPass = db.model("ResortPass");
-const epicList = require("./epic.js");
-const mountainCList = require("./mountainC.js");
-const ikonList = require("./ikon.js");
+const epicList = require("./server/data/epic.js");
+const mountainCList = require("./server/data/mountainC.js");
+const ikonList = require("./server/data/ikon.js");
 const pass = require("./server/db/models/pass");
-const passList = require("./passList.js");
+const passList = require("./server/data/passList.js");
 
 async function syncAndSeedDatabase() {
   try {
@@ -25,7 +25,6 @@ async function syncAndSeedDatabase() {
     ] = await Resort.bulkCreate(mountainCList);
     const [ikon, epic, mc] = await Pass.bulkCreate(passList);
 
-    // await ikon.setPasses([taos, aspen])
     //creating exclusive epic resorts
     let joinedEpicResorts = await Promise.all(
       createdEpicList.map((res) => {
@@ -50,8 +49,8 @@ async function syncAndSeedDatabase() {
       passId: mc.id,
     });
 
-    //creating resorts that below to more than 1 resort
-    //alta is part of mc, ikon,
+    //creating resorts that belong to more than 1 resort
+
     let altaMC = await ResortPass.create({
       resortId: alta.id,
       passId: mc.id,
@@ -126,9 +125,6 @@ async function syncAndSeedDatabase() {
       passId: ikon.id,
     });
 
-    //mc doesn't have any unique resorts
-    //need to create each of it's resort one at a time and then join it it's resorts
-
     console.log("DB SYNCED");
   } catch (e) {
     console.log("ERROR SEEDING DB");
@@ -138,47 +134,3 @@ async function syncAndSeedDatabase() {
 }
 
 module.exports = { syncAndSeedDatabase };
-
-// let joinedMCResorts = await Promise.all(
-//   createdEpicList.map(async (res) => {
-//     await ResortPass.create({
-//       resortId: res.id,
-//       passId: mc.id,
-//     });
-//   })
-// );
-
-// let joinedIkonResorts = await Promise.all(
-//   createdEpicList.map(async (res) => {
-//     await ResortPass.create({
-//       resortId: res.id,
-//       passId: ikon.id,
-//     });
-//   })
-// );
-
-// let altaikon = await ResortPass.create({
-//   resortId: alta.id,
-//   passId: ikon.id,
-// });
-//let [res1, res2, res3] = await Resort.bulkCreate(resortArry);
-
-// let epic = await Pass.create({
-//   id: 2,
-//   name: "Epic",
-//   image:
-//     "https://images.vailresorts.com/image/upload/c_scale,dpr_3.0,f_auto,q_auto,w_500/v1/Epic%20Pass/Heros/Homepage/0659-19-EPAS_Off-Sale-Hero_v3_Mobile.jpg",
-// });
-
-// let ikon = await Pass.create({
-//   id: 1,
-//   name: "Ikon",
-//   image:
-//     "https://ewscripps.brightspotcdn.com/dims4/default/a460780/2147483647/strip/true/crop/640x360+0+60/resize/1280x720!/quality/90/?url=https%3A%2F%2Fmediaassets.thedenverchannel.com%2Fphoto%2F2018%2F02%2F22%2Fikon%20pass_1519326636543.jpg_78861671_ver1.0_640_480.jpg",
-// });
-// let mountainc = await Pass.create({
-//   id: 3,
-//   name: "Mountain Collective",
-//   image:
-//     "https://www.skiutah.com/blog/authors/erika/want-to-save-on-2017-18-lift-tickets/listing_picture_override/hero--xl",
-// });

@@ -24,5 +24,3 @@ class OriginAirportForm extends React.Component {
   }
 }
 export default OriginAirportForm;
-
-// stopped at trying to pa

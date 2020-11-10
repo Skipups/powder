@@ -1,62 +1,21 @@
-Take 3
-1. is my webpack working correctly? I don't think it's rebuilding each time npm run start:dev
-2. why is postman getting correct weather data but not my ap
-3. why am I only seeing console.log in terminal when using postman?
-4. when i move the api request from express.js to snowRequest postman doesn't working
+##Powder##
+
+Powder is an application that displays weather ❄️ and available flights ✈️ for multiple resorts, enabling efficient powder hunting🕵🏼‍♀️❄. Simply select a season pass to see the upcoming forcast for partcipating resorts. To view direct flights to your resort of choice- enter the origin airport code in the upper left corner and click on the flight icon associated with the desired departure date. 
+To view a demo, go to: https://powder-pass.herokuapp.com/
+
+#Frameworks and Libraries
+Built with React, Express, and Sequelize
 
 
-July 6th to be done:
-1. resorts
-  - write out resort for each pass
-  - have  a list of join resorts
-  - figure out what to do with non-us resorts
-  -air code validations
-2. Context
-  pass nav info down
+#Installation
+To run this project locally, you will need to have node installed. 
+Open the terminal. 
+Go to a folder where you would like to install the project. 
+Then type the following to download the repo: git clone https://github.com/Skipups/powder.git
 
-3. heroku
+Make sure you're in the root directory of the repo, and type npm install in the terminal to install the dependencies and packages.
+To run the app in the development mode type npm start:dev. Open http://localhost:3000 to view it in the browser.
 
+=======
 
-
-1. how do i switch back and forth from production and dev db?
-2. why are some epic resorts not coming through
-3. git vulnerability
-4. From resort card I pass closestAirCode={closestAirCode} multiple times, ended up passing instead of api call
-5. can't reload origin unless I start over app
-6. is this a single page application
-7. what if there isn't a direct flight, how do I choose the closest aircode
-
-July 16
-getting error when mountain collective pass selected can't read map of undefined. how can i use devtools for this?
-
-1. form validations see if airport codes work, needs to be a valid code
-2. enter another code on the flight page
-3. get logos of resorts https://www.snow-forecast.com/logos/Breckenridge.jpg
-4. check for airport validations https://docs.kiwi.com/#header-table-of-contents
-  a. airport code valisation api https://rapidapi.com/iatacodes/api/iatacodes
-5. weather icons
-5. CSS it up
-
-July 23
-1. flightpage 2 api calls- clean up code?
-2. airline names not dislayed just code
-3. origin not valid code- display error response from api
-4. origin and destination are the same
-
-
-
-Resolved issues list:
-1. FlightPage - needed to have functionality to submit new airport codes after initial api call. 
-  Bug- my api call was inside CDM and wasn't being triggered when the props aircode changed
-  Misunderstanding- CDm would rerender on prop change
-  how I fixed it- moved logic for api call into separate function added CDUpdate
-  what I know now- CDM only gets triggered once
-2. when there is no aiport code entered defaults to MSP
-2. flight data coming back
-3. when submitting an empty or invalid airport code, flights would still popuate with a random origin
-  was uning static urls
-4. date configuration for flight api request wrong- no was looking a docs of wrong api!
-5. css only displaying 1 card but running multipletimes
-
-
-1. how do dynamically set dayCard widths depending on content to be inside container??
+Go find some Pow⛷🎿🏂!

@@ -1,13 +1,10 @@
 const { Router } = require("express");
 const axios = require("axios");
 const { configDepartureDateForFlightAPI } = require("../../Utils");
-//not using//
 const apiFlightRequest = Router();
 
 apiFlightRequest.get("/flightRequest", (req, res) => {
   let { closestAirCode, departingDate, departingAirCode } = req.body;
-
-  //use Utils function to configure date
   departingAirCode = configDepartureDateForFlightAPI(departingAirCode);
 
   axios({
@@ -30,7 +27,6 @@ apiFlightRequest.get("/flightRequest", (req, res) => {
     },
   })
     .then((response) => {
-      console.log("!!!!!!response", response);
       res.status(200).send(response);
     })
     .catch((error) => {

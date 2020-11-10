@@ -9,4 +9,4 @@ const OriginAirSearchContext = React.createContext({
 });
 
 export const Provider = OriginAirSearchContext.Provider; //entrance portal
-export const Consumer = OriginAirSearchContext.Consumer; // exist portal
+export const Consumer = OriginAirSearchContext.Consumer; // exit portal

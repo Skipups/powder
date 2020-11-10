@@ -11,14 +11,3 @@ const mountainCList = [
 ];
 
 module.exports = mountainCList;
-
-// Alta Ski Area
-
-// Arapahoe Basin
-// Aspen Snowmass
-// Banff Sunshine
-// Big Sky Resort
-// Chamonix — France New 2020/21
-// Coronet Peak + The Remarkables — NZ
-// Grand Targhee Resort New 2020/21
-// Jackson Hole Mountain Resort
